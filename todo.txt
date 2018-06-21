@@ -1,0 +1,87 @@
+== DONE ==
+
+TCSMS compatibility:
+- Pulling updates works
+- Pulling sprites works (no search yet)
+- The framework for pulling, paginating, and viewing single entries of all kinds is there, including pulling and pageing comments
+- User Registration
+- Passwords; switch current password system (md5) to a more secure one (crypt?), and make them somewhat backwards-compatible
+- Registering views, downloads for content
+- Logging in works
+- Login attempts: limit? or just do captcha after a few attempts?
+
+Forums:
+- Pulling categories
+- Pulling forums
+- Pulling, paginating topics
+- Pulling, paginating replies
+
+Theme:
+- Some basic theme stuff, including a lot of mobile-friendliness
+
+Generic:
+- Properly displaying thumbnails, content
+- Blocking hotlinking for thumbnails, content
+- Lang files
+- FIX unconvert()'S BROKEN QUOTE UNCONVERSION!
+- Instant preview
+- Most BBCode
+- API for verifying fields (works for registration, anyway)
+
+
+
+
+
+== TODO ==
+
+TCSMS compatibility:
+- Capctha on registration
+- Pulling kinds of content that isn't sprites
+- Searching for content
+- Users creating, editing submissions
+- Staff moderating, editing, deleting submissions
+- Staff re-queueing submissions
+- Staff creating, editing, deleting, and moderating updates
+- Updates pulling relevant content
+- Users posting comments
+- Content comment threads
+- Users, staff editing, deleting comments
+- Pulling, paginating PMs
+- Sending PMs
+- Deleting PMs
+- Unread PMs
+- Pulling, paginating users
+
+Forums:
+- Admins creating, editing, deleting categories
+- Admins creating, editing, deleting forums
+- Creating, editing topics
+- Creating, editing replies
+- Admins deleting topics
+- Admins deleting replies
+- Admins blacklisting topics
+- Admins blacklisting replies
+- Admins moving topics
+- Admins splitting topics
+- Admins merging topics
+- Admins splitting and merging topics
+- User Signatures
+- Good Shit
+- Tusk Bucks
+
+Theme:
+- A lot of theme stuff
+- Nav menu max height
+- <title>
+
+Generic:
+- Redirect URL
+- BBCode: html5 audio/video
+- @ users
+- WYSIWYG
+- Swear filter
+- Emoji
+- Option to reset denormalized numbers: comments, replies, review scores, views/downloads?
+- Nicknames
+- Warning users
+- Banning (IP, user; temp, perma)
