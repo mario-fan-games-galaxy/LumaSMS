@@ -1,0 +1,6 @@
+tcsms/
+hyliandev/settings.php
+
+# Tools and other files
+*.php_cs.cache
+adminer.php
