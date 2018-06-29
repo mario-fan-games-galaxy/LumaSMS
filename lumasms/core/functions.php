@@ -28,4 +28,14 @@ function url(){
 	return $url;
 }
 
+function writeNTimes($str, $n, $divider = ', '){
+	$ret=[];
+	
+	for($i=0;$i<$n;$i++){
+		$ret[]=$n;
+	}
+	
+	return implode($divider,$ret);
+}
+
 ?>
