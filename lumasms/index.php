@@ -49,17 +49,19 @@ $database=new $database();
 
 $controllerUse=false;
 $route=explode('/',$_GET['uri']);
+$params=[];
 
 do {
 	$_route=implode('/',$route);
 	
 	if(!empty($routes[$_route])){
 		$controllerUse=$routes[$_route];
+	}else{
+		$params[]=array_pop($route);
 	}
-	
-	array_pop($route);
 }
 while(count($route) && empty($controllerUse));
+$params=array_reverse($params);
 
 
 

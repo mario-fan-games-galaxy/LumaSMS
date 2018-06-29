@@ -3,7 +3,8 @@
 $routes=[
 	''=>'UpdatesController@archive',
 	'index'=>'UpdatesController@archive',
-	'index/hahaha'=>'UpdatesController@hahaha'
+	'updates/archive'=>'UpdatesController@archive',
+	'updates/view'=>'UpdatesController@single',
 ];
 
 ?>

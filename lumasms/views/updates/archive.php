@@ -2,7 +2,9 @@
 	Updates
 </h1>
 
-<strong><?=$total?></strong> results / <strong><?=$pages?></strong> pages
+<div>
+	<strong><?=$total?></strong> results / <strong><?=$pages?></strong> pages
+</div>
 
 <ul class="list-updates"><?php foreach($updates as $update): ?>
 	<li>
