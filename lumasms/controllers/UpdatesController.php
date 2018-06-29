@@ -12,7 +12,9 @@ class UpdatesController extends Controller {
 		]);
 		
 		echo view('updates/archive',[
-			'updates'=>$updates
+			'updates'=>$updates['data'],
+			'pages'=>$updates['pages'],
+			'total'=>$updates['total']
 		]);
 	}
 }

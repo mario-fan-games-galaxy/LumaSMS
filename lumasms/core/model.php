@@ -45,16 +45,24 @@ class Model {
 		$limit="LIMIT $page $vars[limit]";
 		
 		$sql="
-		SELECT * FROM
+		SELECT {fields} FROM
 		$table
-		
-		$order
-		
-		$limit
 		";
 		
+		$count=str_replace('{fields}','COUNT(*) AS count',$sql);
+		$count=DB()->O()->query($count);
+		$count=$count->fetch(PDO::FETCH_ASSOC);
+		$count=$count['count'];
+		
+		$sql=str_replace('{fields}','*',$sql);
+		$sql.=$order . " " . $limit;
+		
 		$q=DB()->O()->query($sql);
-		$ret=[];
+		$ret=[
+			'total'=>$count,
+			'pages'=>ceil($count / $vars['limit']),
+			'data'=>[]
+		];
 		
 		foreach($q->fetchAll(PDO::FETCH_ASSOC) as $obj){
 			$class=get_class($this);
@@ -65,7 +73,7 @@ class Model {
 				$newObj->data[$key]=$value;
 			}
 			
-			$ret[]=$newObj;
+			$ret['data'][]=$newObj;
 		}
 		
 		return $ret;
