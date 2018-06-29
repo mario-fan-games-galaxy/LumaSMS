@@ -70,9 +70,9 @@ $method=array_pop($controller);
 $controller=array_shift($controller);
 $yield='';
 
-if(!class_exists($controller) || !method_exists($controller, $method)){
-	echo debug($controller,$method);
-	die('fuck');
+if(!class_exists($controller) || !is_callable($controller, $method)){
+	$controller='InformationController';
+	$method='error404';
 }
 
 ob_start();
