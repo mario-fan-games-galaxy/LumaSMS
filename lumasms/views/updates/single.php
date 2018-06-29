@@ -1,18 +1,5 @@
 <section>
-	<div class="card">
-		<h2 class="card-header">
-			#<?=$update['nid']?>:
-			<?=$update['title']?>
-		</h2>
-		
-		<div class="card-body">
-			<?=format($update['message'])?>
-		</div>
-		
-		<div class="card-footer">
-			(<?=$update['comments']?>) Comments
-		</div>
-	</div>
+	<?=view('updates/small',$update)?>
 </section>
 
 
@@ -27,8 +14,14 @@
 
 
 
-<ul class="list-comments"><?php foreach($comments as $comment): ?>
-	<li>
-		<?=view('comments/small',$comment->data)?>
-	</li>
-<?php endforeach; ?></ul>
+<?php if(count($comments)): ?>
+	<ul class="list-comments"><?php foreach($comments as $comment): ?>
+		<li>
+			<?=view('comments/small',$comment->data)?>
+		</li>
+	<?php endforeach; ?></ul>
+<?php else: ?>
+	<?=view('information',[
+		'message'=>'No comments'
+	])?>
+<?php endif; ?>
