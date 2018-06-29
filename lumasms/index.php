@@ -1,6 +1,13 @@
 <?php
 
-function Fatality(){
+function Fatality($e){
+	$errorlog='logs/fatality_log';
+	
+	file_put_contents(
+		$errorlog,
+		file_get_contents($errorlog) . '[ ' . date('m/d/Y g:i:sa',time()) . ' ]' . "\n" . $e . "\n\n"
+	);
+	
 	return '<h1>FATAL ERROR</h1>';
 }
 
@@ -9,19 +16,10 @@ function Fatality(){
 
 
 foreach([
-	'functions',
-	'controller',
-	'routes'
-] as $script){
-	(include_once 'core/' . $script . '.php') or die(Fatality());
-}
-
-
-
-
-
-foreach([
-	'controllers'
+	'core',
+	'dbdrivers',
+	'controllers',
+	'models'
 ] as $directory){
 	$_directory=scandir($directory);
 	
@@ -37,6 +35,13 @@ foreach([
 		require_once $file;
 	}
 }
+
+
+
+
+
+$database=S()['database']['driver'];
+$database=new $database();
 
 
 
