@@ -1,0 +1,35 @@
+.pagination-box {
+	.next-link,
+	.previous-link
+	{
+		.btn {
+			display:block;
+		}
+		
+		width:200px;
+	}
+	
+	.next-link {
+		order:3;
+	}
+	
+	.previous-link {
+		order:1;
+	}
+	
+	.pages-links {
+		.list-pages {
+			li {
+				display:inline-block;
+			}
+		}
+		
+		flex-grow:1;
+		order:2;
+		padding:0 0.5em;
+		text-align:center;
+	}
+	
+	display:flex;
+	width:100%;
+}

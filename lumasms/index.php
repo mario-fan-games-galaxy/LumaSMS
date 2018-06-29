@@ -47,8 +47,14 @@ $database=new $database();
 
 
 
+$route=$_GET['uri'];
+if(empty($route)){
+	$route='updates/archive';
+}
+$route=explode('/',$route);
+
 $controllerUse=false;
-$route=explode('/',$_GET['uri']);
+$finalRoute='';
 $params=[];
 
 do {
@@ -56,6 +62,7 @@ do {
 	
 	if(!empty($routes[$_route])){
 		$controllerUse=$routes[$_route];
+		$finalRoute=$_route;
 	}else{
 		$params[]=array_pop($route);
 	}

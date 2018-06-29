@@ -20,6 +20,7 @@ class UpdatesController extends Controller {
 		echo view('updates/archive',[
 			'updates'=>$updates['data'],
 			'pages'=>$updates['pages'],
+			'page'=>$page,
 			'total'=>$updates['total']
 		]);
 	}

@@ -8,7 +8,8 @@
 <?php foreach([
 	'tools/bootstrap',
 	'header',
-	'lists'
+	'lists',
+	'pagination',
 ] as $css): ?>
 <link rel="stylesheet" href="<?=url()?>/theme/base/css/<?=$css?>.min.css">
 <?php endforeach; ?>

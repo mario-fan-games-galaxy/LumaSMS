@@ -5,6 +5,6 @@
 	</h2>
 	
 	<div class="card-body">
-		<?=$message?>
+		<?=format($message)?>
 	</div>
 </div>
