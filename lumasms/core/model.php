@@ -86,9 +86,9 @@ class Model {
 				$where[]=$_where['field'] . ' = ?';
 				$whereValues[]=$_where['value'];
 			}
+			
+			$where='WHERE ' . implode(' AND ',$where);
 		}
-		
-		$where='WHERE ' . implode(' AND ',$where);
 		
 		
 		

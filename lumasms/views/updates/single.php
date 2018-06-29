@@ -6,7 +6,7 @@
 		</h2>
 		
 		<div class="card-body">
-			<?=$update['message']?>
+			<?=format($update['message'])?>
 		</div>
 		
 		<div class="card-footer">
