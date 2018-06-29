@@ -5,14 +5,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MFGG</title>
-<link rel="stylesheet" href="<?=url()?>/theme/base/bootstrap.min.css">
+<?php foreach([
+	'tools/bootstrap',
+	'header',
+	'lists'
+] as $css): ?>
+<link rel="stylesheet" href="<?=url()?>/theme/base/css/<?=$css?>.min.css">
+<?php endforeach; ?>
 </head>
 
 <body>
 
-<h1>MFGG</h1>
+<?=view('header')?>
 
+<div class="container">
 <?=$yield?>
+</div>
 
 </body>
 

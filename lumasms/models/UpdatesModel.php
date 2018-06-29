@@ -1,9 +1,9 @@
 <?php
 
 class UpdatesModel extends Model {
+	public $table='news';
+	
 	public function __construct(){
-		$this->table='news';
-		
 		$this->fields=[
 			[
 				'name'=>'nid',
