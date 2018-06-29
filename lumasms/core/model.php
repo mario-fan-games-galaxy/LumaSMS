@@ -20,11 +20,24 @@ class Model {
 	}
 	
 	function Read($vars=[]){
+		// Variables
+		
+		// Get full table name
 		$table=S()['database']['prefix'] . $this->table;
 		
+		// Variables we'll fill in later
 		$limit='';
 		$page='';
 		$order='';
+		$fields='*';
+		$where='';
+		$whereValues=[];
+		
+		
+		
+		
+		
+		// Get order
 		
 		if(!empty($vars['orderby'])){
 			$order="ORDER BY $vars[orderby]";
@@ -33,6 +46,12 @@ class Model {
 				$order .= " $vars[order]";
 			}
 		}
+		
+		
+		
+		
+		
+		// Get limit
 		
 		if(empty($vars['limit'])){
 			$vars['limit']=20;
@@ -44,25 +63,86 @@ class Model {
 		
 		$limit="LIMIT $page $vars[limit]";
 		
+		
+		
+		
+		
+		// Get fields
+		
+		if(!empty($vars['fields'])){
+			$fields=implode(',',array_keys($vars['fields']));
+		}
+		
+		
+		
+		
+		
+		// Get where
+		
+		if(!empty($vars['where'])){
+			$where=[];
+			
+			foreach($vars['where'] as $_where){
+				$where[]=$_where['field'] . ' = ?';
+				$whereValues[]=$_where['value'];
+			}
+		}
+		
+		$where='WHERE ' . implode(' AND ',$where);
+		
+		
+		
+		
+		
+		// Base query
+		
 		$sql="
 		SELECT {fields} FROM
 		$table
+		
+		$where
 		";
 		
+		
+		
+		
+		
+		// Get the total results before limit
+		
 		$count=str_replace('{fields}','COUNT(*) AS count',$sql);
-		$count=DB()->O()->query($count);
+		$count=DB()->O()->prepare($count);
+		$count->execute($whereValues);
 		$count=$count->fetch(PDO::FETCH_ASSOC);
 		$count=$count['count'];
 		
-		$sql=str_replace('{fields}','*',$sql);
+		
+		
+		
+		
+		// Finalize the query
+		
+		$sql=str_replace('{fields}',$fields,$sql);
 		$sql.=$order . " " . $limit;
 		
-		$q=DB()->O()->query($sql);
+		
+		
+		
+		
+		// Run the query
+		
+		$q=DB()->O()->prepare($sql);
+		$q->execute($whereValues);
 		$ret=[
 			'total'=>$count,
 			'pages'=>ceil($count / $vars['limit']),
 			'data'=>[]
 		];
+		
+		
+		
+		
+		
+		// Get the list of model objects
 		
 		foreach($q->fetchAll(PDO::FETCH_ASSOC) as $obj){
 			$class=get_class($this);
@@ -75,6 +155,12 @@ class Model {
 			
 			$ret['data'][]=$newObj;
 		}
+		
+		
+		
+		
+		
+		// Return the response
 		
 		return $ret;
 	}

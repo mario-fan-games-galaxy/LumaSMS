@@ -10,6 +10,10 @@ function debug(){
 	return ob_get_clean();
 }
 
+function showDate($time){
+	return date('m/d/Y @ g:i:sa',$time);
+}
+
 function url(){
 	$url='http';
 	
