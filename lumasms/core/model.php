@@ -32,6 +32,7 @@ class Model {
 		$fields='*';
 		$where='';
 		$whereValues=[];
+		$joins='';
 		
 		
 		
@@ -94,11 +95,39 @@ class Model {
 		
 		
 		
+		// Get joins
+		
+		if(!empty($vars['join'])){
+			$joins=[];
+			
+			foreach($vars['join'] as $join){
+				static $joinID=0;
+				
+				$join['table']=S()['database']['prefix'] . $join['table'];
+				
+				$joins[]="
+				$join[type] JOIN $join[table] AS join$joinID
+				ON
+				join$joinID.$join[pkMine] = main.$join[pkTheirs]
+				";
+				
+				$joinID++;
+			}
+			
+			$joins=implode("\n",$joins);
+		}
+		
+		
+		
+		
+		
 		// Base query
 		
 		$sql="
 		SELECT {fields} FROM
-		$table
+		$table AS main
+		
+		$joins
 		
 		$where
 		";

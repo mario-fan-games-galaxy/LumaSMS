@@ -1,9 +1,9 @@
 <?php
 
-function view($file,$vars = []){
-	$file='views/' . $file . '.php';
+function view($_____file,$vars = []){
+	$_____file='views/' . $_____file . '.php';
 	
-	if(!file_exists($file)){
+	if(!file_exists($_____file)){
 		return false;
 	}
 	
@@ -11,7 +11,7 @@ function view($file,$vars = []){
 	
 	ob_start();
 	
-	include $file;
+	include $_____file;
 	
 	return ob_get_clean();
 }

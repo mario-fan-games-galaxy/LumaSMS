@@ -1,5 +1,5 @@
 <section>
-	<?=view('updates/small',$update)?>
+	<?=view('games/small',$game)?>
 </section>
 
 

@@ -21,6 +21,12 @@
 						Forums
 					</a>
 				</li>
+				
+				<li>
+					<a href="<?=url()?>/games/">
+						Games
+					</a>
+				</li>
 			</ul>
 		</div>
 	</nav>
