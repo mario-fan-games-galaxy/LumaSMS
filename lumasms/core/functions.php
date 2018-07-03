@@ -72,6 +72,16 @@ function showDate($date,$displaySetting = null){
 	return $date;
 }
 
+function titleToSlug($title){
+	$title=preg_replace('/&(.)+;/U','',$title);
+	$title=preg_replace('/[^a-zA-Z0-9 ]/','',$title);
+	$title=str_replace(' ','-',$title);
+	$title=strtolower($title);
+	$title=substr($title,0,50);
+	
+	return $title;
+}
+
 function url(){
 	$url='http';
 	

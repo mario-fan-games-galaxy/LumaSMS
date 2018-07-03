@@ -1,12 +1,12 @@
 <div class="card">
 	<h2 class="card-header">
-		<a href="<?=url()?>/updates/view/<?=$nid?>/<?=titleToSlug($title)?>/">
+		<a href="<?=url()?>/games/view/<?=$rid?>/<?=titleToSlug($title)?>/">
 			<?=$title?>
 		</a>
 	</h2>
 	
 	<div class="card-body">
-		<?=format($message)?>
+		<?=format($description)?>
 	</div>
 	
 	<div class="card-footer">

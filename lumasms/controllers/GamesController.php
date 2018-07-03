@@ -1,6 +1,6 @@
 <?php
 
-class UpdatesController extends Controller {
+class GamesController extends Controller {
 	public function archive(){
 		if(!empty($GLOBALS['params']) && is_numeric($GLOBALS['params'][0])){
 			$page=$GLOBALS['params'][0];
@@ -8,27 +8,39 @@ class UpdatesController extends Controller {
 			$page=1;
 		}
 		
-		$updates=new UpdatesModel();
+		$games=new GamesModel();
 		
-		$updates=$updates->Read([
+		$games=$games->Read([
 			'page'=>$page,
-			'orderby'=>'nid',
-			'order'=>'desc'
+			'join'=>[
+				[
+					'table'=>'res_games',
+					'type'=>'LEFT',
+					'pkMine'=>'eid',
+					'pkTheirs'=>'eid',
+				]
+			],
+			'where'=>[
+				[
+					'field'=>'type',
+					'value'=>2
+				]
+			],
 		]);
 		
-		echo view('updates/archive',[
-			'updates'=>$updates['data'],
-			'pages'=>$updates['pages'],
+		echo view('games/archive',[
+			'games'=>$games['data'],
+			'pages'=>$games['pages'],
 			'page'=>$page,
-			'total'=>$updates['total']
+			'total'=>$games['total']
 		]);
 	}
 	
 	public function single(){
 		if(!empty($GLOBALS['params']) && is_numeric($GLOBALS['params'][0])){
-			$nid=$GLOBALS['params'][0];
+			$rid=$GLOBALS['params'][0];
 		}else{
-			$nid=1;
+			$rid=1;
 		}
 		
 		
@@ -45,19 +57,23 @@ class UpdatesController extends Controller {
 		
 		
 		
-		$update=new UpdatesModel();
+		$game=new GamesModel();
 		$comments=new CommentsModel();
 		
 		
 		
 		
 		
-		$update=$update->Read([
+		$game=$game->Read([
 			'limit'=>1,
 			'where'=>[
 				[
-					'field'=>'nid',
-					'value'=>$nid
+					'field'=>'type',
+					'value'=>2
+				],
+				[
+					'field'=>'rid',
+					'value'=>$rid
 				]
 			]
 		]);
@@ -66,9 +82,9 @@ class UpdatesController extends Controller {
 		
 		
 		
-		if(empty($update['data'])){
+		if(empty($game['data'])){
 			echo view('information',[
-				'title'=>'News Post Not Found',
+				'title'=>'Game Not Found',
 				'message'=>'Could not find it'
 			]);
 			
@@ -79,7 +95,7 @@ class UpdatesController extends Controller {
 		
 		
 		
-		$update=$update['data'][0]->data;
+		$game=$game['data'][0]->data;
 		
 		
 		
@@ -90,11 +106,11 @@ class UpdatesController extends Controller {
 			'where'=>[
 				[
 					'field'=>'rid',
-					'value'=>$update['nid']
+					'value'=>$game['rid']
 				],
 				[
 					'field'=>'type',
-					'value'=>2
+					'value'=>1
 				]
 			]
 		]);
@@ -103,8 +119,8 @@ class UpdatesController extends Controller {
 		
 		
 		
-		echo view('updates/single',[
-			'update'=>$update,
+		echo view('games/single',[
+			'game'=>$game,
 			'comments'=>$comments['data'],
 			'commentsPage'=>$commentsPage,
 			'commentsPages'=>$comments['pages']
