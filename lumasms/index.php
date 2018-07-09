@@ -79,14 +79,20 @@ $method=array_pop($controller);
 $controller=array_shift($controller);
 $yield='';
 
-if(!class_exists($controller) || !method_exists($controller,$method) || !is_callable($controller, $method)){
+if(
+	!class_exists($controller)
+	||
+	!($controller = new $controller())
+	||
+	!method_exists($controller, $method)
+){
 	$controller='InformationController';
 	$method='error404';
 }
 
 ob_start();
 
-$controller::$method();
+$controller->$method();
 
 $yield=ob_get_clean();
 
