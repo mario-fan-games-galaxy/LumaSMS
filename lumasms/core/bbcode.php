@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Return formatted BBCode text
+ *
+ * @param string $text The text to format
+ * @return string
+ */
 function bbcode($text){
 	global
 		$list_open,
@@ -315,6 +321,14 @@ function bbcode($text){
 	return $text;
 }
 
+/**
+ * The full format function
+ * 
+ * This formats BBCode, decoverts leftover TCSMS bbcode, etc
+ *
+ * @param string $text
+ * @return void
+ */
 function format($text){
 	$text=unconvert($text);
 	
@@ -327,14 +341,25 @@ function format($text){
 
 
 
-// Use this before you put text in the database
+/**
+ * Run this on text before putting it in the database
+ *
+ * @param string $text
+ * @return void
+ */
 function preFormat($text){
 	$text=htmlentities($text);
 	
 	return $text;
 }
 
-// Stolen directly from TCSMS lol
+/**
+ * Unconvert TCSMS formatted BBCode
+ * I stole this function directly from TCSMS lol
+ *
+ * @param string $data
+ * @return void
+ */
 function unconvert ($data) {
 	$data = preg_replace("/<b>(.*?)<\/b>/is", "[b]\\1[/b]", $data);
 	$data = preg_replace("/<u>(.*?)<\/u>/is", "[u]\\1[/u]", $data);

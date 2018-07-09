@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * An associative array that corresponds to URI requests
+ * 
+ * The value should be the desired controller @ the desired method within that controller
+ */
 $routes=[
 	// Updates
 	'updates/archive'=>'UpdatesController@archive',

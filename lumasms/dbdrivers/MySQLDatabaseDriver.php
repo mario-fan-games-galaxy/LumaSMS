@@ -10,7 +10,7 @@ class MySQLDatabaseDriver extends DatabaseDriver {
 			);
 		}
 		catch(Exception $e){
-			die(Fatality($e));
+			Fatality($e);
 		}
 	}
 	
