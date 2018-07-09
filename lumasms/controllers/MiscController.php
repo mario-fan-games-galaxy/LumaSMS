@@ -6,7 +6,7 @@ class MiscController extends CRUDController {
 		
 		$this->idField='rid';
 		
-		$this->type='Howtos';
+		$this->type='Misc';
 		
 		$this->join=[
 			[
@@ -20,7 +20,7 @@ class MiscController extends CRUDController {
 		$this->where=[
 			[
 				'field'=>'type',
-				'value'=>4
+				'value'=>6
 			]
 		];
 	}
