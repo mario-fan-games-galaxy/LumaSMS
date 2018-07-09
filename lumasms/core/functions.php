@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Returns a print_r string warapped in a <pre> tag for all of the parameters
+ *
+ * @return string
+ */
 function debug(){
 	ob_start();
 	
@@ -10,6 +15,13 @@ function debug(){
 	return ob_get_clean();
 }
 
+/**
+ * Echo this any time you show a date
+ *
+ * @param int $date Unix timestamp
+ * @param string $displaySetting Override for the date display setting
+ * @return string
+ */
 function showDate($date,$displaySetting = null){
 	if(empty($date) || !is_numeric($date)){
 		$date=0;
@@ -72,6 +84,12 @@ function showDate($date,$displaySetting = null){
 	return $date;
 }
 
+/**
+ * Turn a formatted string into a URL-frindly string
+ *
+ * @param string $title
+ * @return void
+ */
 function titleToSlug($title){
 	$title=preg_replace('/&(.)+;/U','',$title);
 	$title=preg_replace('/[^a-zA-Z0-9 ]/','',$title);
@@ -82,6 +100,11 @@ function titleToSlug($title){
 	return $title;
 }
 
+/**
+ * Put this at the beginning of any on-site links. Returns the domain and directory
+ *
+ * @return string
+ */
 function url(){
 	$url='http';
 	
@@ -100,6 +123,14 @@ function url(){
 	return $url;
 }
 
+/**
+ * Write a string a specified number of times. Used for putting ?s in prepared queries
+ *
+ * @param string $str The string to repead
+ * @param int $n The number of times to repeat it
+ * @param string $divider The divider. Default ", "
+ * @return return string
+ */
 function writeNTimes($str, $n, $divider = ', '){
 	$ret=[];
 	
