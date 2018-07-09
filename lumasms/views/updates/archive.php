@@ -24,9 +24,9 @@
 
 
 
-<ul class="list-updates"><?php foreach($updates as $update): ?>
+<ul class="list-updates"><?php foreach($objects as $object): ?>
 	<li>
-		<?=view('updates/small',$update->data)?>
+		<?=view('updates/small',$object->data)?>
 	</li>
 <?php endforeach; ?></ul>
 

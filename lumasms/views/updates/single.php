@@ -1,5 +1,5 @@
 <section>
-	<?=view('updates/small',$update)?>
+	<?=view('updates/small',$object)?>
 </section>
 
 
@@ -24,7 +24,7 @@
 	<?=view('pagination',[
 		'pages'=>$commentsPages,
 		'page'=>$commentsPage,
-		'baseUrl'=>$GLOBALS['finalRoute'] . '/' . $update['nid'] . '/' . titleToSlug($update['title'])
+		'baseUrl'=>$GLOBALS['finalRoute'] . '/' . $object['nid'] . '/' . titleToSlug($object['title'])
 	])?>
 <?php else: ?>
 	<?=view('information',[

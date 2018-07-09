@@ -2,6 +2,10 @@
 
 class SpritesController extends CRUDController {
 	public function __construct(){
+		$this->commentsType=1;
+		
+		$this->idField='rid';
+		
 		$this->type='Sprites';
 		
 		$this->join=[
