@@ -12,6 +12,12 @@ $routes=[
 	'games'=>'GamesController@archive',
 	
 	'games/view'=>'GamesController@single',
+	
+	// Sprites
+	'sprites/archive'=>'SpritesController@archive',
+	'sprites'=>'SpritesController@archive',
+	
+	'sprites/view'=>'SpritesController@single',
 ];
 
 ?>

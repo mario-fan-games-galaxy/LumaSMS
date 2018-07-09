@@ -27,6 +27,12 @@
 						Games
 					</a>
 				</li>
+				
+				<li>
+					<a href="<?=url()?>/sprites/">
+						Sprites
+					</a>
+				</li>
 			</ul>
 		</div>
 	</nav>
