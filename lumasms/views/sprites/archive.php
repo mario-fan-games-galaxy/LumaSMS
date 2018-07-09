@@ -24,9 +24,9 @@
 
 
 
-<ul class="list-games"><?php foreach($sprites as $sprite): ?>
+<ul class="list-games"><?php foreach($objects as $object): ?>
 	<li>
-		<?=view('sprites/small',$sprite->data)?>
+		<?=view('sprites/small',$object->data)?>
 	</li>
 <?php endforeach; ?></ul>
 

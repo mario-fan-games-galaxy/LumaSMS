@@ -1,5 +1,5 @@
 <section>
-	<?=view('games/small',$sprite)?>
+	<?=view('sprites/small',$object)?>
 </section>
 
 
@@ -24,7 +24,7 @@
 	<?=view('pagination',[
 		'pages'=>$commentsPages,
 		'page'=>$commentsPage,
-		'baseUrl'=>$GLOBALS['finalRoute'] . '/' . $sprite['rid'] . '/' . titleToSlug($sprite['title'])
+		'baseUrl'=>$GLOBALS['finalRoute'] . '/' . $object['rid'] . '/' . titleToSlug($object['title'])
 	])?>
 <?php else: ?>
 	<?=view('information',[
