@@ -1,11 +1,11 @@
 <?php
 
-class DatabaseDriver {
-	protected $database;
+class DatabaseDriver
+{
+    protected $database;
 }
 
-function DB(){
-	return $GLOBALS['database'];
+function DB()
+{
+    return $GLOBALS['database'];
 }
-
-?>

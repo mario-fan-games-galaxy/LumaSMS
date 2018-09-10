@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "eslint": "eslint **/*.js",
+    "eslint-fix": "eslint **/*.js --fix",
+    "prettier": "prettier --write **/*.{{t,j}s{,x,on},{c,sa,sc,le}ss,vue,md,y{,a}ml,graphql}",
+    "stylelint": "stylelint \"./**/*.{c,sa,sc,le}ss\"",
+    "stylelint-fix": "stylelint --fix \"./**/*.{c,sa,sc,le}ss\""
+  },
+  "pre-commit": [
+    "eslint"
+  ],
+  "devDependencies": {
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "js-beautify": "^1.8.4",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.14.2",
+    "stylelint": "^9.5.0",
+    "stylelint-config-standard": "^18.2.0"
+  }
+}

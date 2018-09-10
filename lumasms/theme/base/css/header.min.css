@@ -1,1 +1,12 @@
-#header nav ul.list-navigation{align-items:center;display:flex}#header nav ul.list-navigation li{display:inline-block;margin:0}#header nav ul.list-navigation li a{display:block;padding:1em}
+#header nav ul.list-navigation {
+  align-items: center;
+  display: flex;
+}
+#header nav ul.list-navigation li {
+  display: inline-block;
+  margin: 0;
+}
+#header nav ul.list-navigation li a {
+  display: block;
+  padding: 1em;
+}

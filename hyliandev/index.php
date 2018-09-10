@@ -21,24 +21,24 @@ session_start();
 
 require_once 'model.php';
 
-foreach(scandir($models_dir='./models/') as $file){
-	if(array_pop(explode('.',$file)) == 'php'){
-		require_once $models_dir . $file;
-	}
+foreach (scandir($models_dir = './models/') as $file) {
+    if (array_pop(explode('.', $file)) == 'php') {
+        require_once $models_dir . $file;
+    }
 }
 
 // Require necessary files
 
-foreach([
-	'functions',
-	'settings',
-	'db',
-	'password',
-	'user',
-	'language',
-	'bbcode'
-] as $file){
-	require_once $file . '.php';
+foreach ([
+    'functions',
+    'settings',
+    'db',
+    'password',
+    'user',
+    'language',
+    'bbcode'
+] as $file) {
+    require_once $file . '.php';
 }
 
 
@@ -64,31 +64,33 @@ User::GetUser();
 
 
 // Which file to view
-$uri=$_GET['uri'];
-if(empty($uri)) $uri='index';
-
-$path=explode('/',$uri);
-$params=false;
-$_file='';
-$file=false;
-
-foreach($path as $node){
-	if($params === false){
-		$_file .= $node;
-		
-		if(file_exists($file='./pages/' . $_file . '.php')){
-			$params=[];
-		}else{
-			$file=false;
-			$_file .= '/';
-		}
-	}else{
-		$params[]=$node;
-	}
+$uri = $_GET['uri'];
+if (empty($uri)) {
+    $uri = 'index';
 }
 
-if($file === false){
-	$file='404error.php';
+$path = explode('/', $uri);
+$params = false;
+$_file = '';
+$file = false;
+
+foreach ($path as $node) {
+    if ($params === false) {
+        $_file .= $node;
+        
+        if (file_exists($file = './pages/' . $_file . '.php')) {
+            $params = [];
+        } else {
+            $file = false;
+            $_file .= '/';
+        }
+    } else {
+        $params[] = $node;
+    }
+}
+
+if ($file === false) {
+    $file = '404error.php';
 }
 
 
@@ -106,7 +108,7 @@ ob_start();
 
 include $file;
 
-$yield=ob_get_clean();
+$yield = ob_get_clean();
 
 
 
@@ -132,6 +134,4 @@ require_once 'template.php';
 
 // Set a session variable to allow the user to view content
 
-$_SESSION['can_view_content']=true;
-
-?>
+$_SESSION['can_view_content'] = true;

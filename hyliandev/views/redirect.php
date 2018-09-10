@@ -1,5 +1,7 @@
 <?php
-if(empty($url)) $url=url();
+if (empty($url)) {
+    $url = url();
+}
 ?>
 
 <br><br>

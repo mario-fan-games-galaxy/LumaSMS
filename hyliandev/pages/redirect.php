@@ -4,6 +4,6 @@
 	<div class="card-block">
 		Testing
 		
-		<?=view('redirect',['url'=>'forums'])?>
+		<?=view('redirect', ['url' => 'forums'])?>
 	</div>
 </div>

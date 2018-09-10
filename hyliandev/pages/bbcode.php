@@ -14,9 +14,9 @@
 	<div class="card-block">
 		<form method="post">
 			<?=field([
-				'title'=>'Message',
-				'name'=>'message',
-				'type'=>'textarea-bbcode'
+				'title' => 'Message',
+				'name' => 'message',
+				'type' => 'textarea-bbcode'
 			])?>
 			
 			<div>

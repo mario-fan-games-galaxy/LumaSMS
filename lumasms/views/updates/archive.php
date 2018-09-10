@@ -1,5 +1,5 @@
 <h1 id="page-title">
-	Updates
+    Updates
 </h1>
 
 
@@ -7,35 +7,35 @@
 
 
 <div>
-	<strong><?=$total?></strong> results / <strong><?=$pages?></strong> pages
+    <strong><?=$total?></strong> results / <strong><?=$pages?></strong> pages
 </div>
 
 
 
 
 
-<?=view('pagination',[
-	'pages'=>$pages,
-	'page'=>$page,
-	'baseUrl'=>$GLOBALS['finalRoute']
+<?=view('pagination', [
+    'pages' => $pages,
+    'page' => $page,
+    'baseUrl' => $GLOBALS['finalRoute']
 ])?>
 
 
 
 
 
-<ul class="list-updates"><?php foreach($objects as $object): ?>
-	<li>
-		<?=view('updates/small',$object->data)?>
-	</li>
-<?php endforeach; ?></ul>
+<ul class="list-updates"><?php foreach ($objects as $object) : ?>
+    <li>
+        <?=view('updates/small', $object->data)?>
+    </li>
+                            <?php endforeach; ?></ul>
 
 
 
 
 
-<?=view('pagination',[
-	'pages'=>$pages,
-	'page'=>$page,
-	'baseUrl'=>$GLOBALS['finalRoute']
+<?=view('pagination', [
+    'pages' => $pages,
+    'page' => $page,
+    'baseUrl' => $GLOBALS['finalRoute']
 ])?>

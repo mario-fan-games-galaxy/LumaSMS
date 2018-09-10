@@ -1,1 +1,27 @@
-.pagination-box{display:flex;width:100%}.pagination-box .next-link,.pagination-box .previous-link{width:200px}.pagination-box .next-link .btn,.pagination-box .previous-link .btn{display:block}.pagination-box .next-link{order:3}.pagination-box .previous-link{order:1}.pagination-box .pages-links{flex-grow:1;order:2;padding:0 0.5em;text-align:center}.pagination-box .pages-links .list-pages li{display:inline-block}
+.pagination-box {
+  display: flex;
+  width: 100%;
+}
+.pagination-box .next-link,
+.pagination-box .previous-link {
+  width: 200px;
+}
+.pagination-box .next-link .btn,
+.pagination-box .previous-link .btn {
+  display: block;
+}
+.pagination-box .next-link {
+  order: 3;
+}
+.pagination-box .previous-link {
+  order: 1;
+}
+.pagination-box .pages-links {
+  flex-grow: 1;
+  order: 2;
+  padding: 0 0.5em;
+  text-align: center;
+}
+.pagination-box .pages-links .list-pages li {
+  display: inline-block;
+}

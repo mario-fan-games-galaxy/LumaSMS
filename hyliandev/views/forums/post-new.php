@@ -1,5 +1,5 @@
-<?=view('forums/fields-abstract',[
-	'title'=>$title,
-	'newOrEdit'=>'New',
-	'model'=>'Post'
+<?=view('forums/fields-abstract', [
+	'title' => $title,
+	'newOrEdit' => 'New',
+	'model' => 'Post'
 ])?>

@@ -1,6 +1,14 @@
 tcsms/
 hyliandev/settings.php
 
-# Tools and other files
-*.php_cs.cache
+# Vendor
+node_modules
+vendor
+
+# Cache
+*.cache
+
+# Tools
 adminer.php
+
+

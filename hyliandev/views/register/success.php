@@ -1,6 +1,6 @@
 <div class="card">
 	<div class="card-block">
-		<?=lang('register-success')?> <?=User::ShowUsername(Users::Read(['username'=>$_POST['username']]))?>!
+		<?=lang('register-success')?> <?=User::ShowUsername(Users::Read(['username' => $_POST['username']]))?>!
 		
 		<br><br>
 		
