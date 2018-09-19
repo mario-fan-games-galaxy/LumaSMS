@@ -1,0 +1,33 @@
+<h2>User Information</h2>
+<form action="{{ action }}" method="POST">
+  <input type="hidden" name="compatible" value="{{ compatible }}" />
+  <input type="hidden" name="site_name" value="{{ site_name }}" />
+
+  <div class="form-item">
+    <label for="clear_sample_data">Clear database of sample data?</label>
+    <input type="checkbox" id="clear_sample_data" name="clear_sample_data"
+      value="1" />
+  </div>
+
+  <div class="form-item">
+    <label for="admin_username">Administrator Username</label>
+    <input type="text" id="admin_username" name="admin_username" value=""
+      maxlength="32" required="required" />
+  </div>
+
+  <div class="form-item">
+    <label for="admin_email">Administrator Email Address</label>
+    <input type="email" id="admin_email" name="admin_email" value=""
+      maxlength="128" required="required" />
+  </div>
+
+  <div class="form-item">
+    <label for="admin_pasword">Administrator Password</label>
+    <input type="text" id="admin_password" name="admin_password" value=""
+      maxlength="72" required="required" />
+  </div>
+
+  <button type="submit" class="continue-button">
+    Continue &rarr;
+  </button>
+</form>

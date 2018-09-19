@@ -1,0 +1,57 @@
+html,
+body {
+  font-size: 1em;
+}
+
+body {
+  background-color: #fff;
+  color: #000;
+  font-family: serif;
+  margin: 1em auto;
+  max-width: 80ch;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: sans-serif;
+}
+
+.environment {
+  border: 1px solid #000;
+  border-collapse: collapse;
+  margin: 0 auto 1em;
+  width: 100%;
+}
+
+.environment th,
+.environment td {
+  border: 1px solid #000;
+  padding: 1em 1ch;
+}
+
+.form-item {
+  margin: 1em auto;
+}
+
+.form-item label {
+  font-family: sans-serif;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.form-item input {
+  display: block;
+  font-size: 1em;
+  width: 100%;
+  padding: 0.25em;
+}
+
+.continue-button {
+  display: block;
+  font-size: 1.5em;
+  margin: 1em 0 0 auto;
+}

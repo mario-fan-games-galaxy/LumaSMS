@@ -1,5 +1,3 @@
--- Adminer 4.3.1 MySQL dump
-
 SET NAMES utf8;
 SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
@@ -8,23 +6,24 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 DROP TABLE IF EXISTS `tsms_admin_msg`;
 CREATE TABLE `tsms_admin_msg` (
   `mid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `sender` int(10) unsigned NOT NULL DEFAULT '0',
-  `date` int(10) unsigned NOT NULL DEFAULT '0',
+  `sender` int(10) unsigned NOT NULL DEFAULT 0,
+  `date` int(10) unsigned NOT NULL DEFAULT 0,
   `title` varchar(120) DEFAULT NULL,
-  `message` mediumtext,
-  `handled_by` int(10) unsigned NOT NULL DEFAULT '0',
-  `handle_date` int(10) unsigned NOT NULL DEFAULT '0',
-  `type` int(10) unsigned NOT NULL DEFAULT '0',
-  `aux` int(10) unsigned NOT NULL DEFAULT '0',
-  `admin_comment` mediumtext,
-  `user_inform` tinyint(1) NOT NULL DEFAULT '0',
-  `conversation` int(10) unsigned NOT NULL DEFAULT '0',
+  `message` mediumtext DEFAULT NULL,
+  `handled_by` int(10) unsigned NOT NULL DEFAULT 0,
+  `handle_date` int(10) unsigned NOT NULL DEFAULT 0,
+  `type` int(10) unsigned NOT NULL DEFAULT 0,
+  `aux` int(10) unsigned NOT NULL DEFAULT 0,
+  `admin_comment` mediumtext DEFAULT NULL,
+  `user_inform` tinyint(1) NOT NULL DEFAULT 0,
+  `conversation` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`mid`),
   KEY `date` (`date`),
   KEY `type` (`type`),
   KEY `handled_by` (`handled_by`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_admin_msg`;
 INSERT INTO `tsms_admin_msg` (`mid`, `sender`, `date`, `title`, `message`, `handled_by`, `handle_date`, `type`, `aux`, `admin_comment`, `user_inform`, `conversation`) VALUES
 (1,	2,	1150698567,	'Reported: Review: Mario Kart 360',	'Reported Submission: <a href=\'/index.php?act=resdb&amp;param=02&amp;c=3&amp;id=4108\'>Review: Mario Kart 360</a> by Miles<br /><br />------------------------------------------------------<br />Reported By: Retriever II<br /><br />The above submission was reported for the following reason:<br /><br />Linebreaks in the gamplay section would be ultra useful.',	2,	1150698746,	1,	4108,	'As it turns out, linebreaks are preserved, but need only be converted to BR tags.  Simply editing the review, without making any changes, will cause the script to make the necessary changes.  Should anyone come accross this type of formatting problem in the future, you should give that a try.',	0,	0),
 (2,	7,	1150769256,	'Removal Request: Review: Mario Mini Game Madness',	'Hate it now.',	7,	1150769650,	5,	3444,	'Fixed.',	0,	0),
@@ -80,17 +79,18 @@ INSERT INTO `tsms_admin_msg` (`mid`, `sender`, `date`, `title`, `message`, `hand
 DROP TABLE IF EXISTS `tsms_comments`;
 CREATE TABLE `tsms_comments` (
   `cid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `rid` int(10) unsigned NOT NULL DEFAULT '0',
-  `uid` int(10) unsigned NOT NULL DEFAULT '0',
-  `date` int(10) unsigned NOT NULL DEFAULT '0',
-  `message` mediumtext,
-  `type` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `rid` int(10) unsigned NOT NULL DEFAULT 0,
+  `uid` int(10) unsigned NOT NULL DEFAULT 0,
+  `date` int(10) unsigned NOT NULL DEFAULT 0,
+  `message` mediumtext DEFAULT NULL,
+  `type` tinyint(3) unsigned NOT NULL DEFAULT 0,
   `ip` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`cid`),
   KEY `rid` (`rid`),
   KEY `uid` (`uid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_comments`;
 INSERT INTO `tsms_comments` (`cid`, `rid`, `uid`, `date`, `message`, `type`, `ip`) VALUES
 (1,	2651,	7,	1150698130,	'Everyone will remember this sheet if only for the glitch on the old site.',	1,	NULL),
 (3,	539,	7,	1150749078,	'Yipes! Need someone to help me do thumbs/previews for this one. I don&#39;t have Gamemaker.',	1,	NULL),
@@ -151,8 +151,9 @@ CREATE TABLE `tsms_filter_group` (
   `name` varchar(32) DEFAULT NULL,
   `keyword` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`gid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_filter_group`;
 INSERT INTO `tsms_filter_group` (`gid`, `name`, `keyword`) VALUES
 (1,	'Type',	'TYPE'),
 (2,	'Rip Type',	'RIP_TYPE'),
@@ -169,14 +170,15 @@ INSERT INTO `tsms_filter_group` (`gid`, `name`, `keyword`) VALUES
 DROP TABLE IF EXISTS `tsms_filter_list`;
 CREATE TABLE `tsms_filter_list` (
   `fid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `gid` int(10) unsigned NOT NULL DEFAULT '0',
+  `gid` int(10) unsigned NOT NULL DEFAULT 0,
   `name` varchar(64) DEFAULT NULL,
   `short_name` varchar(16) DEFAULT NULL,
   `search_tags` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`fid`),
   KEY `gid` (`gid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=219 DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_filter_list`;
 INSERT INTO `tsms_filter_list` (`fid`, `gid`, `name`, `short_name`, `search_tags`) VALUES
 (1,	1,	'Sprite Sheets',	'SHEETS',	''),
 (2,	1,	'Tilesets',	'TILES',	''),
@@ -361,11 +363,12 @@ INSERT INTO `tsms_filter_list` (`fid`, `gid`, `name`, `short_name`, `search_tags
 
 DROP TABLE IF EXISTS `tsms_filter_multi`;
 CREATE TABLE `tsms_filter_multi` (
-  `fid` int(10) unsigned NOT NULL DEFAULT '0',
-  `rid` int(10) unsigned NOT NULL DEFAULT '0',
+  `fid` int(10) unsigned NOT NULL DEFAULT 0,
+  `rid` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`fid`,`rid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_filter_multi`;
 INSERT INTO `tsms_filter_multi` (`fid`, `rid`) VALUES
 (1,	1),
 (1,	2),
@@ -425,13 +428,14 @@ INSERT INTO `tsms_filter_multi` (`fid`, `rid`) VALUES
 
 DROP TABLE IF EXISTS `tsms_filter_use`;
 CREATE TABLE `tsms_filter_use` (
-  `mid` int(10) unsigned NOT NULL DEFAULT '0',
-  `gid` int(10) unsigned NOT NULL DEFAULT '0',
-  `store_keywords` tinyint(1) DEFAULT '0',
-  `precedence` smallint(6) NOT NULL DEFAULT '0',
+  `mid` int(10) unsigned NOT NULL DEFAULT 0,
+  `gid` int(10) unsigned NOT NULL DEFAULT 0,
+  `store_keywords` tinyint(1) DEFAULT 0,
+  `precedence` smallint(6) NOT NULL DEFAULT 0,
   PRIMARY KEY (`mid`,`gid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_filter_use`;
 INSERT INTO `tsms_filter_use` (`mid`, `gid`, `store_keywords`, `precedence`) VALUES
 (1,	1,	0,	1),
 (1,	2,	0,	2),
@@ -451,28 +455,29 @@ CREATE TABLE `tsms_groups` (
   `gid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `group_name` varchar(32) DEFAULT NULL,
   `group_title` varchar(32) DEFAULT NULL,
-  `moderator` tinyint(1) NOT NULL DEFAULT '0',
-  `acp_access` tinyint(1) NOT NULL DEFAULT '0',
-  `acp_modq` tinyint(1) NOT NULL DEFAULT '0',
-  `acp_users` tinyint(1) NOT NULL DEFAULT '0',
-  `acp_news` tinyint(1) NOT NULL DEFAULT '0',
-  `acp_msg` tinyint(1) NOT NULL DEFAULT '0',
-  `can_msg_users` tinyint(1) NOT NULL DEFAULT '0',
-  `acp_super` tinyint(1) NOT NULL DEFAULT '0',
-  `can_submit` tinyint(1) NOT NULL DEFAULT '0',
-  `can_comment` tinyint(1) NOT NULL DEFAULT '0',
-  `can_report` tinyint(1) NOT NULL DEFAULT '0',
-  `can_modify` tinyint(1) NOT NULL DEFAULT '0',
-  `can_msg` tinyint(1) NOT NULL DEFAULT '0',
-  `use_bbcode` tinyint(1) NOT NULL DEFAULT '0',
-  `edit_comment` tinyint(1) NOT NULL DEFAULT '0',
-  `delete_comment` tinyint(1) NOT NULL DEFAULT '0',
-  `msg_capacity` int(11) NOT NULL DEFAULT '0',
+  `moderator` tinyint(1) NOT NULL DEFAULT 0,
+  `acp_access` tinyint(1) NOT NULL DEFAULT 0,
+  `acp_modq` tinyint(1) NOT NULL DEFAULT 0,
+  `acp_users` tinyint(1) NOT NULL DEFAULT 0,
+  `acp_news` tinyint(1) NOT NULL DEFAULT 0,
+  `acp_msg` tinyint(1) NOT NULL DEFAULT 0,
+  `can_msg_users` tinyint(1) NOT NULL DEFAULT 0,
+  `acp_super` tinyint(1) NOT NULL DEFAULT 0,
+  `can_submit` tinyint(1) NOT NULL DEFAULT 0,
+  `can_comment` tinyint(1) NOT NULL DEFAULT 0,
+  `can_report` tinyint(1) NOT NULL DEFAULT 0,
+  `can_modify` tinyint(1) NOT NULL DEFAULT 0,
+  `can_msg` tinyint(1) NOT NULL DEFAULT 0,
+  `use_bbcode` tinyint(1) NOT NULL DEFAULT 0,
+  `edit_comment` tinyint(1) NOT NULL DEFAULT 0,
+  `delete_comment` tinyint(1) NOT NULL DEFAULT 0,
+  `msg_capacity` int(11) NOT NULL DEFAULT 0,
   `name_prefix` varchar(255) NOT NULL DEFAULT '',
   `name_suffix` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`gid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_groups`;
 INSERT INTO `tsms_groups` (`gid`, `group_name`, `group_title`, `moderator`, `acp_access`, `acp_modq`, `acp_users`, `acp_news`, `acp_msg`, `can_msg_users`, `acp_super`, `can_submit`, `can_comment`, `can_report`, `can_modify`, `can_msg`, `use_bbcode`, `edit_comment`, `delete_comment`, `msg_capacity`, `name_prefix`, `name_suffix`) VALUES
 (1,	'Root Admin',	'Admins',	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1000,	'<span class=\'adminwrap\'>',	'</span>'),
 (2,	'Moderator',	'Moderators',	1,	1,	0,	1,	0,	1,	1,	0,	1,	1,	1,	1,	1,	1,	1,	1,	1000,	'<span class=\'adminwrap\'>',	'</span>'),
@@ -491,33 +496,35 @@ INSERT INTO `tsms_groups` (`gid`, `group_name`, `group_title`, `moderator`, `acp
 DROP TABLE IF EXISTS `tsms_mail_log`;
 CREATE TABLE `tsms_mail_log` (
   `lid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `uid` int(11) NOT NULL DEFAULT '0',
-  `type` tinyint(4) NOT NULL DEFAULT '0',
-  `date` int(10) unsigned NOT NULL DEFAULT '0',
+  `uid` int(11) NOT NULL DEFAULT 0,
+  `type` tinyint(4) NOT NULL DEFAULT 0,
+  `date` int(10) unsigned NOT NULL DEFAULT 0,
   `ip` varchar(16) DEFAULT NULL,
-  `recipient` int(11) NOT NULL DEFAULT '0',
+  `recipient` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`lid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_mail_log`;
 
 DROP TABLE IF EXISTS `tsms_messages`;
 CREATE TABLE `tsms_messages` (
   `mid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `sender` int(10) unsigned NOT NULL DEFAULT '0',
-  `receiver` int(10) unsigned NOT NULL DEFAULT '0',
-  `owner` int(10) unsigned NOT NULL DEFAULT '0',
-  `date` int(10) unsigned NOT NULL DEFAULT '0',
+  `sender` int(10) unsigned NOT NULL DEFAULT 0,
+  `receiver` int(10) unsigned NOT NULL DEFAULT 0,
+  `owner` int(10) unsigned NOT NULL DEFAULT 0,
+  `date` int(10) unsigned NOT NULL DEFAULT 0,
   `title` varchar(128) DEFAULT NULL,
-  `message` text,
-  `msg_read` tinyint(1) NOT NULL DEFAULT '0',
-  `read_date` int(10) unsigned NOT NULL DEFAULT '0',
-  `folder` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `conversation` int(10) unsigned NOT NULL DEFAULT '0',
+  `message` text DEFAULT NULL,
+  `msg_read` tinyint(1) NOT NULL DEFAULT 0,
+  `read_date` int(10) unsigned NOT NULL DEFAULT 0,
+  `folder` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `conversation` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`mid`),
   KEY `sender` (`sender`),
   KEY `receiver` (`receiver`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_messages`;
 
 DROP TABLE IF EXISTS `tsms_modules`;
 CREATE TABLE `tsms_modules` (
@@ -528,19 +535,20 @@ CREATE TABLE `tsms_modules` (
   `table_name` varchar(32) DEFAULT NULL,
   `module_file` varchar(32) DEFAULT NULL,
   `template` varchar(16) DEFAULT NULL,
-  `num_decisions` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `proc_order` int(11) NOT NULL DEFAULT '0',
-  `custom_update` tinyint(1) NOT NULL DEFAULT '0',
-  `hidden` tinyint(1) NOT NULL DEFAULT '0',
+  `num_decisions` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `proc_order` int(11) NOT NULL DEFAULT 0,
+  `custom_update` tinyint(1) NOT NULL DEFAULT 0,
+  `hidden` tinyint(1) NOT NULL DEFAULT 0,
   `children` varchar(128) DEFAULT NULL,
-  `ext_files` tinyint(4) NOT NULL DEFAULT '0',
-  `news_show` tinyint(1) NOT NULL DEFAULT '0',
-  `news_show_collapsed` tinyint(1) NOT NULL DEFAULT '0',
-  `news_upd` tinyint(1) NOT NULL DEFAULT '0',
-  `news_upd_collapsed` tinyint(1) NOT NULL DEFAULT '0',
+  `ext_files` tinyint(4) NOT NULL DEFAULT 0,
+  `news_show` tinyint(1) NOT NULL DEFAULT 0,
+  `news_show_collapsed` tinyint(1) NOT NULL DEFAULT 0,
+  `news_upd` tinyint(1) NOT NULL DEFAULT 0,
+  `news_upd_collapsed` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`mid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_modules`;
 INSERT INTO `tsms_modules` (`mid`, `module_name`, `class_name`, `full_name`, `table_name`, `module_file`, `template`, `num_decisions`, `proc_order`, `custom_update`, `hidden`, `children`, `ext_files`, `news_show`, `news_show_collapsed`, `news_upd`, `news_upd_collapsed`) VALUES
 (1,	'Graphics',	'mod_gfx',	'Sprites, Libs, and Tilesets',	'res_gfx',	'gfx.php',	'mod_gfx',	2,	2,	0,	0,	'',	2,	1,	0,	1,	1),
 (2,	'Games',	'mod_games',	'Games',	'res_games',	'games.php',	'mod_games',	2,	1,	1,	0,	'3',	3,	1,	0,	1,	1),
@@ -552,16 +560,17 @@ INSERT INTO `tsms_modules` (`mid`, `module_name`, `class_name`, `full_name`, `ta
 DROP TABLE IF EXISTS `tsms_news`;
 CREATE TABLE `tsms_news` (
   `nid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `uid` int(10) unsigned NOT NULL DEFAULT '0',
-  `date` int(10) unsigned NOT NULL DEFAULT '0',
+  `uid` int(10) unsigned NOT NULL DEFAULT 0,
+  `date` int(10) unsigned NOT NULL DEFAULT 0,
   `title` varchar(128) DEFAULT NULL,
-  `message` mediumtext,
-  `comments` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `update_tag` tinyint(1) NOT NULL DEFAULT '0',
+  `message` mediumtext DEFAULT NULL,
+  `comments` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `update_tag` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`nid`),
   KEY `date` (`date`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_news`;
 INSERT INTO `tsms_news` (`nid`, `uid`, `date`, `title`, `message`, `comments`, `update_tag`) VALUES
 (2,	7,	1150939967,	'/me opens champagne',	'352 days after Retriever II started coding, MFGG 2.0 is finally done. The past week has been rigorous in the extreme as we sorted through the 2667 submissions on the site (wow, way to go guys!). All of us, especially RII, have been busting our asses to get this out by the end of June, and we really hope you enjoy it.<br /><br />Also, for Game Maker users: we&#39;re now accepting Game Maker How-tos for both Game Maker 5.x and 6.x.<br /><br />For a summary of the speech on IRC detailing all the new features, check  <a href=\"http://mfgg.net/speech/speechsummaryfile.txt\">here.</a><br /><br />Special thanks:<br />Rage - Beta testing<br />Stixdude - Doing the awesome staff icons<br />Techokami - Skin work and LOTS of beta testing<br /><br />And once again, thanks to Retriever II for all his hard work put into the coding.<br /><br />Welcome to 2.0!',	64,	0),
 (3,	13,	1151110093,	'Update du jour',	'I&#39;m very glad to see the reception of the new MFGG layout is so high. We can only go up from here...<br />Anyway here&#39;s the first update for now. Keep in mind this may reflect other file changes we did in the preliminary stages of the 2.0 work along with current updates.<br /><br /><!--s_recent-->\n<span class=\'highlight\'><b>Recent Additions</b></span>\n<br />\n<div class=\'newsform\'><div class=\'newsstrip\'>Games</div>\n<table class=\'sformtable\' cellspacing=\'1\'><tr>\n  <td width=\'100\' height=\'100\' rowspan=\'3\' align=\'center\'><img src=\'http://www.mfgg.net/thumbnail/2/YTowerIcon1150753794.gif\' border=\'0\' alt=\'Thumbnail\' /></td>\n  <td class=\'newsleftw\' colspan=\'2\' height=\'20\'><a href=\'{%site_url%}?act=resdb&param=02&c=2&id=2591\'><b>Yoshi\'s Tower</b></a></td>\n</tr>\n<tr>\n  <td class=\'newsleftw\' height=\'20\'>[Platform]</td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=2013\'>Hatman</a></td>\n</tr>\n<tr>\n  <td class=\'newsleftw\' colspan=\'2\' valign=\'top\'>Help Yoshi climb the tower to reach Baby Mario! Watch out! A chain chomp is right on your tail! The  ...</td>\n</tr><tr>\n  <td width=\'100\' height=\'100\' rowspan=\'3\' align=\'center\'><img src=\'http://www.mfgg.net/thumbnail/2/smwrpgicon1151091324.png\' border=\'0\' alt=\'Thumbnail\' /></td>\n  <td class=\'newsleftw\' colspan=\'2\' height=\'20\'><a href=\'{%site_url%}?act=resdb&param=02&c=2&id=2601\'><b>Super Mario World RPG Demo v 1.0</b></a></td>\n</tr>\n<tr>\n  <td class=\'newsleftw\' height=\'20\'>[Adventure]</td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=2554\'>nnk</a></td>\n</tr>\n<tr>\n  <td class=\'newsleftw\' colspan=\'2\' valign=\'top\'>Game Info<br />------------<br />Plot: Peach is kidnapped again but because of it being sometime around  ...</td>\n</tr><tr>\n  <td width=\'100\' height=\'100\' rowspan=\'3\' align=\'center\'><img src=\'http://www.mfgg.net/thumbnail/2/NMBicon1150732787.gif\' border=\'0\' alt=\'Thumbnail\' /></td>\n  <td class=\'newsleftw\' colspan=\'2\' height=\'20\'><a href=\'{%site_url%}?act=resdb&param=02&c=2&id=2656\'><b>New Super Mario</b></a></td>\n</tr>\n<tr>\n  <td class=\'newsleftw\' height=\'20\'>[Platform]</td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=2567\'>ultramario</a></td>\n</tr>\n<tr>\n  <td class=\'newsleftw\' colspan=\'2\' valign=\'top\'>This game contains: 5 worlds 5 levels each, more than thirty different enemies, never before seen enemies  ...</td>\n</tr><tr>\n  <td width=\'100\' height=\'100\' rowspan=\'3\' align=\'center\'><img src=\'http://www.mfgg.net/thumbnail/2/MWIcon1150997223.gif\' border=\'0\' alt=\'Thumbnail\' /></td>\n  <td class=\'newsleftw\' colspan=\'2\' height=\'20\'><a href=\'{%site_url%}?act=resdb&param=02&c=2&id=2667\'><b>Mario World</b></a></td>\n</tr>\n<tr>\n  <td class=\'newsleftw\' height=\'20\'>[Platform]</td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=2567\'>ultramario</a></td>\n</tr>\n<tr>\n  <td class=\'newsleftw\' colspan=\'2\' valign=\'top\'>Well this is my first game, so it´s not going to be anything revolutionary. but give it a try. with  ...</td>\n</tr></table><div class=\"newssubstrip\" style=\"text-align: center\">\n  <a href=\"javascript:show_hide(\'nmod_2_1151116643\');\" style=\"text-decoration:underline\">Click to see updated Games</a></div>\n<table id=\"nmod_2_1151116643\" class=\'sformtable\' style=\'display:none\' cellspacing=\'1\'><tr>\n  <td width=\'100\' height=\'100\' rowspan=\'3\' align=\'center\'><img src=\'http://www.mfgg.net/thumbnail/2/supermariopandemonium211150698510.PNG\' border=\'0\' alt=\'Thumbnail\' /></td>\n  <td class=\'newsleftw\' colspan=\'2\' height=\'20\'><a href=\'{%site_url%}?act=resdb&param=02&c=2&id=19\'><b>Super Mario Pandemonium 2</b></a></td>\n</tr>\n<tr>\n  <td class=\'newsleftw\' height=\'20\'>[Platform]</td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'index.php?act=user&amp;param=01&amp;uid=10\'>ShyGuy182</a></td>\n</tr>\n<tr>\n  <td class=\'newsleftw\' colspan=\'2\' valign=\'top\'>A not-so-frustrating sequel to the ever-so-frustrating prequel. ...</td>\n</tr><tr>\n  <td width=\'100\' height=\'100\' rowspan=\'3\' align=\'center\'><img src=\'http://www.mfgg.net/thumbnail/2/kurib_icon1150523689.png\' border=\'0\' alt=\'Thumbnail\' /></td>\n  <td class=\'newsleftw\' colspan=\'2\' height=\'20\'><a href=\'{%site_url%}?act=resdb&param=02&c=2&id=587\'><b>Kuribo Catch</b></a></td>\n</tr>\n<tr>\n  <td class=\'newsleftw\' height=\'20\'>[Minigame]</td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'index.php?act=user&amp;param=01&amp;uid=2\'>Retriever II</a></td>\n</tr>\n<tr>\n  <td class=\'newsleftw\' colspan=\'2\' valign=\'top\'>Description: A goomba catching minigame with extensive gameplay options and online high scores. ...</td>\n</tr><tr>\n  <td width=\'100\' height=\'100\' rowspan=\'3\' align=\'center\'><img src=\'http://www.mfgg.net/thumbnail/2/GraveyardIcon1150750124.gif\' border=\'0\' alt=\'Thumbnail\' /></td>\n  <td class=\'newsleftw\' colspan=\'2\' height=\'20\'><a href=\'{%site_url%}?act=resdb&param=02&c=2&id=1853\'><b>The Graveyard Shift</b></a></td>\n</tr>\n<tr>\n  <td class=\'newsleftw\' height=\'20\'>[Minigame]</td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'index.php?act=user&amp;param=01&amp;uid=785\'>pucifur27</a></td>\n</tr>\n<tr>\n  <td class=\'newsleftw\' colspan=\'2\' valign=\'top\'>Mario has to protect a poor Koopa who&#39;s house was built over an ancient Koopa Burial ground!  Now  ...</td>\n</tr><tr>\n  <td width=\'100\' height=\'100\' rowspan=\'3\' align=\'center\'><img src=\'http://www.mfgg.net/thumbnail/2/BoshisXventureIcon1150684928.gif\' border=\'0\' alt=\'Thumbnail\' /></td>\n  <td class=\'newsleftw\' colspan=\'2\' height=\'20\'><a href=\'{%site_url%}?act=resdb&param=02&c=2&id=1999\'><b>Boshis Xventure</b></a></td>\n</tr>\n<tr>\n  <td class=\'newsleftw\' height=\'20\'>[Action]</td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'index.php?act=user&amp;param=01&amp;uid=1866\'>bigmariofan1.0</a></td>\n</tr>\n<tr>\n  <td class=\'newsleftw\' colspan=\'2\' valign=\'top\'>This Boshi&#39;s game! When Yoshi is kidnapped, it&#39;s Boshi&#39;s job to save the day. (But since  ...</td>\n</tr></table><div class=\'newsstrip\'>Sprites, Libs, and Tilesets</div><table class=\'sformtable\' cellspacing=\'1\'><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=2478\'><b>Baseball boys & Shyguys</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=1947\'>jurae818</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=2577\'><b>Custom Super Mario Enemies</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=2519\'>Ravian</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=2631\'><b>Donkey Kong Arcade Bowser</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=1335\'>X Gamer</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=2646\'><b>Bob-Omb List</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=2462\'>Brio</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=2648\'><b>Custom Tileset Megapack</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By Shockstuff</td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=2651\'><b>SMW2 Baby Mario Complete sprite sheet</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By Raccoon Sam</td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=2655\'><b>SMW2: Yoshi Complete Sprite Sheet</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By Raccoon Sam</td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=2665\'><b>Magikoopa</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=2146\'>ParaChomp</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=4182\'><b>Custom \'All\' Sheet</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=1797\'>Littlink</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=4183\'><b>M&L Wario</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=708\'>Starpower</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=4184\'><b>SMA:SMB2 Game selection screen sprites</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=2426\'>Derrike G.</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=4193\'><b>16-Bit Wario Bros.</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=73\'>Xander</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=4194\'><b>16-Bit Princess Daisy</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=73\'>Xander</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=4195\'><b>16-Bit Hammer Bros.</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=73\'>Xander</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=4200\'><b>Mario All-Stars Mega Tile Rip!</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=2431\'>Jouw</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=4205\'><b>Custom Boo Sheet</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=1363\'>Bowserman15</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=4206\'><b>Yoshi\'s Island Background Tileset: World 4-4</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By Raccoon Sam</td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=4207\'><b>Super Mario bros. Yoshi hack</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=1964\'>TJ</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=4208\'><b>Bowser in Mario & Luigi\'s clothes</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=1964\'>TJ</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=4209\'><b>MLSS: Bully</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=1964\'>TJ</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=4210\'><b>Yoshi\'s Island misc enemies</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=1363\'>Bowserman15</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=4212\'><b>Lakitus</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By Omegafire</td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=4223\'><b>Boos</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=2610\'>Nowhere Man</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=4226\'><b>Super Mario World Tileset</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=112\'>supernesfreak</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=4228\'><b>Updated SMB people</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=1964\'>TJ</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=4233\'><b>Goombella Sprites</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=785\'>pucifur27</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=4234\'><b>Assorted Pokies</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=785\'>pucifur27</a></td>\n</tr></table><div class=\"newssubstrip\" style=\"text-align: center\">\n  <a href=\"javascript:show_hide(\'nmod_1_1151116643\');\" style=\"text-decoration:underline\">Click to see updated Sprites, Libs, and Tilesets</a></div>\n<table id=\"nmod_1_1151116643\" class=\'sformtable\' style=\'display:none\' cellspacing=\'1\'><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=778\'><b>DKC 2 Mario and Yoshi Lib</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'index.php?act=user&amp;param=01&amp;uid=303\'>Avi</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=780\'><b>Yoshi Cookies Lib</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'index.php?act=user&amp;param=01&amp;uid=303\'>Avi</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=1217\'><b>Random Mario Items 1.0</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'index.php?act=user&amp;param=01&amp;uid=151\'>msonic</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=1&id=4202\'><b>New SMB1 Styled Goomba and Paragoomba</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'index.php?act=user&amp;param=01&amp;uid=77\'>SonicProject</a></td>\n</tr></table><div class=\'newsstrip\'>How-Tos</div><table class=\'sformtable\' cellspacing=\'1\'><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=4&id=4225\'><b>Platform Tutorials</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=17\'>Nite Shadow</a></td>\n</tr></table><div class=\'newsstrip\'>Sounds, Music</div><table class=\'sformtable\' cellspacing=\'1\'><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=5&id=2653\'><b>SSBM Peach Sounds</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=8\'>The Trasher</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=5&id=2654\'><b>SSBM Bowser Sounds</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=8\'>The Trasher</a></td>\n</tr></table><div class=\'newsstrip\'>Reviews</div><div class=\"newssubstrip\" style=\"text-align: center\">\n  <a href=\"javascript:show_hide(\'nmod_3_1151116643\');\" style=\"text-decoration:underline\">Click to see newly added Reviews</a></div>\n<table id=\"nmod_3_1151116643\" class=\'sformtable\' style=\'display:none\' cellspacing=\'1\'><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=3&id=4169\'><b>Review: New Super Mario</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=2016\'>modchipv12</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=3&id=4170\'><b>Review: Mario & Luigi\'s Adventure. (demov)</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=2016\'>modchipv12</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=3&id=4171\'><b>Review: Super Mario Bros 3000</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=2016\'>modchipv12</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=3&id=4172\'><b>Review: Chompman</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=2016\'>modchipv12</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=3&id=4187\'><b>Review: Magikoopa Rebel</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=151\'>msonic</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=3&id=4201\'><b>Review: DK SN:Jumpman\'s Journey</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=1369\'>Flub</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=3&id=4204\'><b>Review: Super Mario PC Challenge 6</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=452\'>geneyuss2</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=3&id=4215\'><b>Review: My Dead Little Yoshi Fangame</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=2479\'>Com</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=3&id=4222\'><b>Review: Mario World</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=1797\'>Littlink</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=3&id=4224\'><b>Review: Ultimate Mario Bros.</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=150\'>Ashurasonic</a></td>\n</tr><tr>\n  <td class=\'newsleftw\'><a href=\'{%site_url%}?act=resdb&param=02&c=3&id=4229\'><b>Review: Mario World</b></a></td>\n  <td class=\'newsleftw\' width=\'30%\'>By <a href=\'{%site_url%}?act=user&param=01&uid=785\'>pucifur27</a></td>\n</tr></table></div><!--e_recent--><br /><br />',	14,	1),
@@ -617,60 +626,62 @@ INSERT INTO `tsms_news` (`nid`, `uid`, `date`, `title`, `message`, `comments`, `
 DROP TABLE IF EXISTS `tsms_panels`;
 CREATE TABLE `tsms_panels` (
   `pid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `eid` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `eid` mediumint(8) unsigned NOT NULL DEFAULT 0,
   `panel_type` varchar(16) DEFAULT NULL,
   `panel_name` varchar(45) DEFAULT NULL,
   `restricted` varchar(128) DEFAULT NULL,
-  `restrict_future` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `restricted_hide` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `hide_header` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `restrict_future` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  `restricted_hide` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  `hide_header` tinyint(1) unsigned NOT NULL DEFAULT 0,
   `justify` char(1) DEFAULT NULL,
   `column` char(2) DEFAULT NULL,
-  `row` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `strip_order` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `visible` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `can_delete` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `can_hide` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `can_strip` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `can_column_c` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `can_column_lr` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `can_fuse` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `strip_promote` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `fuse_up` int(10) unsigned NOT NULL DEFAULT '0',
-  `fuse_down` int(10) unsigned NOT NULL DEFAULT '0',
+  `row` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `strip_order` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `visible` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  `can_delete` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  `can_hide` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  `can_strip` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  `can_column_c` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  `can_column_lr` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  `can_fuse` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  `strip_promote` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  `fuse_up` int(10) unsigned NOT NULL DEFAULT 0,
+  `fuse_down` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`pid`),
   KEY `eid` (`eid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_panels`;
 
 DROP TABLE IF EXISTS `tsms_resources`;
 CREATE TABLE `tsms_resources` (
   `rid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `type` int(8) unsigned NOT NULL DEFAULT '0',
-  `eid` int(10) unsigned NOT NULL DEFAULT '0',
-  `uid` int(10) unsigned NOT NULL DEFAULT '0',
+  `type` int(8) unsigned NOT NULL DEFAULT 0,
+  `eid` int(10) unsigned NOT NULL DEFAULT 0,
+  `uid` int(10) unsigned NOT NULL DEFAULT 0,
   `title` varchar(128) DEFAULT NULL,
-  `description` mediumtext,
+  `description` mediumtext DEFAULT NULL,
   `author_override` varchar(64) DEFAULT NULL,
   `website_override` varchar(128) DEFAULT NULL,
   `weburl_override` varchar(128) DEFAULT NULL,
-  `created` int(10) unsigned NOT NULL DEFAULT '0',
-  `updated` int(10) unsigned NOT NULL DEFAULT '0',
-  `queue_code` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `ghost` int(10) unsigned NOT NULL DEFAULT '0',
+  `created` int(10) unsigned NOT NULL DEFAULT 0,
+  `updated` int(10) unsigned NOT NULL DEFAULT 0,
+  `queue_code` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `ghost` int(10) unsigned NOT NULL DEFAULT 0,
   `update_reason` varchar(255) DEFAULT NULL,
-  `accept_date` int(10) unsigned NOT NULL DEFAULT '0',
-  `update_accept_date` int(10) unsigned NOT NULL DEFAULT '0',
+  `accept_date` int(10) unsigned NOT NULL DEFAULT 0,
+  `update_accept_date` int(10) unsigned NOT NULL DEFAULT 0,
   `decision` varchar(128) DEFAULT NULL,
-  `catwords` mediumtext,
-  `comments` int(10) unsigned NOT NULL DEFAULT '0',
-  `comment_date` int(10) unsigned NOT NULL DEFAULT '0',
+  `catwords` mediumtext DEFAULT NULL,
+  `comments` int(10) unsigned NOT NULL DEFAULT 0,
+  `comment_date` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`rid`),
   KEY `uid` (`uid`),
   KEY `type` (`type`,`eid`),
   FULLTEXT KEY `title` (`title`,`description`,`catwords`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=16417 DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_resources`;
 INSERT INTO `tsms_resources` (`rid`, `type`, `eid`, `uid`, `title`, `description`, `author_override`, `website_override`, `weburl_override`, `created`, `updated`, `queue_code`, `ghost`, `update_reason`, `accept_date`, `update_accept_date`, `decision`, `catwords`, `comments`, `comment_date`) VALUES
 (1,	1,	1,	6,	'Super Mario Advance Characters',	'A great sheet with all 4 playable characters from SMA, big and small and fully animated.',	'',	'MFGG',	'http://www.mfgg.cjb.net',	1064631728,	0,	0,	0,	'',	1064631728,	0,	'',	'smas,smb2,s_sma,sma1,mario,luigi,princess peach,toad',	42,	1487953045),
 (2,	1,	2,	0,	'Dr. Mario 64',	'All of Dr. Mario&#39;s sprites from Dr. Mario 64! This includes victory poses.  Pretty Cool.',	'Sairasu',	'',	'',	1064631728,	1110078856,	0,	0,	'',	1064631728,	0,	'',	'mario,s_dm,dm64',	6,	1292008313),
@@ -729,15 +740,16 @@ CREATE TABLE `tsms_res_games` (
   `eid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `file` varchar(128) DEFAULT NULL,
   `preview` varchar(128) DEFAULT NULL,
-  `views` int(11) NOT NULL DEFAULT '0',
-  `downloads` int(11) NOT NULL DEFAULT '0',
+  `views` int(11) NOT NULL DEFAULT 0,
+  `downloads` int(11) NOT NULL DEFAULT 0,
   `file_mime` varchar(64) DEFAULT NULL,
   `thumbnail` varchar(128) DEFAULT NULL,
-  `num_revs` int(11) NOT NULL DEFAULT '0',
-  `rev_score` int(11) NOT NULL DEFAULT '0',
+  `num_revs` int(11) NOT NULL DEFAULT 0,
+  `rev_score` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`eid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_res_games`;
 INSERT INTO `tsms_res_games` (`eid`, `file`, `preview`, `views`, `downloads`, `file_mime`, `thumbnail`, `num_revs`, `rev_score`) VALUES
 (1,	'YoshiGoneMFGG_1107584824.zip',	'yoshigonemfgg1150699812.PNG',	26325,	6204,	'application/zip',	'yoshigonemfgg11150699812.gif',	11,	18),
 (2,	'mmansion3_demo1151292611.zip',	'mm3demo1151292611.gif',	19046,	5467,	'application/zip',	'mm3demo11151292611.gif',	6,	44),
@@ -795,12 +807,13 @@ CREATE TABLE `tsms_res_gfx` (
   `eid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `file` varchar(64) DEFAULT NULL,
   `thumbnail` varchar(64) DEFAULT NULL,
-  `views` int(10) unsigned NOT NULL DEFAULT '0',
-  `downloads` int(10) unsigned NOT NULL DEFAULT '0',
+  `views` int(10) unsigned NOT NULL DEFAULT 0,
+  `downloads` int(10) unsigned NOT NULL DEFAULT 0,
   `file_mime` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`eid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=58 DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_res_gfx`;
 INSERT INTO `tsms_res_gfx` (`eid`, `file`, `thumbnail`, `views`, `downloads`, `file_mime`) VALUES
 (1,	'smacharacters.gif',	'marioadvancecharacters.png',	27202,	10454,	'image/gif'),
 (2,	'drmario64_1110078856.gif',	'drmario64thumb.PNG',	15952,	5406,	'image/gif'),
@@ -858,12 +871,13 @@ DROP TABLE IF EXISTS `tsms_res_howtos`;
 CREATE TABLE `tsms_res_howtos` (
   `eid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `file` varchar(128) DEFAULT NULL,
-  `views` int(11) NOT NULL DEFAULT '0',
-  `downloads` int(11) NOT NULL DEFAULT '0',
+  `views` int(11) NOT NULL DEFAULT 0,
+  `downloads` int(11) NOT NULL DEFAULT 0,
   `file_mime` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`eid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_res_howtos`;
 INSERT INTO `tsms_res_howtos` (`eid`, `file`, `views`, `downloads`, `file_mime`) VALUES
 (1,	'warioengine.zip',	7477,	1701,	'application/zip'),
 (2,	'Veggie_How_to.zip',	5030,	1309,	'application/zip'),
@@ -920,13 +934,14 @@ DROP TABLE IF EXISTS `tsms_res_misc`;
 CREATE TABLE `tsms_res_misc` (
   `eid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `file` varchar(128) DEFAULT NULL,
-  `views` int(11) NOT NULL DEFAULT '0',
-  `downloads` int(11) NOT NULL DEFAULT '0',
+  `views` int(11) NOT NULL DEFAULT 0,
+  `downloads` int(11) NOT NULL DEFAULT 0,
   `file_mime` varchar(64) DEFAULT NULL,
   `type1` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`eid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=214 DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_res_misc`;
 INSERT INTO `tsms_res_misc` (`eid`, `file`, `views`, `downloads`, `file_mime`, `type1`) VALUES
 (1,	'clickteamDLLs1312302128.zip',	28985,	7625,	'application/force-download',	'SYS'),
 (2,	'bassdll.zip',	21133,	2520,	'application/zip',	'SYS'),
@@ -982,23 +997,24 @@ INSERT INTO `tsms_res_misc` (`eid`, `file`, `views`, `downloads`, `file_mime`, `
 DROP TABLE IF EXISTS `tsms_res_reviews`;
 CREATE TABLE `tsms_res_reviews` (
   `eid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `gid` int(11) NOT NULL DEFAULT '0',
-  `views` int(11) NOT NULL DEFAULT '0',
-  `commentary` text,
-  `pros` text,
-  `cons` text,
-  `gameplay` text,
-  `graphics` text,
-  `sound` text,
-  `replay` text,
-  `gameplay_score` tinyint(4) NOT NULL DEFAULT '0',
-  `graphics_score` tinyint(4) NOT NULL DEFAULT '0',
-  `sound_score` tinyint(4) NOT NULL DEFAULT '0',
-  `replay_score` tinyint(4) NOT NULL DEFAULT '0',
-  `score` tinyint(4) NOT NULL DEFAULT '0',
+  `gid` int(11) NOT NULL DEFAULT 0,
+  `views` int(11) NOT NULL DEFAULT 0,
+  `commentary` text DEFAULT NULL,
+  `pros` text DEFAULT NULL,
+  `cons` text DEFAULT NULL,
+  `gameplay` text DEFAULT NULL,
+  `graphics` text DEFAULT NULL,
+  `sound` text DEFAULT NULL,
+  `replay` text DEFAULT NULL,
+  `gameplay_score` tinyint(4) NOT NULL DEFAULT 0,
+  `graphics_score` tinyint(4) NOT NULL DEFAULT 0,
+  `sound_score` tinyint(4) NOT NULL DEFAULT 0,
+  `replay_score` tinyint(4) NOT NULL DEFAULT 0,
+  `score` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`eid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=760 DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_res_reviews`;
 INSERT INTO `tsms_res_reviews` (`eid`, `gid`, `views`, `commentary`, `pros`, `cons`, `gameplay`, `graphics`, `sound`, `replay`, `gameplay_score`, `graphics_score`, `sound_score`, `replay_score`, `score`) VALUES
 (1,	292,	990,	'*Sigh* We\'ve all played this game before, in one form or another. It is just the old \"smack enemies with hammer\" genre, which is, without a question, highly over done. However, it is certainly one of the better hammer swinging Mario games. ',	'-The storyline is told quite well.',	'-Cliched hammer based gameplay.\r\n-Level design could have been better.\r\n-Quite frustrating difficulty.\r\n-Skipping glitch when music restarts.',	'Mario\'s Mansion is another fangame based entirely around the use of a hammer.  The control is pretty good, due to the fact that you may simply hold \"ctrl\" to repeatedly swing your hammer, rather than constantly mashing your keyboard apart if you ever needed to smash something quite a few times. At first, the level design is rather bland, and the gameplay is quite boring, but that improves as you progress through the game. The boss battles are well done, and nowhere near as frustrating as those of MLTCO, thanks to a heart system that allows Mario to take more than one hit. All in all, the gameplay is average, and slightly better than most other hammer-based games. \r\n',	'Everyone knows that sprite. Yes, it is Ninja\'s hand drawn Paper Mario sprite, as seen in every other hammer-based fanmade game. It is a very offical looking fan sprite, yes, though its highly overused. As for the other graphics, they mix decently. \r\n',	'Mario sounds as always, no problem with that. HOWEVER, there is an annoying glitch caused when a MIDI starts or restarts: a few seconds of gameplay are skipped on your screen, though not in the game itself. This can cause major problems, often Mario\'s death. \r\n',	'The game can take you quite a while, due to the fact that the challenge increases a bit too much as you progress through the game. Once you beat Mario\'s Mansion, there is really no need to come back to it. This is partially because you\'ll be glad you\'re done with that pain-in-the-arse final stage, and because the game ends in a cliffhanger - you will not feel like playing MM again, but rather go right on to playing MM2. \r\n',	7,	7,	4,	1,	5),
 (2,	291,	977,	'First off, I must note that even the subtitle of Mario\'s Mansion 2 contains spoilers of the first Mario\'s Mansion\'s ending, so be warned!  Mario\'s Mansion 2 picks up directly where the first left off, with similar but slightly more enjoyable gameplay.\r\n',	'There are now a few elements to make levels more interesting.  And the storyline is still well told.\r\n',	'The skipping glitch when music restarts still exists.  Levels could still use better design.  Hammer based gameplay is still old.',	'Recall the gameplay from the first Mario\'s Mansion. Well... it is the same in Mario\'s Mansion 2. BUT, don\'t be turned off by that fact, you will find some unique new elements in the second Mario\'s mansion. First of all, it seems the difficulty has been toned down a bit. That is a good choice on Fanguy\'s side, because MM2 is nowhere near as frustrating as its predicessor. However, that doesn\'t stop it from putting up a good challenge! A little bit of challenge is a good thing, and MM2 presents a good challenge minus all the frustration. However, a small amount of frustration within the game may still exist, though not to the extent of MM1. The level design is also much more appealing. The first level is especially, a compilation of Mario levels past, is enjoyable, unlike the dark, boring basement level of the first MM. Unique elements are thrown in again for good measure: For example, in the ice level, you are followed around by a flame enemy, which you will actually want to lure to an ice wall that it will melt for you. The boss battles are still unique in their own ways, and you can now actually tell how many hits they will need before their defeat. All in all, MM2 is quite a bit better than MM1, and an enjoyable yet challenging hammer swingin\' good time. \r\n ',	'A decent mix of ripped graphics, along with the custom Paper Mario Sprite you know and love (or hate, due to the fact that it has been used one too many times). Characters have some neat animations, often showing their emotions. There are some new enemies here as well, such as a ninja Shyguy. Pretty good, all in all. \r\n',	'Still the average Mario sounds, no problems there. But, it still has that cursed midi starting glitch? (See MM1 review.) That bumps the score down quite a bit. \r\n ',	'With a bit more levels than the first, and a good challenge, it may take a while to complete. But, unlike the first, you may want to go back to levels occasionally during boredom, due to their uniqueness. The game\'s ending is less of a cliffhanger than the first, HOWEVER, it will still make you want to drop playing MM2 and start playing MM3 instead. \r\n',	8,	8,	4,	3,	7),
@@ -1055,13 +1071,14 @@ DROP TABLE IF EXISTS `tsms_res_sounds`;
 CREATE TABLE `tsms_res_sounds` (
   `eid` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `file` varchar(128) DEFAULT NULL,
-  `views` int(11) NOT NULL DEFAULT '0',
-  `downloads` int(11) NOT NULL DEFAULT '0',
+  `views` int(11) NOT NULL DEFAULT 0,
+  `downloads` int(11) NOT NULL DEFAULT 0,
   `file_mime` varchar(64) DEFAULT NULL,
   `type1` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`eid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=118 DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_res_sounds`;
 INSERT INTO `tsms_res_sounds` (`eid`, `file`, `views`, `downloads`, `file_mime`, `type1`) VALUES
 (1,	'mwmusic.zip',	25874,	11374,	'application/zip',	'WAV'),
 (2,	'midiyi.zip',	11464,	5313,	'application/zip',	'MIDI'),
@@ -1117,17 +1134,18 @@ INSERT INTO `tsms_res_sounds` (`eid`, `file`, `views`, `downloads`, `file_mime`,
 DROP TABLE IF EXISTS `tsms_sec_images`;
 CREATE TABLE `tsms_sec_images` (
   `sessid` varchar(32) NOT NULL DEFAULT '',
-  `time` int(11) NOT NULL DEFAULT '0',
+  `time` int(11) NOT NULL DEFAULT 0,
   `regcode` varchar(6) NOT NULL DEFAULT '',
   PRIMARY KEY (`sessid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_sec_images`;
 
 DROP TABLE IF EXISTS `tsms_sessions`;
 CREATE TABLE `tsms_sessions` (
   `sessid` varchar(255) NOT NULL,
-  `uid` int(10) unsigned NOT NULL DEFAULT '0',
-  `time` int(10) unsigned NOT NULL DEFAULT '0',
+  `uid` int(10) unsigned NOT NULL DEFAULT 0,
+  `time` int(10) unsigned NOT NULL DEFAULT 0,
   `cookie` char(32) DEFAULT NULL,
   `ip` char(15) DEFAULT NULL,
   `user_agent` varchar(72) DEFAULT NULL,
@@ -1137,17 +1155,19 @@ CREATE TABLE `tsms_sessions` (
   KEY `uid` (`uid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_sessions`;
 
 DROP TABLE IF EXISTS `tsms_skins`;
 CREATE TABLE `tsms_skins` (
   `sid` mediumint(9) NOT NULL AUTO_INCREMENT,
   `name` varchar(128) DEFAULT NULL,
   `author` varchar(128) DEFAULT NULL,
-  `hidden` tinyint(1) NOT NULL DEFAULT '0',
-  `default` tinyint(1) NOT NULL DEFAULT '0',
+  `hidden` tinyint(1) NOT NULL DEFAULT 0,
+  `default` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`sid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_skins`;
 INSERT INTO `tsms_skins` (`sid`, `name`, `author`, `hidden`, `default`) VALUES
 (2,	'MFGG Default',	'Thunder Dragon, Techokami',	0,	1),
 (3,	'MFGG Classic',	'Kritter, Retriever II',	0,	0),
@@ -1161,8 +1181,9 @@ CREATE TABLE `tsms_staffchat` (
   `date` int(11) NOT NULL,
   `message` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=63 DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_staffchat`;
 INSERT INTO `tsms_staffchat` (`id`, `uid`, `date`, `message`) VALUES
 (1,	3586,	1282460235,	'say hello to STAFF CHAT'),
 (2,	4315,	1282460527,	'this is awesome, you\'re awesome. '),
@@ -1218,7 +1239,7 @@ INSERT INTO `tsms_staffchat` (`id`, `uid`, `date`, `message`) VALUES
 DROP TABLE IF EXISTS `tsms_users`;
 CREATE TABLE `tsms_users` (
   `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `gid` int(10) unsigned NOT NULL DEFAULT '0',
+  `gid` int(10) unsigned NOT NULL DEFAULT 0,
   `username` varchar(32) DEFAULT NULL,
   `password` varchar(64) DEFAULT NULL,
   `email` varchar(128) DEFAULT NULL,
@@ -1231,42 +1252,44 @@ CREATE TABLE `tsms_users` (
   `yim` varchar(32) DEFAULT NULL,
   `def_order_by` varchar(18) DEFAULT NULL,
   `def_order` varchar(4) DEFAULT NULL,
-  `skin` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `skin` smallint(5) unsigned NOT NULL DEFAULT 0,
   `registered_ip` varchar(15) DEFAULT NULL,
-  `items_per_page` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `show_email` tinyint(1) NOT NULL DEFAULT '0',
-  `first_submit` tinyint(1) NOT NULL DEFAULT '0',
+  `items_per_page` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `show_email` tinyint(1) NOT NULL DEFAULT 0,
+  `first_submit` tinyint(1) NOT NULL DEFAULT 0,
   `cookie` varchar(32) DEFAULT NULL,
-  `comments` int(10) unsigned NOT NULL DEFAULT '0',
-  `new_msgs` int(10) unsigned NOT NULL DEFAULT '0',
-  `join_date` int(10) unsigned NOT NULL DEFAULT '0',
+  `comments` int(10) unsigned NOT NULL DEFAULT 0,
+  `new_msgs` int(10) unsigned NOT NULL DEFAULT 0,
+  `join_date` int(10) unsigned NOT NULL DEFAULT 0,
   `timezone` smallint(6) DEFAULT NULL,
-  `dst` tinyint(1) NOT NULL DEFAULT '0',
-  `disp_msg` tinyint(1) NOT NULL DEFAULT '0',
+  `dst` tinyint(1) NOT NULL DEFAULT 0,
+  `disp_msg` tinyint(1) NOT NULL DEFAULT 0,
   `icon_dims` varchar(9) DEFAULT NULL,
-  `cur_msgs` int(11) NOT NULL DEFAULT '0',
-  `show_thumbs` tinyint(1) NOT NULL DEFAULT '0',
-  `use_comment_msg` tinyint(1) NOT NULL DEFAULT '0',
-  `use_comment_digest` tinyint(1) NOT NULL DEFAULT '0',
-  `last_visit` int(10) unsigned NOT NULL DEFAULT '0',
-  `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
+  `cur_msgs` int(11) NOT NULL DEFAULT 0,
+  `show_thumbs` tinyint(1) NOT NULL DEFAULT 0,
+  `use_comment_msg` tinyint(1) NOT NULL DEFAULT 0,
+  `use_comment_digest` tinyint(1) NOT NULL DEFAULT 0,
+  `last_visit` int(10) unsigned NOT NULL DEFAULT 0,
+  `last_activity` int(10) unsigned NOT NULL DEFAULT 0,
   `last_ip` varchar(15) NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `username` (`username`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_users`;
 
 DROP TABLE IF EXISTS `tsms_version`;
 CREATE TABLE `tsms_version` (
   `vid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `rid` int(10) unsigned NOT NULL DEFAULT '0',
+  `rid` int(10) unsigned NOT NULL DEFAULT 0,
   `version` varchar(12) DEFAULT NULL,
   `change` varchar(255) DEFAULT NULL,
-  `date` int(10) unsigned NOT NULL DEFAULT '0',
+  `date` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`vid`),
   KEY `rid` (`rid`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
+TRUNCATE `tsms_version`;
 INSERT INTO `tsms_version` (`vid`, `rid`, `version`, `change`, `date`) VALUES
 (1,	587,	NULL,	'Restoring preview and thumb.',	1131268884),
 (2,	780,	NULL,	'The file somehow dissapeared, so I had to replace it. ^^;',	1150946595),
@@ -1318,5 +1341,3 @@ INSERT INTO `tsms_version` (`vid`, `rid`, `version`, `change`, `date`) VALUES
 (48,	4347,	NULL,	'some things was wrong on my old spritesheet. so i fix&#39;d them in this version. NEW LOGO ADDED, TOO!!! XD',	1153966841),
 (49,	4645,	NULL,	'Praphical Update :)',	1153930141),
 (50,	4645,	NULL,	'Now he skids',	1154021802);
-
--- 2017-10-10 17:31:02

@@ -28,7 +28,7 @@
     <li>
         <?=view('sounds/small', $object->data)?>
     </li>
-                        <?php endforeach; ?></ul>
+                       <?php endforeach; ?></ul>
 
 
 

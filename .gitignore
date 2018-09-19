@@ -1,5 +1,5 @@
 tcsms/
-hyliandev/settings.php
+old/settings.php
 
 # Vendor
 node_modules
@@ -10,5 +10,6 @@ vendor
 
 # Tools
 adminer.php
+phpunit.phar
 
 

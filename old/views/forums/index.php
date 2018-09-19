@@ -2,4 +2,4 @@
 
 <div class="card"><?php foreach (Forums::Read(['gid' => User::GetUserGroup()]) as $category) : ?>
     <?=view('forums/category', $category)?>
-                    <?php endforeach; ?></div>
+                  <?php endforeach; ?></div>

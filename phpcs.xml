@@ -3,7 +3,9 @@
   <description>LumaSMS PHP coding standards</description>
   <!-- Files and directories to run on -->
   <file>lumasms</file>
-  <file>hyliandev</file>
+  <file>install</file>
+  <file>tests</file>
+  <file>install.php</file>
   <!-- ignore vendor files -->
   <exclude-pattern>*/vendor/*</exclude-pattern>
   <exclude-pattern>*/node_modules/*</exclude-pattern>

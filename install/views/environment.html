@@ -1,0 +1,86 @@
+<h2>Step #1 - Environment</h2>
+<table class="environment">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Recommended</th>
+      <th>Yours</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PHP Version</td>
+      <td>&gt;= 5.4.16</td>
+      <td>
+        {{ php_version }}
+      </td>
+    </tr>
+    <tr>
+      <td>PHP Extensions</td>
+      <td>
+        <ul>
+          <li>Core</li>
+          <li>date</li>
+          <li>session</li>
+          <li>PDO</li>
+          <li>pdo_mysql</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          {{ php_extensions }}
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>PHP Compatible</td>
+      <td>Yes</td>
+      <td>
+        {{ php_compatible }}
+      </td>
+    </tr>
+    <tr>
+      <td>MySQL Version</td>
+      <td>&gt;= 5.5</td>
+      <td>
+        {{ mysql_version }}
+      </td>
+    </tr>
+    <tr>
+      <td>MySQL Compatible</td>
+      <td>Yes</td>
+      <td>
+        {{ mysql_compatible }}
+      </td>
+    </tr>
+    <tr>
+      <td>Webserver Software</td>
+      <td>Apache</td>
+      <td>
+        {{ webserver_software }}
+      </td>
+    </tr>
+    <tr>
+      <td>Webserver Version</td>
+      <td>&gt;= 2.2</td>
+      <td>
+        {{ webserver_version }}
+      </td>
+    </tr>
+    <tr>
+      <td>Webserver Operating System</td>
+      <td>&nbsp;</td>
+      <td>
+        {{ webserver_os }}
+      </td>
+    </tr>
+
+    <tr>
+      <td>Webserver Compatible</td>
+      <td>Yes</td>
+      <td>
+        {{ webserver_compatible }}
+      </td>
+    </tr>
+  </tbody>
+</table>
