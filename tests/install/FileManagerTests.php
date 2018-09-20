@@ -18,13 +18,6 @@
 
 namespace LumaSMS\tests\install;
 
-// phpcs:disable PSR1.Files.SideEffects
-// I need this to load the LumaSMS classes, so...
-if (!class_exists('LumaSMS\install\Autoloader')) {
-    require_once __DIR__ . DIRECTORY_SEPARATOR . 'autoloader.php';
-}
-// phpcs:enable PSR1.Files.SideEffects
-
 use LumaSMS\install\FileManager;
 use \PHPUnit_Framework_TestCase;
 
@@ -58,15 +51,6 @@ class FileManagerTests extends PHPUnit_Framework_TestCase
      * @return void
      */
     public function testCopyFile()
-    {
-    }
-
-    /**
-     * Test the `createDirectory()` method of the `FileManager` class.
-     *
-     * @return void
-     */
-    public function testCreateDirectory()
     {
     }
 }

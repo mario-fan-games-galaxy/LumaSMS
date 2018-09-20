@@ -113,33 +113,4 @@ class FileManager
         // This should always return true at this point.
         return $this->fileAccessible($destination);
     }
-
-    /**
-     * Create configured directories if they don't exist, if they already do,
-     * great! No need for any further action.
-     *
-     * @param string $directory The directory to create.
-     *
-     * @throws Exception If the directory can not be created.
-     * @throws Exception If the directory was created but is inaccessible.
-     *
-     * @return boolean `true` If directory exists now and is accessible,
-     *                        `false` otherwise.
-     */
-    public function createDirectory($directory)
-    {
-        if (!$this->canBeCreated($directory)) {
-            throw new Exception('Could not create directory: ' . $directory);
-            return false;
-        }
-        if (!file_exists($directory)) {
-            mkdir($directory, 0775, true);
-        }
-        if (!$this->fileAccessible($directory)) {
-            throw new Exception('Could not access directory: ' . $directory);
-            return false;
-        }
-
-        return true;
-    }
 }

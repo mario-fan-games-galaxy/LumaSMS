@@ -131,7 +131,6 @@ $mainData = [
 /*
  * Do the work of each step.
  */
-
 if ($_GET['step'] === 1) {
     $environment = $environmentManager->getEnvironment();
     $compatible = $environment['php']['compatible'] &&
@@ -189,7 +188,7 @@ if ($_GET['step'] === 1) {
         'site_abbr' => $settingsManager->getSetting('site_abbr'),
     ]);
 } elseif ($_GET['step'] === 3) {
-    // only update the editable-settings for now
+    // Only update the editable-settings for now.
     if (!$databaseManager) {
         die('Database not loaded.');
     }
@@ -199,31 +198,8 @@ if ($_GET['step'] === 1) {
     $settingsManager->updateSetting('db_pass', $_POST['db_pass']);
     $settingsManager->updateSetting('site_name', $_POST['site_name']);
     $settingsManager->updateSetting('site_abbr', $_POST['site_abbr']);
-    // Install database
+    // Install database.
     $databaseManager->installDatabase();
-    // Create directories
-    $directories = array(
-        dirname($settingsManager->getSetting('thumbnail_directory')),
-        $settingsManager->getSetting('thumbnail_directory'),
-        $settingsManager->getSetting('file_directory'),
-    );
-    foreach ($directories as $key => $directory) {
-        if ('.' === mb_substr($directory, 0, 1)) {
-            $directories[$key] = __DIR__ . DIRECTORY_SEPARATOR .
-                preg_replace('/^\.\.\//', '', $directory);
-            $directory = $directories[$key];
-        }
-        for ($i = 1; $i <= 6; ++$i) {
-            $directories[] = $directory . DIRECTORY_SEPARATOR . $i;
-        }
-    }
-    foreach ($directories as $directory) {
-        try {
-            $fileManager->createDirectory($directory);
-        } catch (Exception $exception) {
-            $errors[] = $exception->getMessage();
-        }
-    }
     $mainData['content'] = $viewManager->template('user-information', [
         'action' => strtok($environmentManager->getUrl(), '?') . '?step=4',
         'compatible' => $_POST['compatible'],
