@@ -20,6 +20,7 @@ namespace LumaSMS\tests\install;
 
 use LumaSMS\install\FileManager;
 use \PHPUnit_Framework_TestCase;
+use \InvalidArgumentException;
 
 /**
  * FileManager Tests
@@ -28,12 +29,31 @@ class FileManagerTests extends PHPUnit_Framework_TestCase
 {
 
     /**
+     * Do some setup for the tests.
+     */
+    public function __construct()
+    {
+        if (!defined('TEST_DIRECTORY')) {
+            define(
+                'TEST_DIRECTORY',
+                dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR .
+                'tmp' . DIRECTORY_SEPARATOR .
+                'tests' . DIRECTORY_SEPARATOR
+            );
+        }
+    }
+
+    /**
      * Test the `fileAccessible()` method of the `FileManager` class.
      *
      * @return void
      */
     public function testFileAccessible()
     {
+        $fileManager = new FileManager();
+
+        $this->assertEquals(true, $fileManager->fileAccessible(__FILE__));
+        $this->assertEquals(false, $fileManager->fileAccessible('FAKE_FILE'));
     }
 
     /**
@@ -43,6 +63,10 @@ class FileManagerTests extends PHPUnit_Framework_TestCase
      */
     public function testCanBeCreated()
     {
+        $fileManager = new FileManager();
+
+        $this->assertEquals(true, $fileManager->canBeCreated(TEST_DIRECTORY));
+        $this->assertEquals(false, $fileManager->canBeCreated('/'));
     }
 
     /**
@@ -52,5 +76,58 @@ class FileManagerTests extends PHPUnit_Framework_TestCase
      */
     public function testCopyFile()
     {
+
+        $fileManager = new FileManager();
+
+        $testFile = TEST_DIRECTORY . basename(__FILE__);
+
+        $this->assertEquals(true, $fileManager->copyFile(__FILE__, $testFile));
+
+        unlink($testFile);
+    }
+
+    /**
+     * Test the `copyFile()` method of the `FileManager` class when it throws
+     * exceptions of the type InvalidArgumentException.
+     *
+     * @expectedException InvalidArgumentException
+     *
+     * @return void
+     */
+    public function testCopyFileInvalidArgumentException()
+    {
+
+        $fileManager = new FileManager();
+
+        $this->assertEquals(false, $fileManager->copyFile('', TEST_DIRECTORY));
+        $this->assertEquals(false, $fileManager->copyFile(__FILE__, ''));
+
+        $testFile = TEST_DIRECTORY . basename(__FILE__);
+        $fileManager->copyFile(__FILE__, $testFile);
+        chmod($testFile, 0220);
+        $this->assertEquals(false, $fileManager->copyFile($testFile, $testFile));
+        $this->assertEquals(false, $fileManager->copyFile(__FILE__, __FILE__));
+    }
+
+    /**
+     * Test the `copyFile()` method of the `FileManager` class when it throws
+     * exceptions of the type Exception.
+     *
+     * @expectedException Exception
+     *
+     * @return void
+     */
+    public function testCopyFileException()
+    {
+
+        $fileManager = new FileManager();
+
+        $this->assertEquals(
+            false,
+            $fileManager->copyFile(__FILE__, '/' . basename(__FILE__))
+        );
+
+        // Not sure how to test when there's an issue copying a file over.
+        // But if I figure that out, that would go here.
     }
 }

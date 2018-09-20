@@ -11,6 +11,7 @@
 namespace LumaSMS\install;
 
 use \Exception;
+use \InvalidArgumentException;
 
 /**
  * This handles the file management functionality for the installer.
@@ -52,10 +53,10 @@ class FileManager
      * @param string $destination The destination file the source file will be
      *                            copied to.
      *
-     * @throws Exception If `$source` is not a valid file.
-     * @throws Exception If `$destination` is not a valid file.
-     * @throws Exception If `$source` can not be accessed.
-     * @throws Exception If `$destination` already exists.
+     * @throws InvalidArgumentException If `$source` is not a valid file.
+     * @throws InvalidArgumentException If `$destination` is not a valid file.
+     * @throws InvalidArgumentException If `$source` can not be accessed.
+     * @throws InvalidArgumentException If `$destination` already exists.
      * @throws Exception If `$destination` can't be created.
      * @throws Exception If there was an issue copying `$source` to
      *                   `$destination`.
@@ -66,28 +67,28 @@ class FileManager
     public function copyFile($source, $destination)
     {
         if (1 > mb_strlen($source)) {
-            throw new Exception(
+            throw new InvalidArgumentException(
                 '`' . $source . '` is not a valid file!'
             );
             return false;
         }
 
         if (1 > mb_strlen($destination)) {
-            throw new Exception(
+            throw new InvalidArgumentException(
                 '`' . $destination . '` is not a valid file!'
             );
             return false;
         }
 
         if (!file_exists($source) || !is_readable($source)) {
-            throw new Exception(
+            throw new InvalidArgumentException(
                 '`' . $source . '` can\'t be accessed!'
             );
             return false;
         }
 
         if (file_exists($destination)) {
-            throw new Exception(
+            throw new InvalidArgumentException(
                 '`' . $destination . '` already exists!'
             );
             return false;
