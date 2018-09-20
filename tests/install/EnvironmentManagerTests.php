@@ -1,6 +1,6 @@
 <?php
 /**
- * Tests for the EnviornmentManager class..
+ * Tests for the EnviornmentManager class.
  *
  * Uses phpunit 4.8 (old, but the latest still compatible with php 5.4)
  * Run with `phpunit installer_tests.php` in this directory.
@@ -18,21 +18,14 @@
 
 namespace LumaSMS\tests\install;
 
-// phpcs:disable PSR1.Files.SideEffects
-// I need this to load the LumaSMS classes, so...
-require_once __DIR__ . DIRECTORY_SEPARATOR . 'autoloader.php';
-// phpcs:enable PSR1.Files.SideEffects
-
 use LumaSMS\install\EnvironmentManager;
 use \PHPUnit_Framework_TestCase;
 
-// phpcs:disable Squiz.Classes.ValidClassName.NotCamelCaps
 /**
  * EnvironmentManager Tests
  */
 class EnvironmentManagerTests extends PHPUnit_Framework_TestCase
 {
-// phpcs:enable Squiz.Classes.ValidClassName.NotCamelCaps
 
     /**
      * Test the `getUrl()` method of the `EnvironmentManager` class

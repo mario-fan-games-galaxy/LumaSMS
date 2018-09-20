@@ -11,5 +11,4 @@ vendor
 # Tools
 adminer.php
 phpunit.phar
-
-
+composer.phar
