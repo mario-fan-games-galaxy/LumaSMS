@@ -3,18 +3,20 @@
 /**
  * Use this if you ever need to suddenly kill because of a fatal error
  *
- * @param Exception $e The exception, or just a log string, This gets added to the fatality_log. There is no other information except the date
+ * @param Exception $e The exception, or just a log string, This gets added to
+ *                     the `fatality.log`. There is no other information except
+ *                     the date.
  * @return void
  */
 function Fatality($e)
 {
-    $errorlog = 'logs/fatality_log';
-    
+    $errorlog = 'logs/fatality.log';
+
     file_put_contents(
         $errorlog,
         file_get_contents($errorlog) . '[ ' . date('m/d/Y g:i:sa', time()) . ' ]' . "\n" . $e . "\n\n"
     );
-    
+
     die('<h1>FATAL ERROR</h1>');
 }
 
@@ -36,16 +38,16 @@ foreach ([
     'models'
 ] as $directory) {
     $_directory = scandir($directory);
-    
+
     foreach ($_directory as $file) {
         $file = $directory . '/' . $file;
         $fileExtension = explode('.', $file);
         $fileExtension = array_pop($fileExtension);
-        
+
         if (is_dir($file) || $fileExtension != 'php') {
             continue;
         }
-        
+
         require_once $file;
     }
 }
@@ -92,7 +94,7 @@ $params = [];
 
 do {
     $_route = implode('/', $route);
-    
+
     if (!empty($routes[$_route])) {
         $controllerUse = $routes[$_route];
         $finalRoute = $_route;

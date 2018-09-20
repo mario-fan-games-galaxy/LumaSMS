@@ -1,5 +1,11 @@
+# Config
 tcsms/
 old/settings.php
+lumasms/core/settings.php
+
+# Logs
+*.log
+lumasms/logs
 
 # Vendor
 node_modules
