@@ -20,7 +20,7 @@
                     </a>
                 <?php endif; ?>
             </li>
-                               <?php endfor; ?></ul>
+                                <?php endfor; ?></ul>
     </div>
     
     <div class="next-link">

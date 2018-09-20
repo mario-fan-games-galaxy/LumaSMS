@@ -190,6 +190,9 @@ if ($_GET['step'] === 1) {
     ]);
 } elseif ($_GET['step'] === 3) {
     // only update the editable-settings for now
+    if (!$databaseManager) {
+        die('Database not loaded.');
+    }
     $settingsManager->updateSetting('db_host', $_POST['db_host']);
     $settingsManager->updateSetting('db_name', $_POST['db_name']);
     $settingsManager->updateSetting('db_user', $_POST['db_user']);

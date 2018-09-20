@@ -23,7 +23,7 @@
   <!-- PSR2: Coding Style Guide https://www.php-fig.org/psr/psr-2 -->
   <rule ref="PSR2" />
   <!-- PSR12 (draft): Extended Coding Style Guide https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md -->
-  <rule ref="PSR12" />
+  <!-- rule ref="PSR12" / -->
   <!-- Comment rules -->
   <rule ref="Squiz.Commenting.FunctionComment">
     <!-- Can't use Scalar Type Hints on older PHP versions -->
@@ -40,17 +40,6 @@
   <rule ref="Squiz.Commenting.VariableComment" />
   <!-- Make sure this works with PHP 5.4 -->
   <config name="testVersion" value="5.4-" />
-  <rule ref="PHPCompatibility">
-    <!-- Exclude polyfilled password_hash related functions from compatibility check -->
-    <exclude name="PHPCompatibility.PHP.NewConstants.password_bcryptFound" />
-    <exclude name="PHPCompatibility.PHP.NewConstants.password_bcrypt_default_costFound" />
-    <exclude name="PHPCompatibility.PHP.NewConstants.password_defaultFound" />
-    <exclude name="PHPCompatibility.PHP.NewFunctions.password_get_infoFound" />
-    <exclude name="PHPCompatibility.PHP.NewFunctions.password_hashFound" />
-    <exclude name="PHPCompatibility.PHP.NewFunctions.password_needs_rehashFound" />
-    <exclude name="PHPCompatibility.PHP.NewFunctions.password_verifyFound" />
-  </rule>
-
   <!-- Ban some functions -->
   <rule ref="Generic.PHP.ForbiddenFunctions">
     <properties>

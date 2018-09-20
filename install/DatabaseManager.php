@@ -289,7 +289,7 @@ class DatabaseManager
         if (!function_exists('password_hash')) {
             // Include polyfill for password functions
             include_once dirname(__DIR__) . DIRECTORY_SEPARATOR .
-                'hyliandev' . DIRECTORY_SEPARATOR .
+                'old' . DIRECTORY_SEPARATOR .
                 'password.php';
         }
         $user = array(
