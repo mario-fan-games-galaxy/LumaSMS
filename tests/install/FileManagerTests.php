@@ -100,13 +100,32 @@ class FileManagerTests extends PHPUnit_Framework_TestCase
 
         $fileManager = new FileManager();
 
+        $this->setExpectedExceptionRegExp(
+            'InvalidArgumentException',
+            '/^`.*` is not a valid file!/'
+        );
         $this->assertEquals(false, $fileManager->copyFile('', TEST_DIRECTORY));
+
+        $this->setExpectedExceptionRegExp(
+            'InvalidArgumentException',
+            '/^`.*` is not a valid file!/'
+        );
         $this->assertEquals(false, $fileManager->copyFile(__FILE__, ''));
 
         $testFile = TEST_DIRECTORY . basename(__FILE__);
         $fileManager->copyFile(__FILE__, $testFile);
         chmod($testFile, 0220);
+
+        $this->setExpectedExceptionRegExp(
+            'InvalidArgumentException',
+            '/^`.*` can\'t be accessed!/'
+        );
         $this->assertEquals(false, $fileManager->copyFile($testFile, $testFile));
+
+        $this->setExpectedExceptionRegExp(
+            'InvalidArgumentException',
+            '/^`.*` already exists!/'
+        );
         $this->assertEquals(false, $fileManager->copyFile(__FILE__, __FILE__));
     }
 
@@ -123,6 +142,10 @@ class FileManagerTests extends PHPUnit_Framework_TestCase
 
         $fileManager = new FileManager();
 
+        $this->setExpectedExceptionRegExp(
+            'Exception',
+            '/^`.*` can\'t be created!/'
+        );
         $this->assertEquals(
             false,
             $fileManager->copyFile(__FILE__, '/' . basename(__FILE__))

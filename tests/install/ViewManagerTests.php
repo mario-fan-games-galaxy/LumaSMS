@@ -92,6 +92,10 @@ class ViewManagerTests extends PHPUnit_Framework_TestCase
             unlink($testTemplateFile);
         }
 
+        $this->setExpectedExceptionRegExp(
+            'Exception',
+            '/^Could not open file: `.*`$/'
+        );
         $this->assertEquals(
             '',
             trim(

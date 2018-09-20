@@ -71,24 +71,9 @@ $settingsFile = __DIR__ . DIRECTORY_SEPARATOR .
     'old' . DIRECTORY_SEPARATOR .
     'settings.php';
 $installed = false;
-if (!$fileManager->fileAccessible($settingsFile)
-    && $fileManager->canBeCreated($settingsFile)
-) {
-    try {
-        $fileManager->copyFile(
-            __DIR__ . DIRECTORY_SEPARATOR .
-            'install' . DIRECTORY_SEPARATOR .
-            'settings' . DIRECTORY_SEPARATOR .
-            'settings.default.php',
-            $settingsFile
-        );
-    } catch (Exception $exception) {
-        $errors[] = $exception->getMessage();
-        $_GET['step'] = 128;
-    }
-}
 try {
     $settingsManager = new SettingsManager($settingsFile);
+    $settingsManager->createSettingsFile();
 } catch (Exception $exception) {
     $errors[] = $exception->getMessage();
     $_GET['step'] = 128;

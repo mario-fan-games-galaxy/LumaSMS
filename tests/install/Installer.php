@@ -71,41 +71,6 @@ class Installer_Tests extends PHPUnit_Framework_TestCase
     }
 
     /*
-     * Test the `createSettingsFile` method of the `Installer` class
-     */
-    public function testCreateSettingsFile()
-    {
-        // Test with existing `SETTINGS_FILE`
-        $this->assertEquals(true, Installer::createSettingsFile());
-
-        // delete settings file
-        unlink(SETTINGS_FILE);
-
-        // create a new one!
-        $this->assertEquals(true, Installer::createSettingsFile());
-
-        // re-add database settings
-        Installer::updateSetting('db_host', static::$_db_host);
-        Installer::updateSetting('db_name', static::$_db_name);
-        Installer::updateSetting('db_user', static::$_db_user);
-        Installer::updateSetting('db_pass', static::$_db_pass);
-    }
-
-    /*
-     * Test the `getSetting()` method of the `Installer` class
-     *
-     * @depends test_create_installer_file
-     */
-    public function testGetSetting()
-    {
-        // First grab the setting via the `setting` function.
-        $original_thumbnail_directory = setting('thumbnail_directory');
-
-        $test_thumbnail_directory = Installer::getSetting('thumbnail_directory');
-        $this->assertEquals($original_thumbnail_directory, $test_thumbnail_directory);
-    }
-
-    /*
      * Test the `isInstalled()` method of the `Installer` class
      *
      * @depends testGetSetting
@@ -113,40 +78,6 @@ class Installer_Tests extends PHPUnit_Framework_TestCase
     public function testIsInstalled()
     {
         $this->assertInternalType('boolean', Installer::isInstalled());
-    }
-
-    /*
-     * Test the `updateSetting()` method of the `Installer` class
-     *
-     * @depends testGetSetting
-     */
-    public function testUpdateSetting()
-    {
-        // Try updating a real setting
-        $original_thumbnail_directory = Installer::getSetting('thumbnail_directory');
-
-        $update_setting_result = Installer::updateSetting('thumbnail_directory', 'TEST');
-        $this->assertEquals(true, $update_setting_result);
-        $this->assertEquals('TEST', Installer::getSetting('thumbnail_directory'));
-
-        // Revert the change and make sure it saved
-        $update_setting_result = Installer::updateSetting('thumbnail_directory', $original_thumbnail_directory);
-        $this->assertEquals(true, $update_setting_result);
-        $this->assertEquals($original_thumbnail_directory, Installer::getSetting('thumbnail_directory'));
-    }
-
-    /*
-     * Test the `updateSetting` method of the `Installer` class with a
-     * fake setting.
-     */
-    public function testFakeUpdateSetting()
-    {
-        $this->setExpectedException(
-            'InvalidArgumentException',
-            'Setting not found.'
-        );
-        $fake_setting_result = Installer::updateSetting('fake_setting', 'fake_value');
-        $this->assertEquals(false, $fake_setting_result);
     }
 
     /*
@@ -179,54 +110,6 @@ class Installer_Tests extends PHPUnit_Framework_TestCase
         $this->assertEquals(true, Installer::installDatabase());
 
         $this->assertEquals(true, Installer::isInstalled());
-    }
-
-    /*
-     * Test the `createDirectories` method of the `Installer` class
-     *
-     * @depends  testGetSetting
-     */
-    public function testCreateDirectories()
-    {
-        $directories = array(
-            Installer::getSetting('thumbnail_directory'),
-            Installer::getSetting('file_directory'),
-        );
-        foreach ($directories as $key => $dir) {
-            if (substr($dir, 0, 1) === '.') {
-                $directories[$key] = dirname(__DIR__) . DIRECTORY_SEPARATOR . $dir;
-            }
-        }
-
-        // Delete directories first
-        foreach ($directories as $dir) {
-            if (file_exists($dir)) {
-                if (is_dir($dir)) {
-                    static::_rmdir($dir);
-                } else {
-                    unlink($dir);
-                }
-            }
-        }
-
-        // try it
-        $this->assertEquals(true, Installer::createDirectories());
-
-        // make sure they all exist
-        foreach ($directories as $dir) {
-            $this->assertEquals(true, Installer::createDirectories());
-            $this->assertEquals(true, is_dir($dir));
-            $this->assertEquals(true, is_readable($dir));
-            $this->assertEquals(true, is_writable($dir));
-        }
-        for ($i = 1; $i <= 6; ++$i) {
-            foreach ($directories as $dir) {
-                $dir = $dir . DIRECTORY_SEPARATOR . $i;
-                $this->assertEquals(true, is_dir($dir));
-                $this->assertEquals(true, is_readable($dir));
-                $this->assertEquals(true, is_writable($dir));
-            }
-        }
     }
 
     /*

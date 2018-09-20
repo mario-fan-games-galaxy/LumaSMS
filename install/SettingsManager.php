@@ -172,12 +172,12 @@ class SettingsManager
     }
 
     /**
-     * Read a setting by parsing the `SETTINGS_FILE` file- necessary for
+     * Read a setting by parsing the `$settingsFile` file- necessary for
      * loading a setting that has changed after the file has been included.
      *
      * @param string $setting The setting you want to read.
      *
-     * @throws Exception If `SETTINGS_FILE` can not be read.
+     * @throws Exception If `$settingsFile` can not be read.
      *
      * @return mixed The value of the setting you've read.
      *
@@ -242,7 +242,7 @@ class SettingsManager
      *
      * @param string $setting The setting you want to read.
      *
-     * @throws Exception If `SETTINGS_FILE` can not be read.
+     * @throws Exception If `$settingsFile` can not be read.
      *
      * @return mixed The value of the setting you've gotten.
      */
@@ -274,8 +274,8 @@ class SettingsManager
      *
      * @throws InvalidArgumentException If the value to set is invalid.
      * @throws InvalidArgumentException If the setting to be updated isn't found.
-     * @throws Exception                If the `SETTINGS_FILE` cannot be read.
-     * @throws Exception                If the `SETTINGS_FILE` cannot be written.
+     * @throws Exception                If the `$settingsFile` cannot be read.
+     * @throws Exception                If the `$settingsFile` cannot be written.
      *
      * @return boolean If the setting was updated successfully.
      */
