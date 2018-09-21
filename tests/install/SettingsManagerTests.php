@@ -38,7 +38,7 @@ class SettingsManagerTests extends PHPUnit_Framework_TestCase
             define(
                 'TEST_DIRECTORY',
                 dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR .
-                'tmp' . DIRECTORY_SEPARATOR .
+                'var' . DIRECTORY_SEPARATOR .
                 'tests' . DIRECTORY_SEPARATOR
             );
         }

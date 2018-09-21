@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<phpunit bootstrap="autoload.php">
+<phpunit bootstrap="src/autoload.php">
   <testsuites>
     <testsuite name="Install Tests">
       <directory suffix='.php'>tests/install</directory>

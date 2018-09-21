@@ -1,6 +1,5 @@
 # Config
-old/settings.php
-lumasms/core/settings.php
+public/old/settings.php
 
 # Logs
 *.log

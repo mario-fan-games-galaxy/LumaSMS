@@ -2,10 +2,10 @@
 <ruleset name="LumaSMS PHPCS Ruleset">
   <description>LumaSMS PHP coding standards</description>
   <!-- Files and directories to run on -->
-  <file>lumasms</file>
-  <file>install</file>
+  <file>src</file>
   <file>tests</file>
-  <file>install.php</file>
+  <file>public/index.php</file>
+  <file>public/install.php</file>
   <!-- ignore vendor files -->
   <exclude-pattern>*/vendor/*</exclude-pattern>
   <exclude-pattern>*/node_modules/*</exclude-pattern>
@@ -23,7 +23,7 @@
   <!-- PSR2: Coding Style Guide https://www.php-fig.org/psr/psr-2 -->
   <rule ref="PSR2" />
   <!-- PSR12 (draft): Extended Coding Style Guide https://github.com/php-fig/fig-standards/blob/master/proposed/extended-coding-style-guide.md -->
-  <!-- rule ref="PSR12" / -->
+  <rule ref="PSR12" />
   <!-- Comment rules -->
   <rule ref="Squiz.Commenting.FunctionComment">
     <!-- Can't use Scalar Type Hints on older PHP versions -->

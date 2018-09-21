@@ -7,7 +7,7 @@
  * Do not run these tests on a live environment, for development purposes only:
  * You will lose your database if you run these!
  *
- * Tests assume your database connection settings in `old/settings.php` are
+ * Tests assume your database connection settings in `public/old/settings.php` are
  * valid.
  *
  * @package LumaSMS
@@ -51,6 +51,7 @@ class DatabaseManagerTests extends PHPUnit_Framework_TestCase
             define(
                 'SETTINGS_FILE',
                 dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR .
+                'public' . DIRECTORY_SEPARATOR .
                 'old' . DIRECTORY_SEPARATOR .
                 'settings.php'
             );

@@ -1,7 +1,7 @@
 {
   "scripts": {
     "phpcs": "@php vendor/bin/phpcs; if [[ $? == \"1\" ]]; then exit 0; fi",
-    "phpmd": "@php vendor/bin/phpmd . text phpmd.xml --exclude */vendor/*,*/node_modules/*,*/hyliandev/*,*/lumasms/*,*/.git/* --suffixes php",
+    "phpmd": "@php vendor/bin/phpmd . text phpmd.xml --exclude */vendor/*,*/node_modules/*,*/public/old/*,*/.git/* --suffixes php",
     "phpcbf": "@php vendor/bin/phpcbf; if [[ $? == \"1\" ]]; then exit 0; fi"
   },
   "require-dev": {
