@@ -10,9 +10,7 @@
 
 namespace LumaSMS;
 
-require_once __DIR__ . DIRECTORY_SEPARATOR .
-    'install' . DIRECTORY_SEPARATOR .
-    'Autoloader.php';
+require_once __DIR__ . 'autoload.php';
 
 use LumaSMS\install\Autoloader;
 use LumaSMS\install\DatabaseManager;
@@ -21,9 +19,6 @@ use LumaSMS\install\FileManager;
 use LumaSMS\install\SettingsManager;
 use LumaSMS\install\ViewManager;
 use \Exception;
-
-$autoloader = new Autoloader();
-$autoloader->register();
 
 /*
  * Get the data managers

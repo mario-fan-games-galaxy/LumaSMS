@@ -263,11 +263,7 @@ class DatabaseManager
      * @param string $email    The email address of the new user.
      * @param string $password The password of the new user.
      *
-     * @throws InvalidArgumentException If the username is invalid.
-     * @throws InvalidArgumentException If the password is invalid.
-     * @throws InvalidArgumentException If the email is invalid.
-     * @throws Exception                If there is an issue connecting to the
-     *                                  database.
+     * @throws InvalidArgumentException If the username or email is invalid.
      * @throws Exception                If there is an issue adding the user to
      *                                  the database.
      *
@@ -279,18 +275,12 @@ class DatabaseManager
             $_SERVER['REMOTE_ADDR'] : '127.0.0.1';
 
         if (mb_strlen($username) > 32) {
-            throw new Exception('Username is too long!');
+            throw new InvalidArgumentException('Username is too long!');
             return;
         }
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             throw new InvalidArgumentException('Invalid email address: ' . $email);
             return;
-        }
-        if (!function_exists('password_hash')) {
-            // Include polyfill for password functions
-            include_once dirname(__DIR__) . DIRECTORY_SEPARATOR .
-                'old' . DIRECTORY_SEPARATOR .
-                'password.php';
         }
         $user = array(
             'gid' => 1,
@@ -304,9 +294,10 @@ class DatabaseManager
             'last_ip' => $ipAddress,
         );
 
-        $create = $this->database->prepare('INSERT INTO `' .
-            $this->applyPrefix('users') .
-            <<<'EOT'
+        try {
+            $create = $this->database->prepare('INSERT INTO `' .
+                $this->applyPrefix('users') .
+                <<<'EOT'
 ` (
     `gid`,
     `username`,
@@ -329,11 +320,14 @@ class DatabaseManager
     :last_ip
 );
 EOT
-        );
-        foreach ($user as $setting => $value) {
-            $create->bindValue(':' . $setting, $value);
+            );
+            foreach ($user as $setting => $value) {
+                $create->bindValue(':' . $setting, $value);
+            }
+            $create->execute();
+        } catch (Exception $e) {
+            throw $e;
         }
-        $create->execute();
     }
 
     /**
