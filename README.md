@@ -76,7 +76,7 @@ conduct, and the process for submitting pull requests to us.
 - [wtl420](https://github.com/wtl420)
 
 See also the list of
-[contributors](https://github.com/hyliandev/mfgg3/contributors) who participated
+[contributors](https://github.com/mario-fan-games-galaxy/LumaSMS/contributors) who participated
 in this project.
 
 ## License
