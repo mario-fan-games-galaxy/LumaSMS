@@ -6,7 +6,7 @@ CREATE TABLE `tsms_forums` (
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `can_post` text COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `can_see` text COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `last_post_date` datetime DEFAULT NULL,
+  `last_post_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ,
   `last_post_id` int(11) unsigned DEFAULT NULL,
   `last_poster_uid` int(11) unsigned DEFAULT NULL,
   `last_poster_nickname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',

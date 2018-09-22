@@ -10,6 +10,7 @@
 
 namespace LumaSMS\install;
 
+use Symfony\Component\Yaml\Yaml;
 use \InvalidArgumentException;
 use \Exception;
 
@@ -53,9 +54,9 @@ class SettingsManager
             );
             return;
         }
-        if ('.php' !== mb_substr($settingsFile, -4)) {
+        if ('.yaml' !== mb_substr($settingsFile, -5)) {
             throw new InvalidArgumentException(
-                '`' . $settingsFile . '` is not a PHP file!'
+                '`' . $settingsFile . '` is not a YAML file!'
             );
             return;
         }
@@ -79,19 +80,6 @@ class SettingsManager
     }
 
     /**
-     * Format a string value to a quoted string that can be written to a php
-     * file.
-     *
-     * @param string $value The value you want to format.
-     *
-     * @return mixed The formatted value.
-     */
-    protected function formatStringValue($value)
-    {
-        return  '\'' . str_replace("'", "\'", $value) . '\'';
-    }
-
-    /**
      * Format a boolean value to a string.
      *
      * @param mixed $value The value you want to format.
@@ -104,19 +92,9 @@ class SettingsManager
             || trim(mb_strtolower($value)) === 'false')
         ) {
             $value = trim(mb_strtolower($value)) === 'true';
-        } else {
-            $value = (bool) $value;
         }
 
-        if ($value === true) {
-            // `true` normally becomes `'1'` when converted to a string
-            $value = 'true';
-        } elseif ($value === false) {
-            // `false` normall becomes `''` when converted to a string
-            $value = 'false';
-        }
-
-        return $value;
+        return (bool) $value;
     }
 
     /**
@@ -151,9 +129,12 @@ class SettingsManager
      *
      * @return string The formatted value.
      */
-    protected function formatValue($value, $setting = false)
+    protected function formatValue($value, $setting = null)
     {
-        if (!is_string($value) && !is_numeric($value) && !is_bool($value)) {
+        if (!is_string($value)
+            && !is_numeric($value)
+            && !is_bool($value)
+            && !is_array($value)) {
             throw new InvalidArgumentException(
                 'Invalid value for setting: `' . $value . '`'
             );
@@ -164,8 +145,6 @@ class SettingsManager
             $value = $this->formatBooleanValue($value);
         } elseif (is_numeric($value)) {
             $value = $this->formatNumericValue($value);
-        } elseif (is_string($value)) {
-            $value = $this->formatStringValue($value);
         }
 
         return $value;
@@ -174,6 +153,9 @@ class SettingsManager
     /**
      * Read a setting by parsing the `$settingsFile` file- necessary for
      * loading a setting that has changed after the file has been included.
+     *
+     * @SuppressWarnings(PHPMD.CamelCaseVariableName)
+     * @SuppressWarnings(PHPMD.StaticAccess)
      *
      * @param string $setting The setting you want to read.
      *
@@ -193,14 +175,17 @@ class SettingsManager
             return false;
         }
 
-        include $this->settingsFile;
+        try {
+            $settings = Yaml::parse(file_get_contents($this->settingsFile));
+        } catch (Exception $e) {
+            $settings = false;
+        }
 
-        if (isset($_SETTINGS)
-            && is_array($_SETTINGS)
-            && isset($_SETTINGS[$setting])
+        if (is_array($settings)
+            && isset($settings[$setting])
         ) {
-            $this->settings[$setting] = $_SETTINGS[$setting];
-            return $_SETTINGS[$setting];
+            $this->settings[$setting] = $settings[$setting];
+            return $settings[$setting];
         }
 
         throw new Exception('Could not read settings!');
@@ -228,8 +213,8 @@ class SettingsManager
         }
 
         $fileManager->copyFile(
-            __DIR__ . DIRECTORY_SEPARATOR . 'settings' .
-            DIRECTORY_SEPARATOR . 'settings.default.php',
+            APP_INSTALL . DIRECTORY_SEPARATOR . 'settings' .
+            DIRECTORY_SEPARATOR . 'config.default.yaml',
             $this->settingsFile
         );
 
@@ -266,6 +251,8 @@ class SettingsManager
      * only update existing ones. If it can't find the setting, it shouldn't
      * do anything.
      *
+     * @SuppressWarnings(PHPMD.StaticAccess)
+     *
      * Settings in the settings file _must_ be 1 per line, in the format:
      * `'setting_name' => value,`
      *
@@ -273,7 +260,6 @@ class SettingsManager
      * @param mixed  $value   The value of the setting you wish to update.
      *
      * @throws InvalidArgumentException If the value to set is invalid.
-     * @throws InvalidArgumentException If the setting to be updated isn't found.
      * @throws Exception                If the `$settingsFile` cannot be read.
      * @throws Exception                If the `$settingsFile` cannot be written.
      *
@@ -282,8 +268,8 @@ class SettingsManager
     public function updateSetting($setting, $value)
     {
         try {
-            $valueString = $this->formatValue($value, $setting);
-        } catch (Exception $e) {
+            $value = $this->formatValue($value, $setting);
+        } catch (InvalidArgumentException $e) {
             throw $e;
             return false;
         }
@@ -297,34 +283,16 @@ class SettingsManager
             return false;
         }
 
-        $settingsFile = preg_split('/\R/', file_get_contents($this->settingsFile));
+        $settings = Yaml::parse(file_get_contents($this->settingsFile));
 
-        $regexSafeSetting = preg_quote($setting);
-
-        $settingFound = false;
-        foreach ($settingsFile as $lineNumber => $line) {
-            $matches = array();
-            $match = preg_match(
-                '/^(?<startingSpace>\s*)[\'"]' . $regexSafeSetting .
-                '[\'"]\s*=\s*>\s*.*,(?<endingSpace>\s*)(?:\n|$)/',
-                $line,
-                $matches
-            );
-            if ($match) {
-                $settingsFile[$lineNumber] = $matches['startingSpace'] . '\'' .
-                    $setting . '\' => ' . $valueString . ',' .
-                    $matches['endingSpace'];
-                $settingFound = true;
-                break;
-            }
-        }
-
-        if (!$settingFound) {
+        if (!isset($settings[$setting])) {
             throw new InvalidArgumentException('Setting not found.');
             return false;
         }
 
-        file_put_contents($this->settingsFile, implode(PHP_EOL, $settingsFile));
+        $settings[$setting] = $value;
+
+        file_put_contents($this->settingsFile, Yaml::dump($settings));
 
         try {
             return $this->readSetting($setting) === $value;

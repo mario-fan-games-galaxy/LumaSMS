@@ -1,24 +1,56 @@
 <?php
+/**
+ * Create/Read/Update/Delete controller.
+ *
+ * @package LumaSMS
+ * @license MIT <https://opensource.org/licenses/MIT>
+ * @author  HylianDev <supergoombario@gmail.com>
+ * @copyright Mario Fan Games Galaxy 2018 <https://www.mfgg.net>
+ */
 
+namespace LumaSMS\core;
+
+use LumaSMS\models\CommentsModel;
+
+/**
+ * Create/Read/Update/Delete controller.
+ */
 class CRUDController extends Controller
 {
+    /**
+     * @var string The model type we're dealing with.
+     */
     protected $type = '';
+
+    /**
+     * @var array Variables to manage a JOIN SQL cluase.
+     */
     protected $join = [];
+
+    /**
+     * @var array Variables to manage a WHERE SQL clause.
+     */
     protected $where = [];
 
+    /**
+     * Display an archive of items in the model, like WordPress.
+     *
+     * @SuppressWarnings(PHPMD.Superglobals)
+     *
+     * @return void
+     */
     public function archive()
     {
+        $page = 1;
         if (!empty($GLOBALS['params']) && is_numeric($GLOBALS['params'][0])) {
             $page = $GLOBALS['params'][0];
-        } else {
-            $page = 1;
         }
 
-        $class = $this->type . 'Model';
+        $class = '\\LumaSMS\\models\\' . $this->type . 'Model';
 
         $objects = new $class();
 
-        $objects = $objects->Read([
+        $objects = $objects->read([
             'page' => $page,
             'join' => $this->join,
             'where' => $this->where,
@@ -32,37 +64,30 @@ class CRUDController extends Controller
         ]);
     }
 
+    /**
+     * Display a single item in the model.
+     *
+     * @SuppressWarnings(PHPMD.Superglobals)
+     *
+     * @return void
+     */
     public function single()
     {
+        $oid = 1;
         if (!empty($GLOBALS['params']) && is_numeric($GLOBALS['params'][0])) {
             $oid = $GLOBALS['params'][0];
-        } else {
-            $oid = 1;
         }
 
-
-
-
-
+        $commentsPage = 1;
         if (!empty($GLOBALS['params'][2]) && is_numeric($GLOBALS['params'][2])) {
             $commentsPage = $GLOBALS['params'][2];
-        } else {
-            $commentsPage = 1;
         }
 
-
-
-
-
-        $class = $this->type . 'Model';
+        $class = '\\LumaSMS\\models\\' . $this->type . 'Model';
         $object = new $class();
         $comments = new CommentsModel();
 
-
-
-
-
-        $object = $object->Read([
+        $object = $object->read([
             'limit' => 1,
             'where' => [
                 [
@@ -71,10 +96,6 @@ class CRUDController extends Controller
                 ]
             ]
         ]);
-
-
-
-
 
         if (empty($object['data'])) {
             echo template('information', [
@@ -85,17 +106,9 @@ class CRUDController extends Controller
             return;
         }
 
-
-
-
-
         $object = $object['data'][0]->data;
 
-
-
-
-
-        $comments = $comments->Read([
+        $comments = $comments->read([
             'page' => $commentsPage,
             'where' => [
                 [
@@ -108,10 +121,6 @@ class CRUDController extends Controller
                 ]
             ]
         ]);
-
-
-
-
 
         echo template($this->type . '/single', [
             'object' => $object,

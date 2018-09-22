@@ -1,56 +1,20 @@
 <?php
 /**
- * Router for LumaSMS.
+ * Main router.
  *
  * @package LumaSMS
  * @license MIT <https://opensource.org/licenses/MIT>
  * @author  HylianDev <supergoombario@gmail.com>
+ * @author  World's Tallest Ladder <wtl420@users.noreply.github.com>
  * @copyright Mario Fan Games Galaxy 2018 <https://www.mfgg.net>
  */
 
-// phpcs:disable PSR1.Files.SideEffects
-if (!defined('APP_SRC')) {
-    define(
-        'APP_SRC',
-        dirname(__DIR__) . DIRECTORY_SEPARATOR .
-        'src'
-    );
-}
+// Load the autoloader first.
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR .
+    'src' . DIRECTORY_SEPARATOR .
+    'autoload.php';
 
-require_once APP_SRC . DIRECTORY_SEPARATOR . 'autoload.php';
-
-/**
- * Use this if you ever need to suddenly kill because of a fatal error
- *
- * @author  HylianDev <supergoombario@gmail.com>
- *
- * @SuppressWarnings(PHPMD.ExitExpression)
- *
- * @param Exception $exception The exception, or just a log string, This gets
- *                             added to the `fatality.log`. There is no other
- *                             information except for the date.
- * @return void
- */
-function Fatality(Exception $exception)
-{
-    $errorlog = dirname(__DIR__) . DIRECTORY_SEPARATOR .
-        'var' . DIRECTORY_SEPARATOR .
-        'logs' . DIRECTORY_SEPARATOR .
-        'fatality.log';
-
-    if (!file_exists($errorlog)) {
-        file_put_contents($errorlog, '');
-    }
-
-    file_put_contents(
-        $errorlog,
-        file_get_contents($errorlog) .
-        '[ ' . date('m/d/Y g:i:sa', time()) . ' ]' . PHP_EOL . $exception . PHP_EOL . PHP_EOL
-    );
-
-    die('<h1>FATAL ERROR</h1>');
-}
-// phpcs:enable PSR1.Files.SideEffects
+use LumaSMS\controllers\InformationController;
 
 /*
  * Pull in all the important system files
@@ -85,9 +49,30 @@ foreach ([
  *
  * It creates an instance of whatever database driver is defined in Settings
  */
-$database = S()['database']['driver'];
+$database = settings()['database']['driver'];
+$database = 'LumaSMS\dbdrivers\\' . $database;
 $database = new $database();
 
+/*
+ * An associative array that corresponds to URI requests
+ *
+ * The value should be the desired controller @ the desired method
+ * within that controller
+ */
+$GLOBALS['routes'] = [
+    'users/staff' => 'UsersController@staff'
+];
+
+foreach ([
+    'updates',
+    'sprites',
+    'games',
+    'sounds',
+    'howtos',
+    'misc'
+] as $crud) {
+    CRUDRoute($crud);
+}
 /*
  * Get the route from the `uri` parameter via GET
  *
@@ -164,4 +149,4 @@ $yield = ob_get_clean();
 /**
  * Finally, require the template and show the page
  */
-require_once APP_SRC . DIRECTORY_SEPARATOR . 'template.php';
+require_once APP_TEMPLATES . DIRECTORY_SEPARATOR . 'template.php';

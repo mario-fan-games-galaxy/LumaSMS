@@ -7,9 +7,6 @@
  * Do not run these tests on a live environment, for development purposes only:
  * You will lose your database if you run these!
  *
- * Tests assume your database connection settings in `settings.php` are valid
- * (other settings will be overwritten).
- *
  * @package LumaSMS
  * @license MIT <https://opensource.org/licenses/mit>
  * @author  World's Tallest Ladder <wtl420@users.noreply.github.com>
@@ -29,6 +26,8 @@ class EnvironmentManagerTests extends PHPUnit_Framework_TestCase
 
     /**
      * Test the `getUrl()` method of the `EnvironmentManager` class
+     *
+     * @SuppressWarnings(PHPMD.Superglobals)
      *
      * @return void
      */

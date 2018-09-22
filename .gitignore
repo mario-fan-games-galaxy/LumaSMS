@@ -1,5 +1,5 @@
 # Config
-public/old/settings.php
+config/config.yaml
 
 # Logs
 *.log

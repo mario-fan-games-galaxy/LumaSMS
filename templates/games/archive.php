@@ -1,4 +1,14 @@
-<h1 id="page-title">
+<?php
+/**
+ * Games archive template.
+ *
+ * @package LumaSMS
+ * @license MIT <https://opensource.org/licenses/MIT>
+ * @author  HylianDev <supergoombario@gmail.com>
+ * @copyright Mario Fan Games Galaxy 2018 <https://www.mfgg.net>
+ */
+
+?><h1 id="page-title">
     Games
 </h1>
 
@@ -24,11 +34,13 @@
 
 
 
-<ul class="list-games"><?php foreach ($objects as $object) : ?>
+<ul class="list-games">
+<?php foreach ($objects as $object) : ?>
     <li>
         <?=template('games/small', $object->data)?>
     </li>
-                       <?php endforeach; ?></ul>
+<?php endforeach; ?>
+</ul>
 
 
 

@@ -1,4 +1,14 @@
-<h1 id="page-title">
+<?php
+/**
+ * The updates archive template.
+ *
+ * @package LumaSMS
+ * @license MIT <https://opensource.org/licenses/MIT>
+ * @author  HylianDev <supergoombario@gmail.com>
+ * @copyright Mario Fan Games Galaxy 2018 <https://www.mfgg.net>
+ */
+
+?><h1 id="page-title">
     Updates
 </h1>
 
@@ -24,11 +34,13 @@
 
 
 
-<ul class="list-updates"><?php foreach ($objects as $object) : ?>
+<ul class="list-updates">
+<?php foreach ($objects as $object) : ?>
     <li>
         <?=template('updates/small', $object->data)?>
     </li>
-                         <?php endforeach; ?></ul>
+<?php endforeach; ?>
+</ul>
 
 
 

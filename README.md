@@ -1,8 +1,9 @@
-# MFGG powered by LumaSMS
+# LumaSMS
 
 LumaSMS is a new site management software being built for compatibility with
-Taloncrossing Site Managament System. It's being built specifically for Mario
-Fan Games Galaxy, but may be useful for other sites that store fanworks.
+Taloncrossing Site Managament System. It's being built specifically for
+[Mario Fan Games Galaxy](https://mfgg.net/), but may be useful for other sites
+that store fanworks.
 
 ## Getting Started
 
@@ -14,101 +15,55 @@ on how to deploy the project on a live system.
 
 What things you need to install the software and how to install them
 
-```
-An Apache 2.2 or higher server
-PHP 5.4.16 or higher (TCSMS does not work with PHP7 but it will not be necessary later on)
-MySQL 5.5 or higher
-```
+- An Apache 2.2 or higher server
+- PHP 5.4.16 or higher
+  (TCSMS does not work with PHP7 but it will not be necessary later on)
+- MySQL 5.5 or higher
 
 You'll also want [Composer](https://getcomposer.org/) for PHP dependencies.
+For public releases, we'll include the `vendor` directory for you so composer
+won't be necessary; right now this repo is primarily aimed at developers.
 
 To get going quick on Windows, just install XAMPP.
 
 ### Installing
 
-Copy the files into your web directory. If you're using XAMMP, you can copy the
-files into your `/../xampp/htdocs/` directory.
+Copy the files into your web directory. If you're using XAMPP, you can copy the
+files into your `/../xampp/htdocs/` directory. At the moment you'll want to
+configure your webserver to point to the `public` directory- NOT the root
+of this project; we'll add an `.htaccess` to handle that in the near future.
 
 After installing, make sure to run `composer install` to install all the
 PHP dependencies.
 
 #### Using the installer (Recommended)
 
-Once the files are copied over head to `./hyliandev/install/` in your web
+Once the files are copied over head to `./install.php` in your web
 browser. Follow the instructions and you should have a copy of LumaSMS up and
 running in no time!
 
 #### Manual Install
 
 If the installer isn't working for you for whatever reason, follow these
-instructions.
+instructions. (And please report an issue with the installer if there is one.)
 
-Copy `./install/settings.default.php` to `./hyliandev/settings.php`.
+Copy `./src/install/settings/config.default.yaml` to `./config/config.yaml`.
 
-By default, the `settings.php` file runs with a database named `mfgg` and
+By default, the `config.yaml` file runs with a database named `mfgg` and
 connects to a server on `localhost` with the username `root` and no password.
-Copy this setup or modify the settings starting with `db_` in the
-`settings.php` file.
+Copy this setup or modify the `database` settings in the `config.yaml` file.
 
-Now, run all of the SQL files in `./install/`, in this order:
+Now, run all of the SQL files in `./src/install/sql/`, in this order:
 
-- `mfgg.sql` (this one contains a basic TCSMS database structure)
-- `mfgg_update.sql` (this one updates the TCSMS database tables with some necessary additions)
-- Then everything in the `./install/sql/` directory (these create tables that are unique to LumaSMS)
-
-Lastly, create a directory named `tcsms` in your parent directory. Inside that,
-create two directories: `file` and `thumbnail`. Finally, put numbered folders
-`1` through `6` in each. This folder is where content is being stored, as of
-right now. This will change.
-
-TCSMS source code isn't available here because it isn't open-source.
-
-## How does it work?
-
-### Template
-
-`./hyliandev/template.php` contains everything before and after the page content
-
-### Pages
-
-Files under `./hyliandev/pages/` can be loaded by adding their path to your URL.
-
-For example: to load `./hyliandev/pages/test.php`, you would add `/test` to your URL.
-
-### Models
-
-`./hyliandev/model.php` contains a class called `Model`. It contains methods for
-creating, reading, updating, and deleting different database items. You should
-extend the `Model` class if you want to access a new database item.
-
-There isn't a great deal of abstraction in the `Model` classes yet. Maybe this
-should be fixed.
-
-### Themes
-
-Themes aren't ready yet. All theme elements are currently in
-`./hyliandev/theme/base/`.
-
-### Views
-
-A "view" is a template file you can include anywhere in the page. They can be
-included using the `view($file,$vars)` function.
-
-The `$file` parameter is the path to the view you're trying to include from
-`./hyliandev/views/`, without the `.php` extension.
-
-The `$vars` parameter is an associative array of variables you want to be
-local in scope to the view file.
-
-### User
-
-The `user.php` file contains a static class called `User`. You can get the
-currently logged in user as an object by calling `User::GetCurrentUser()`.
+- `00-mfgg.sql` (this one contains a basic TCSMS database structure)
+- `01-mfgg-update.sql` (this one updates the TCSMS database tables with some necessary additions)
+- Then everything else (these create tables that are unique to LumaSMS)
 
 ## Built With
 
 - Raw PHP; no pre-existing framework
-- `password.php` is a library I'm using for proper password hashing before PHP 5.5
+- [password_compat](https://github.com/ircmaxell/password_compat) - polyfill for PHP 5.5 password functions.
+- [Symfony YAML Component](https://symfony.com/doc/2.8/components/yaml.html) - For managing our yaml config file.
 
 ## Contributing
 
@@ -117,7 +72,8 @@ conduct, and the process for submitting pull requests to us.
 
 ## Authors
 
-- **HylianDev** - _Project leader_
+- [HylianDev](https://github.com/hyliandev) - Project lead
+- [wtl420](https://github.com/wtl420)
 
 See also the list of
 [contributors](https://github.com/hyliandev/mfgg3/contributors) who participated
@@ -130,7 +86,6 @@ This project is licensed under the MIT License - see the
 
 ## Acknowledgments
 
-- Theme by Kritter
-- Buttons by Mors
-- Name by Yoshin
-- Github made better by @wtl420 's advice
+- Theme by [Kritter](https://forums.mfgg.net/member.php?action=profile&uid=8)
+- Buttons by [Mors](https://forums.mfgg.net/member.php?action=profile&uid=24)
+- "LumaSMS" name by [Yoshin](https://forums.mfgg.net/member.php?action=profile&uid=7)

@@ -25,6 +25,8 @@ class EnvironmentManager
     /**
      * Get the current protocol of the script, such as `https` or `http`.
      *
+     * @SuppressWarnings(PHPMD.Superglobals)
+     *
      * @return string The current protocol the script is running from.
      *                Will return an empty string if it can't be found.
      */
@@ -45,6 +47,8 @@ class EnvironmentManager
     /**
      * Get the path of the script, seperate from the URL.
      *
+     * @SuppressWarnings(PHPMD.Superglobals)
+     *
      * @return string The path of the script.
      *                Will return an empty string if it can't be found.
      */
@@ -61,6 +65,8 @@ class EnvironmentManager
 
     /**
      * Get the port of the script.
+     *
+     * @SuppressWarnings(PHPMD.Superglobals)
      *
      * @param string $protocol If the port is the standard for the protocol,
      *                         will return an empty string.
@@ -94,6 +100,8 @@ class EnvironmentManager
 
     /**
      * Get the current host of the script.
+     *
+     * @SuppressWarnings(PHPMD.Superglobals)
      *
      * @return string The host of the script.
      *                Will return an empty string if it can't be found.
@@ -201,6 +209,8 @@ class EnvironmentManager
      * Gather some information about the Webserver environment. Any information
      * that can not be retrieved is returned as `Unknown` and `compatible` is
      * set to `true`.
+     *
+     * @SuppressWarnings(PHPMD.Superglobals)
      *
      * @return mixed[] Returns an array including version numbers and if the
      *                 version is good to use or not, as well as additional details

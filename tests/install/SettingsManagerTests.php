@@ -7,9 +7,6 @@
  * Do not run these tests on a live environment, for development purposes only:
  * You will lose your database if you run these!
  *
- * Tests assume your database connection settings in `settings.php` are valid
- * (other settings will be overwritten).
- *
  * @package LumaSMS
  * @license MIT <https://opensource.org/licenses/mit>
  * @author  World's Tallest Ladder <wtl420@users.noreply.github.com>
@@ -42,10 +39,10 @@ class SettingsManagerTests extends PHPUnit_Framework_TestCase
                 'tests' . DIRECTORY_SEPARATOR
             );
         }
-        if (!defined('SETTINGS_FILE')) {
+        if (!defined('TEST_SETTINGS_FILE')) {
             define(
-                'SETTINGS_FILE',
-                TEST_DIRECTORY . 'settings.php'
+                'TEST_SETTINGS_FILE',
+                TEST_DIRECTORY . 'config.yaml'
             );
         }
     }
@@ -57,7 +54,7 @@ class SettingsManagerTests extends PHPUnit_Framework_TestCase
      */
     public function testCreateSettingsFile()
     {
-        $settingsManager = new SettingsManager(SETTINGS_FILE);
+        $settingsManager = new SettingsManager(TEST_SETTINGS_FILE);
 
         $this->assertEquals(
             true,
@@ -66,7 +63,7 @@ class SettingsManagerTests extends PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             true,
-            file_exists(SETTINGS_FILE)
+            file_exists(TEST_SETTINGS_FILE)
         );
     }
 
@@ -77,7 +74,7 @@ class SettingsManagerTests extends PHPUnit_Framework_TestCase
      */
     public function testGetSetting()
     {
-        $settingsManager = new SettingsManager(SETTINGS_FILE);
+        $settingsManager = new SettingsManager(TEST_SETTINGS_FILE);
 
         // This one's always true.
         $this->assertEquals(
@@ -96,7 +93,7 @@ class SettingsManagerTests extends PHPUnit_Framework_TestCase
      */
     public function testGetSettingException()
     {
-        $settingsManager = new SettingsManager(SETTINGS_FILE);
+        $settingsManager = new SettingsManager(TEST_SETTINGS_FILE);
 
         $this->setExpectedException(
             'Exception',
@@ -115,7 +112,7 @@ class SettingsManagerTests extends PHPUnit_Framework_TestCase
      */
     public function testUpdateSetting()
     {
-        $settingsManager = new SettingsManager(SETTINGS_FILE);
+        $settingsManager = new SettingsManager(TEST_SETTINGS_FILE);
 
         // Try updating a real setting
         $originalValue = $settingsManager->getSetting(
@@ -154,7 +151,7 @@ class SettingsManagerTests extends PHPUnit_Framework_TestCase
      */
     public function testUpdateSettingInvalidArgumentException()
     {
-        $settingsManager = new SettingsManager(SETTINGS_FILE);
+        $settingsManager = new SettingsManager(TEST_SETTINGS_FILE);
 
         $this->setExpectedException(
             'InvalidArgumentException',
@@ -171,7 +168,10 @@ class SettingsManagerTests extends PHPUnit_Framework_TestCase
         );
         $this->assertEquals(
             false,
-            $settingsManager->updateSetting('session_hotlink_protection', [])
+            $settingsManager->updateSetting(
+                'session_hotlink_protection',
+                (new \stdClass())
+            )
         );
     }
 
@@ -183,7 +183,17 @@ class SettingsManagerTests extends PHPUnit_Framework_TestCase
      */
     public function testUpdateSettingException()
     {
-        // If I come up with a way to test if `SETTINGS_FILE` cannot be read
-        // or written to, do it here.
+        // If I come up with a way to test if `TEST_SETTINGS_FILE` cannot be
+        // read or written to, do it here.
+    }
+
+    /**
+     * Do some cleanup after the tests.
+     */
+    public function __destruct()
+    {
+        if (file_exists(TEST_SETTINGS_FILE)) {
+            unlink(TEST_SETTINGS_FILE);
+        }
     }
 }

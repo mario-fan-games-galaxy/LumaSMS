@@ -1,9 +1,20 @@
 <?php
+/**
+ * Route related functions
+ *
+ * @package LumaSMS
+ * @license MIT <https://opensource.org/licenses/MIT>
+ * @author  HylianDev <supergoombario@gmail.com>
+ * @copyright Mario Fan Games Galaxy 2018 <https://www.mfgg.net>
+ */
 
 /**
  * Function for easily adding a CRUD controller to the routes
  *
- * @param string $type CRUD Controller to add to routes
+ * @SuppressWarnings(PHPMD.Superglobals)
+ *
+ * @param string $type CRUD Controller to add to routes.
+ *
  * @return void
  */
 function CRUDRoute($type)
@@ -13,32 +24,11 @@ function CRUDRoute($type)
         'archive',
         'single'
     ] as $method) {
-        if ($method == false) {
-            $_method = 'archive';
-        } else {
-            $_method = $method;
+        $controllerMethod = $method;
+        if (!$method) {
+            $controllerMethod = 'archive';
         }
-        
-        $GLOBALS['routes'][$type . ($method ? '/' . $method : '')] = $type . 'Controller@' . $_method;
+
+        $GLOBALS['routes'][$type . ($method ? '/' . $method : '')] = $type . 'Controller@' . $controllerMethod;
     }
-}
-
-/**
- * An associative array that corresponds to URI requests
- *
- * The value should be the desired controller @ the desired method within that controller
- */
-$routes = [
-    'users/staff' => 'UsersController@staff'
-];
-
-foreach ([
-    'updates',
-    'sprites',
-    'games',
-    'sounds',
-    'howtos',
-    'misc'
-] as $crud) {
-    CRUDRoute($crud);
 }

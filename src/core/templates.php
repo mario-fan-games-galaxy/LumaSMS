@@ -1,6 +1,6 @@
 <?php
 /**
- * Template manager for LumaSMS.
+ * Template manager.
  *
  * @package LumaSMS
  * @license MIT <https://opensource.org/licenses/MIT>

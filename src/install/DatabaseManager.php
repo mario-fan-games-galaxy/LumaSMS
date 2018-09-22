@@ -38,6 +38,7 @@ class DatabaseManager
      * @param string $username The username of the database user, such as `admin`.
      * @param string $password The password of the database user, such as `hunter2`.
      * @param string $prefix   The table prefix for database tables, such as `mfgg_`.
+     *                         This is optional.
      *
      * @throws Exception If there was an error connecting to the database.
      *
@@ -199,16 +200,17 @@ class DatabaseManager
      */
     public function installDatabase()
     {
-        $sql_contents = scandir(__DIR__ . DIRECTORY_SEPARATOR . 'sql');
-        foreach ($sql_contents as $item) {
+        $mysqlFiles = [];
+        $sqlContents = scandir(__DIR__ . DIRECTORY_SEPARATOR . 'sql');
+        foreach ($sqlContents as $item) {
             if ('.sql' === mb_substr($item, -4, 4)) {
-                $mysql_files[] = __DIR__ . DIRECTORY_SEPARATOR . 'sql' . DIRECTORY_SEPARATOR . $item;
+                $mysqlFiles[] = __DIR__ . DIRECTORY_SEPARATOR . 'sql' . DIRECTORY_SEPARATOR . $item;
             }
         }
 
-        sort($sql_contents);
+        sort($sqlContents);
 
-        foreach ($mysql_files as $file) {
+        foreach ($mysqlFiles as $file) {
             try {
                 if (!$this->importMySQLFile($file)) {
                     return false;
@@ -258,6 +260,8 @@ class DatabaseManager
 
     /**
      * Create an admin user, typically the site owner
+     *
+     * @SuppressWarnings(PHPMD.Superglobals)
      *
      * @param string $username The username of the new user.
      * @param string $email    The email address of the new user.

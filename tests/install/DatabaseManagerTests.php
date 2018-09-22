@@ -7,7 +7,7 @@
  * Do not run these tests on a live environment, for development purposes only:
  * You will lose your database if you run these!
  *
- * Tests assume your database connection settings in `public/old/settings.php` are
+ * Tests assume your database connection settings in `config/config.yaml` are
  * valid.
  *
  * @package LumaSMS
@@ -47,24 +47,15 @@ class DatabaseManagerTests extends PHPUnit_Framework_TestCase
      */
     public function __construct()
     {
-        if (!defined('SETTINGS_FILE')) {
-            define(
-                'SETTINGS_FILE',
-                dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR .
-                'public' . DIRECTORY_SEPARATOR .
-                'old' . DIRECTORY_SEPARATOR .
-                'settings.php'
-            );
-        }
-        $settingsManager = new SettingsManager(SETTINGS_FILE);
+        $settingsManager = new SettingsManager(CONFIG_FILE);
         $this->databaseManager = new DatabaseManager(
-            $settingsManager->getSetting('db_host'),
-            $settingsManager->getSetting('db_name'),
-            $settingsManager->getSetting('db_user'),
-            $settingsManager->getSetting('db_pass'),
-            $settingsManager->getSetting('db_prefix')
+            $settingsManager->getSetting('database')['hostname'],
+            $settingsManager->getSetting('database')['dbname'],
+            $settingsManager->getSetting('database')['username'],
+            $settingsManager->getSetting('database')['password'],
+            $settingsManager->getSetting('database')['prefix']
         );
-        $this->prefix = $settingsManager->getSetting('db_prefix');
+        $this->prefix = $settingsManager->getSetting('database')['prefix'];
     }
 
     /**
@@ -147,27 +138,27 @@ class DatabaseManagerTests extends PHPUnit_Framework_TestCase
             $this->databaseManager->installDatabase();
         }
 
-        $keep_tables = array(
+        $keepTables = array(
             'filter_group',
             'filter_multi',
             'filter_use',
             'groups',
         );
-        foreach ($keep_tables as $key => $table) {
-            $keep_tables[$key] = $this->applyPrefix($table);
+        foreach ($keepTables as $key => $table) {
+            $keepTables[$key] = $this->applyPrefix($table);
         }
 
         $this->assertEquals(true, $this->databaseManager->emptyInstall());
 
         // To check this we're going to connect to the database on our own.
-        $settingsManager = new SettingsManager(SETTINGS_FILE);
+        $settingsManager = new SettingsManager(CONFIG_FILE);
         try {
             $database = new PDO(
                 'mysql:' .
-                'host=' . $settingsManager->getSetting('db_host') . ';' .
-                'dbname=' . $settingsManager->getSetting('db_name') . ';',
-                $settingsManager->getSetting('db_user'),
-                $settingsManager->getSetting('db_pass')
+                'host=' . $settingsManager->getSetting('database')['hostname'] . ';' .
+                'dbname=' . $settingsManager->getSetting('database')['dbname'] . ';',
+                $settingsManager->getSetting('database')['username'],
+                $settingsManager->getSetting('database')['password']
             );
         } catch (Exception $e) {
             echo $e . PHP_EOL;
@@ -186,7 +177,7 @@ class DatabaseManagerTests extends PHPUnit_Framework_TestCase
             $tables[] = $table;
         }
         foreach ($tables as $table) {
-            if (in_array($table, $keep_tables, true)) {
+            if (in_array($table, $keepTables, true)) {
                 continue;
             }
             $result = $database->query("SELECT COUNT(*) FROM `$table`;");
@@ -273,14 +264,14 @@ class DatabaseManagerTests extends PHPUnit_Framework_TestCase
         );
 
         // Make sure it exists
-        $settingsManager = new SettingsManager(SETTINGS_FILE);
+        $settingsManager = new SettingsManager(CONFIG_FILE);
         try {
             $database = new PDO(
                 'mysql:' .
-                'host=' . $settingsManager->getSetting('db_host') . ';' .
-                'dbname=' . $settingsManager->getSetting('db_name') . ';',
-                $settingsManager->getSetting('db_user'),
-                $settingsManager->getSetting('db_pass')
+                'host=' . $settingsManager->getSetting('database')['hostname'] . ';' .
+                'dbname=' . $settingsManager->getSetting('database')['dbname'] . ';',
+                $settingsManager->getSetting('database')['username'],
+                $settingsManager->getSetting('database')['password']
             );
         } catch (Exception $e) {
             echo $e . PHP_EOL;

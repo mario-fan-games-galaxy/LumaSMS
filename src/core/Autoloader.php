@@ -1,6 +1,6 @@
 <?php
 /**
- * The autoloader for the installer classes.
+ * The autoloader for classes in the LumaSMS namespace.
  *
  * @package LumaSMS
  * @license MIT <https://opensource.org/licenses/MIT>
@@ -8,10 +8,10 @@
  * @copyright Mario Fan Games Galaxy 2018 <https://www.mfgg.net>
  */
 
-namespace LumaSMS\install;
+namespace LumaSMS\core;
 
 /**
- * The autoloader class for the installer classes,
+ * The autoloader class for LumaSMS classes,
  * based on an example here:
  * https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md
  */
@@ -24,14 +24,6 @@ class Autoloader
      * @var array
      */
     protected $prefixes = [];
-
-    /**
-     * Constructor for the Autoloader
-     */
-    public function __construct()
-    {
-        $this->appendNamespace('LumaSMS\install', __DIR__);
-    }
 
     /**
      * Register loader with SPL autoloader stack.

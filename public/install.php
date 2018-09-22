@@ -1,6 +1,6 @@
 <?php
 /**
- * Installer file for LumaSMS.
+ * Installer.
  *
  * @package LumaSMS
  * @license MIT <https://opensource.org/licenses/MIT>
@@ -8,8 +8,7 @@
  * @copyright Mario Fan Games Galaxy 2018 <https://www.mfgg.net>
  */
 
-namespace LumaSMS;
-
+// Load the autoloader first.
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR .
     'src' . DIRECTORY_SEPARATOR .
     'autoload.php';
@@ -62,9 +61,7 @@ $errors = [];
  * Check if we can create settings file.
  */
 
-$settingsFile = __DIR__ . DIRECTORY_SEPARATOR .
-    'old' . DIRECTORY_SEPARATOR .
-    'settings.php';
+$settingsFile = CONFIG_FILE;
 $installed = false;
 try {
     $settingsManager = new SettingsManager($settingsFile);
@@ -82,11 +79,11 @@ EOT;
 if ($settingsManager) {
     try {
         $databaseManager = new DatabaseManager(
-            $settingsManager->getSetting('db_host'),
-            $settingsManager->getSetting('db_name'),
-            $settingsManager->getSetting('db_user'),
-            $settingsManager->getSetting('db_pass'),
-            $settingsManager->getSetting('db_prefix')
+            $settingsManager->getSetting('database')['hostname'],
+            $settingsManager->getSetting('database')['dbname'],
+            $settingsManager->getSetting('database')['username'],
+            $settingsManager->getSetting('database')['password'],
+            $settingsManager->getSetting('database')['prefix']
         );
         $installed = $databaseManager->isInstalled();
     } catch (Exception $exception) {
@@ -112,36 +109,40 @@ $mainData = [
  * Do the work of each step.
  */
 if ($_GET['step'] === 1) {
-    $environment = $environmentManager->getEnvironment();
-    $compatible = $environment['php']['compatible'] &&
-        $environment['mysql']['compatible'] &&
-        $environment['webserver']['compatible'];
-    $environmentTemplateVariables = [
-        'php_version' => $environment['php']['version'],
-        'php_compatible' => $environment['php']['compatible'] ? 'Yes' : 'No',
-        'mysql_version' => $environment['mysql']['version'],
-        'mysql_compatible' => $environment['mysql']['compatible'] ? 'Yes' : 'No',
-        'webserver_software' => $environment['webserver']['software'],
-        'webserver_version' => $environment['webserver']['version'],
-        'webserver_os' => $environment['webserver']['operating_system'],
-        'webserver_compatible' => $environment['mysql']['compatible'] ? 'Yes' : 'No',
-    ];
-    $phpExtensionsHtml = '';
-    foreach ($environment['php']['extensions'] as $extension) {
-        $phpExtensionsHtml .= $templateManager->template('list-item', [
-            'content' => $extension,
-        ]) . PHP_EOL;
-    }
-    $environmentTemplateVariables['php_extensions'] = $phpExtensionsHtml;
-    $mainData['content'] = $templateManager->template('environment', $environmentTemplateVariables);
+    if ($ignoreInstalled || !$installed) {
+        $environment = $environmentManager->getEnvironment();
+        $compatible = $environment['php']['compatible'] &&
+            $environment['mysql']['compatible'] &&
+            $environment['webserver']['compatible'];
+        $environmentTemplateVariables = [
+            'php_version' => $environment['php']['version'],
+            'php_compatible' => $environment['php']['compatible'] ? 'Yes' : 'No',
+            'mysql_version' => $environment['mysql']['version'],
+            'mysql_compatible' => $environment['mysql']['compatible'] ? 'Yes' : 'No',
+            'webserver_software' => $environment['webserver']['software'],
+            'webserver_version' => $environment['webserver']['version'],
+            'webserver_os' => $environment['webserver']['operating_system'],
+            'webserver_compatible' => $environment['mysql']['compatible'] ? 'Yes' : 'No',
+        ];
+        $phpExtensionsHtml = '';
+        foreach ($environment['php']['extensions'] as $extension) {
+            $phpExtensionsHtml .= $templateManager->template('list-item', [
+                'content' => $extension,
+            ]) . PHP_EOL;
+        }
+        $environmentTemplateVariables['php_extensions'] = $phpExtensionsHtml;
+        $mainData['content'] = $templateManager->template('environment', $environmentTemplateVariables);
 
-    if ($compatible) {
-        $mainData['content'] .= PHP_EOL . $templateManager->template('environment-next', [
-            'action' => strtok($environmentManager->getUrl(), '?') . '?step=2',
-            'compatible' => (int) $compatible,
-        ]);
+        if ($compatible) {
+            $mainData['content'] .= PHP_EOL . $templateManager->template('environment-next', [
+                'action' => strtok($environmentManager->getUrl(), '?') . '?step=2',
+                    'compatible' => (int) $compatible,
+                ]);
+        } else {
+            $mainData['content'] .= PHP_EOL . $templateManager->template('environment-bad');
+        }
     } else {
-        $mainData['content'] .= PHP_EOL . $templateManager->template('environment-bad');
+        $mainData['content'] = '';
     }
 } elseif ($_GET['step'] === 2) {
     $mainData['content'] = $templateManager->template('settings', [
@@ -150,11 +151,11 @@ if ($_GET['step'] === 1) {
         'thumbnail_directory' => $settingsManager->getSetting('thumbnail_directory'),
         'file_directory' => $settingsManager->getSetting('file_directory'),
         'session_hotlink_protection' => $settingsManager->getSetting('session_hotlink_protection'),
-        'db_host' => $settingsManager->getSetting('db_host'),
-        'db_name' => $settingsManager->getSetting('db_name'),
-        'db_user' => $settingsManager->getSetting('db_user'),
-        'db_pass' => $settingsManager->getSetting('db_pass'),
-        'db_prefix' => $settingsManager->getSetting('db_prefix'),
+        'db_host' => $settingsManager->getSetting('database')['hostname'],
+        'db_name' => $settingsManager->getSetting('database')['dbname'],
+        'db_user' => $settingsManager->getSetting('database')['username'],
+        'db_pass' => $settingsManager->getSetting('database')['password'],
+        'db_prefix' => $settingsManager->getSetting('database')['prefix'],
         'date_format' => $settingsManager->getSetting('date_format'),
         'date_setting' => $settingsManager->getSetting('date_setting'),
         'login_attempts_max' => $settingsManager->getSetting('login_attempts_max'),
@@ -172,10 +173,15 @@ if ($_GET['step'] === 1) {
     if (!$databaseManager) {
         die('Database not loaded.');
     }
-    $settingsManager->updateSetting('db_host', $_POST['db_host']);
-    $settingsManager->updateSetting('db_name', $_POST['db_name']);
-    $settingsManager->updateSetting('db_user', $_POST['db_user']);
-    $settingsManager->updateSetting('db_pass', $_POST['db_pass']);
+    $databaseSettings = [
+        'hostname' => $_POST['db_host'],
+        'dbname' => $_POST['db_name'],
+        'username' => $_POST['db_user'],
+        'password' => $_POST['db_pass'],
+        'prefix' => 'tsms_',
+        'driver' => 'MySQLDatabaseDriver',
+    ];
+    $settingsManager->updateSetting('database', $databaseSettings);
     $settingsManager->updateSetting('site_name', $_POST['site_name']);
     $settingsManager->updateSetting('site_abbr', $_POST['site_abbr']);
     // Install database.
