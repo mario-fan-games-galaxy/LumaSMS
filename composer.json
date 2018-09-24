@@ -21,7 +21,6 @@
   "require": {
     "php": ">=5.4.16",
     "ircmaxell/password-compat": "^1.0",
-    "symfony/yaml": "^2.8",
-    "symfony/apache-pack": "^1.0"
+    "symfony/yaml": "^2.8"
   }
 }
