@@ -67,7 +67,7 @@ Now, run all of the SQL files in `./src/install/sql/`, in this order:
 - [jQuery](https://jquery.com/)
 - [Bootstrap](https://getbootstrap.com/)
 - [Font Awesome](https://fontawesome.com/)
-- [hightloght.js](https://highlightjs.org/)
+- [hightlight.js](https://highlightjs.org/)
 - [password_compat](https://github.com/ircmaxell/password_compat)
 - [Symfony YAML Component](https://symfony.com/doc/2.8/components/yaml.html)
 - [MarioFontv3Remakefull.ttf from the Mario Fonts Series](https://mfgg.net/index.php?act=resdb&param=02&c=6&id=30305) for our Mario font

@@ -334,7 +334,7 @@ to some great icons to display on our front-end.
 
 ### highlight.js
 
-[hightloght.js](https://highlightjs.org/) is being used to use syntax
+[hightlight.js](https://highlightjs.org/) is being used to use syntax
 highlighting for code blocks, which will come as MFGG is centered around
 game development.
 
