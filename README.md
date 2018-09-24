@@ -20,11 +20,13 @@ What things you need to install the software and how to install them
   (TCSMS does not work with PHP7 but it will not be necessary later on)
 - MySQL 5.5 or higher
 
-You'll also want [Composer](https://getcomposer.org/) for PHP dependencies.
-For public releases, we'll include the `vendor` directory for you so composer
-won't be necessary; right now this repo is primarily aimed at developers.
+You'll also want [pnpm](https://pnpm.js.org/) for dependencies.
+For public releases, we'll include the `public/assets` and `vendor` directores
+for you this won't be necessary; right now this repo is primarily aimed at
+developers.
 
-To get going quick on Windows, just install XAMPP.
+To get going quick on Windows, XAMPP should get you a Apache/MySQL/PHP
+environment pretty quickly.
 
 ### Installing
 
@@ -62,8 +64,13 @@ Now, run all of the SQL files in `./src/install/sql/`, in this order:
 ## Built With
 
 - Raw PHP; no pre-existing framework
-- [password_compat](https://github.com/ircmaxell/password_compat) - polyfill for PHP 5.5 password functions.
-- [Symfony YAML Component](https://symfony.com/doc/2.8/components/yaml.html) - For managing our yaml config file.
+- [jQuery](https://jquery.com/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Font Awesome](https://fontawesome.com/)
+- [hightloght.js](https://highlightjs.org/)
+- [password_compat](https://github.com/ircmaxell/password_compat)
+- [Symfony YAML Component](https://symfony.com/doc/2.8/components/yaml.html)
+- [MarioFontv3Remakefull.ttf from the Mario Fonts Series](https://mfgg.net/index.php?act=resdb&param=02&c=6&id=30305) for our Mario font
 
 ## Contributing
 

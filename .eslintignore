@@ -1,2 +1,5 @@
-vendor
+.git
 node_modules
+public/assets
+var
+vendor

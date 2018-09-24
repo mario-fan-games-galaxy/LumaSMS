@@ -10,6 +10,8 @@
 
 namespace LumaSMS\core;
 
+use \PDO;
+
 /**
  * Base model for all other models.
  */

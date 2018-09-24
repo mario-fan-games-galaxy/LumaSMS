@@ -22,18 +22,210 @@ the bext experience developing for LumaSMS. Most likely you can get these
 developer tools working with your code editor tools- I recommend doing
 that to avoid headaches in the future.
 
+For each of these tools, their website is linked. Be sure to check their
+website out for additional documentation if needed, and possibly how
+to integrate the tool with your own personal IDE or text editor.
+
+### EditorConfig
+
+[EditorConfig](http://EditorConfig.org) is a tool to standardize simple
+editor rules between developers. Install the appropriate plugin for your
+editor and watch the magic happen as it reas the `.editorconfig` file from
+our project whenever you edit the code.
+
+### pnpm
+
+[pnpm](https://github.com/pnpm/pnpm) is a JavaScript package manager, much like
+`yarn` or `npm`. It relies on a `package.json` file for configuration and our
+packages can be installed via:
+
+```bash
+pnpm install
+```
+
+Because `npm` and `yarn` are compatible with the same `package.json` format,
+you may use either instead to get the development environment set up. However,
+if you wish to add or remove packages, I recommend using `pnpm` directly.
+
+Not only will this handle management of our front-end assets such as
+Bootstrap, this is the central hub for development tools. It will also handle
+installing `composer`, which handles our PHP dependencies and tools.
+
+#### Prettier
+
+[Prettier](https://prettier.io/) fixes code to confirm to its specific code
+style. Keeping everyone's code style in sync makes working with others code
+much easier.
+
+Run prettier with this command:
+
+```bash
+pnpm run prettier
+```
+
+Prettier is ran with the `--single-quote` option, using single quotes over
+double quotes where appropriate. Keep that in mind if you want to run it
+on your own.
+
+Prettier does not support configuration aside from a `.prettierignore` file,
+which lists files and directories it should always ignore.
+
+#### ESLint
+
+[ESLint](https://eslint.org/) is a JavaScript linter. A linter looks out for
+things to keep code styles in sync. ESLint can fix some problems automatically
+as well.
+
+Run this to fix errors that can be fixed automatically:
+
+```bash
+pnpm run eslint-fix
+```
+
+And run this to find errors that ESLint can't fix on its own:
+
+```bash
+pnpm run eslint
+```
+
+ESLint is configured via `.eslintrc.js`. We have it configured to conform to
+[Airbnb's JavaScript Style Guide](https://github.com/airbnb/javascript) and
+prettier's rules. Much like Prettier, there's also a `.eslintignore` file
+for files and directorie to ignore.
+
+#### Stylelint
+
+[Stylelint](https://stylelint.io/) is another linter for styles such as CSS or
+SCSS
+
+It works pretty similar to ESLint, you even get the same kind of two commands:
+
+```bash
+pnpm run stylelint-fix
+```
+
+```bash
+pnpm run stylelint
+```
+
+We use [styelint-config-standard](https://github.com/stylelint/stylelint-config-standard)
+as a base. Stylelint is configured via `.stylelintrc.yaml`. It also has a
+`.stylelintignore` file, much like Prettier and ESLint.
+
+#### html-beautify
+
+Prettier does not support HTML files. The
+[js-beautify](https://github.com/beautify-web/js-beautify) includes a tool
+to handle HTML files. We don't have any automation or alias to run html-beautify
+as we're typically not dealing with HTML files directly, but in the case
+you do want to format some HTML files, here's how to use it.
+
+We're making use of linux's `find` command; this probably won't work
+on Windows so you'll have to find your own solution there.
+
+Run on all HTML files outside of excluded directories:
+
+```bash
+find . -name "*.html" -not -path */vendor/* -not -path */node_modules/* -exec pnpx html-beautify -r {} +
+```
+
+It works on XML files too.
+
+```bash
+find . -name "*.xml" -not -path */vendor/* -not -path */node_modules/* -exec pnpx html-beautify -r {} +
+```
+
+This is configured via the `.jsbeautifyrc` file, which is a `json` file.
+
+#### Parcel
+
+[Parcel](https://parceljs.org/) is a bundler for front-end resources. It
+largely configures itself, figuring out what to run simply by reading our
+`package.json` file and running packages compatible with it.
+
+The basic concept is it takes in our JavaScript and CSS resources, bundles them
+with the appropriate dependencies, transpiles code such as SCSS to CSS,
+runs scripts such as `babel` or `post-css` to handle some browser
+compatibility magic, and minfiies the scripts so the end-user is dealing with
+the smallest possible filesize for our front-end assets.
+
+There is no configuration file for parcel directly, but it does use
+configuration for the tools it relies on.
+
+Here's how to run it:
+
+```
+pnpm run build
+```
+
+Are you actively developing? Use this instead, it'll run parcel in the
+background and re-compile the code whenever there are changes. It doesn't
+minify the code either so you can more easily debug issues.
+
+```
+pnpm run watch
+```
+
+At the moment, the command is configured to run on the `assets/main.scss`
+and the `assets/main.js` files, pulling in dependencies from whatever
+those two call.
+
+Anyway, let's get into some of the underlying technology we've configured
+it to use:
+
+##### Babel
+
+[Babel](https://babeljs.io/) compiles modern JavaScript down to JavaScript that
+older browsers can understand. This allows us to code with modern standards
+without hving to worry too much about browser compatibility. We currently
+have it set up to target browsers with greater than 0.25% usage and aren't
+dead (unsupported by their developers), so we aren't supporting something
+the developers don't support anymore, like Internet Explorer 6.
+
+##### SCSS
+
+[SASS](https://sass-lang.com/) is an extension to CSS that lets you do things
+such as nested classes or variables. We're making use of the SCSS syntax,
+which is closer to the original CSS syntax- in fact, valid CSS
+works just fine in SCSS.
+
+Parcel compiles this down to CSS for us.
+
+Some configuration can be found in `.sassrc.js`- though right now we're only
+using this to tell it where our `node_modules` folder is to find dependencies.
+
+##### PostCSS
+
+[PostCSS](https://postcss.org/) is a tool for running extra transformations on
+CSS. After our SASS is compiled, this runs over it.
+
+We're making use of [Autoprefixer](https://github.com/postcss/autoprefixer),
+[CSS-MQPacker](https://github.com/hail2u/node-css-mqpacker),
+[postcss-import](https://github.com/postcss/postcss-import),
+[postcss-preset-env](https://github.com/csstools/postcss-preset-env),
+and [postcss-syntax](https://www.npmjs.com/package/postcss-syntax).
+
+##### Image optimization
+
+We don't have image optimization set up just yet for parcel, but in the
+future that might be something we add; with this parcel could optimize our
+images on the fly for us so we don't need to do anything special to keep
+image filesizes small.
+
 ### Composer
 
 Composer is a package manager for PHP. Please read up on
-[their documentation](https://getcomposer.org/) for advanced usage, to hit
-the ground running with our project, install composer and then run
-the following command in our project root:
+[their documentation](https://getcomposer.org/) for advanced usage.
 
-```bash
-composer install
-```
+We use `composer-runner` in our `package.json` file, which installs composer
+and we set up a post-install script, so when you run `pnpm install`, it'll
+run the appropriate commands to install our composer dependencies as well.
 
-This'll install our of our project PHP dependencies and tools. Our composer
+However, you may want to use composer tools directly or install/remove
+packages. For that you'll have to install composer on your machine manually-
+see the website linked above for more information.
+
+Our composer
 configuration is handled by `composer.json` in the root directory.
 
 #### PHPUnit
@@ -49,7 +241,7 @@ following command:
 you want to keep! Tests can and possibly will override that data.
 
 ```bash
-composer run-script tests
+pnpm run test
 ```
 
 You can also install PHPUnit on your own; if you do so you should be able
@@ -58,12 +250,13 @@ as the composer script above.
 
 PHPUnit's configuration is handled by `phpunit.xml` in the root directory.
 
-#### Code Cleaup
+#### Lint
 
-We have a composer script to help you keep your code clean. Run it with this:
+We have a composer script to help lint PHP code, much like what we have for
+JavaScript and CSS. Run it with this:
 
 ```bash
-composer run-script clean-code
+pnpm run php-lint
 ```
 
 This executes `phpcbf` which fixes code errors it can fix automatically,
@@ -82,6 +275,16 @@ the project root.
 
 Although these tools can be used to handle code other than PHP, we only
 use it for PHP at this time.
+
+You can run them directly with the following commands:
+
+```bash
+pnpm run phpcbf
+```
+
+```bash
+pnpm run phpcs
+```
 
 ##### PHP Mess Detector
 
@@ -103,66 +306,49 @@ path to point to our project root instead. Becasue this is a bit complicated
 there's an extra composer script just to run phpmd if needed:
 
 ```bash
-coomposer run-script phpmd
+pnpm run phpmd
 ```
 
 Which will do the same thing as that big command above.
 
-### pnpm
+## Dependencies
 
-[pnpm](https://github.com/pnpm/pnpm) is a JavaScript package manager, much like
-`yarn` or `npm`. It relies on a `package.json` file for configuration and our
-packages can be installed via:
+Let's talk about the dependencies to get our code running on the user-side.
+These are managed with `pnpm` and `composer`, but unlike the developer tools
+these are required to get our project up and running. A public release will
+include these dependencies with it, but for development you'll need `pnpm` to
+install them with its install commands.
 
-```bash
-pnpm install
-```
+### jQuery
 
-We have a few developer tools with node as well for managing code outside
-of the PHP world. They're not fully fleshed out yet but here's a brief overview:
+[jQuery](https://jquery.com/) is the JavaScript framework we're using.
 
-#### prettier
+### Bootstrap
 
-Prettier fixes code to confirm to its specific code style. Keeping everyone's
-code style in sync makes working with others code much easier.
+[Bootstrap](https://getbootstrap.com/) is the UI framework we're using.
 
-Run prettier with this command:
+### Font Awesome
 
-```bash
-pnpm run prettier
-```
+[Font Awesome](https://fontawesome.com/) is an icon library that gives us access
+to some great icons to display on our front-end.
 
-#### eslint
+### highlight.js
 
-Eslint is a JavaScript linter. A linter works much like PHP's codesniffer
-and looks out for things to keep code styles in sync. eslint can fix some
-problems automatically as well.
+[hightloght.js](https://highlightjs.org/) is being used to use syntax
+highlighting for code blocks, which will come as MFGG is centered around
+game development.
 
-Run this to fix errors that can be fixed automatically:
+### password_compat
 
-```bash
-pnpm run eslint-fix
-```
+[password_compat](https://github.com/ircmaxell/password_compat) is a PHP
+polyfill to allow PHP 5.4 to use
+[PHP 5.5+'s password functions](https://secure.php.net/password).
 
-And run this to find errors that eslint can't fix on its own:
+### Symfony YAML Component
 
-```bash
-pnpm run eslint
-```
-
-#### Stylelint
-
-Stylelint is another linter for styles such as css or scss.
-
-It works pretty similar to eslint, you even get the same kind of two commands:
-
-```bash
-pnpm run stylelint-fix
-```
-
-```bash
-pnpm run stylelint
-```
+The [Symfony YAML Component](https://symfony.com/doc/2.8/components/yaml.html)
+lets our code parse YAML files. Currnetly this is only being used for the
+configuration file, but it may be useful for other things in the future.
 
 ## Pull Request Process
 

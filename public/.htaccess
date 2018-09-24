@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+  # Allows us to use clean URLs
+  RewriteEngine On
+  # Feel free to change base if you're running this in a subdirectory
+  # - this should work?
+  RewriteBase /
+  RewriteRule ^index\.php$ - [L]
+
+  # Add a trailing slash to old
+  RewriteRule ^(.*/)?old$ old/ [R=301,L]
+
+  # do not do anything for already existing files
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -l [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Any request that starts with old should go to the old directory
+  RewriteCond %{REQUEST_URI} ^(.*/)?old/
+  RewriteRule ^ old/index.php [L]
+
+  # Route evermthing else through index.php
+  RewriteRule . index.php [L]
+</IfModule>

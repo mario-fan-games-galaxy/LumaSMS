@@ -1,0 +1,88 @@
+<h2>Step #1 - Environment</h2>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover table-sm">
+    <caption>Environment details</caption>
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Environment Item</th>
+        <th scope="col">Recommended Value</th>
+        <th scope="col">This Environment's Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">PHP Version</th>
+        <td>&gt;= 5.4.16</td>
+        <td>
+          {{ php_version }}
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">PHP Extensions</th>
+        <td>
+          <ul>
+            <li>Core</li>
+            <li>date</li>
+            <li>session</li>
+            <li>PDO</li>
+            <li>pdo_mysql</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            {{ php_extensions }}
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">PHP Compatible</th>
+        <td>Yes</td>
+        <td>
+          {{ php_compatible }}
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">MySQL Version</th>
+        <td>&gt;= 5.5</td>
+        <td>
+          {{ mysql_version }}
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">MySQL Compatible</th>
+        <td>Yes</td>
+        <td>
+          {{ mysql_compatible }}
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Webserver Software</th>
+        <td>Apache</td>
+        <td>
+          {{ webserver_software }}
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Webserver Version</th>
+        <td>&gt;= 2.2</td>
+        <td>
+          {{ webserver_version }}
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Webserver Operating System</th>
+        <td>&nbsp;</td>
+        <td>
+          {{ webserver_os }}
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">Webserver Compatible</th>
+        <td>Yes</td>
+        <td>
+          {{ webserver_compatible }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -64,8 +64,11 @@ User::GetUser();
 
 
 // Which file to view
-$uri = $_GET['uri'];
-if (empty($uri)) {
+$uri = '';
+if (isset($_SERVER['REQUEST_URI'])) {
+    $uri = ltrim($_SERVER['REQUEST_URI'], '/old/');
+}
+if (!$uri) {
     $uri = 'index';
 }
 
@@ -77,7 +80,7 @@ $file = false;
 foreach ($path as $node) {
     if ($params === false) {
         $_file .= $node;
-        
+
         if (file_exists($file = './pages/' . $_file . '.php')) {
             $params = [];
         } else {

@@ -74,7 +74,7 @@ foreach ([
     CRUDRoute($crud);
 }
 /*
- * Get the route from the `uri` parameter via GET
+ * Get the route
  *
  * The parameter is placed there by the htaccess and includes everything after the root diretory in the URL
  *
@@ -88,8 +88,8 @@ foreach ([
  * This is so that a generic /updates/ route that leads to the archive wouldn't take precedence over /updates/view/
  */
 $route = '';
-if (isset($_GET['uri'])) {
-    $route = $_GET['uri'];
+if (isset($_SERVER['REQUEST_URI'])) {
+    $route = ltrim($_SERVER['REQUEST_URI'], '/');
 }
 if (!$route) {
     $route = 'updates/archive';
@@ -127,7 +127,7 @@ $params = array_reverse($params);
  */
 $controller = explode('@', $controllerUse);
 $method = array_pop($controller);
-$controller = array_shift($controller);
+$controller = 'LumaSMS\controllers\\' . ucfirst(array_shift($controller));
 $yield = '';
 
 if (!class_exists($controller)

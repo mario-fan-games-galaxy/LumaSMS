@@ -100,7 +100,7 @@ if (!$ignoreInstalled && $installed) {
  * Gather the page content.
  */
 $mainData = [
-    'css_url' => dirname($environmentManager->getUrl()) . '/css/install.css',
+    'css_url' => dirname($environmentManager->getUrl()) . '/assets/main.css',
     'alerts' => '',
     'content' => 'No content loaded.',
 ];
@@ -208,8 +208,8 @@ if ($_GET['step'] === 1) {
         $startUrl = strtok($environmentManager->getUrl(), '?');
         $errors[] = 'There was an issue creating the admin user. ' .
             'Make sure you use a valid email address and that the username ' .
-            'is under 32 characters. Please start <a href="' . $startUrl .
-            '">from the beginning.';
+            'is under 32 characters. Please start <a class="alert-link" ' .
+            'href="' . $startUrl . '">from the beginning.';
     }
     if (empty($errors)) {
         $mainData['content'] = $templateManager->template('success');
@@ -217,7 +217,8 @@ if ($_GET['step'] === 1) {
 } else {
     $startUrl = strtok($environmentManager->getUrl(), '?');
     $errors[] = 'An unknown operation has occurred. ' .
-        'Please start <a href="' . $startUrl . '">from the beginning.';
+        'Please start <a class="alert-link" href="' . $startUrl .
+        '">from the beginning.';
 }
 
 /*
@@ -233,4 +234,4 @@ foreach ($errors as $error) {
 /*
  * Finally print out the content.
  */
-echo $templateManager->template('install', $mainData);
+echo $templateManager->template('base', $mainData);

@@ -33,8 +33,8 @@ class TemplateManager
     protected function parseTemplateFile($templateFile)
     {
         if (mb_substr($templateFile, 0, 1) !== DIRECTORY_SEPARATOR) {
-            $templateFile = __DIR__ . DIRECTORY_SEPARATOR .
-                'templates' . DIRECTORY_SEPARATOR .
+            $templateFile = APP_TEMPLATES . DIRECTORY_SEPARATOR .
+                'install' . DIRECTORY_SEPARATOR .
                 $templateFile;
         }
         if (pathinfo($templateFile, PATHINFO_EXTENSION) !== 'html') {

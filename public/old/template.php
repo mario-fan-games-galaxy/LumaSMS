@@ -5,11 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title><?=setting('site_abbr')?></title>
-<link rel="stylesheet" type="text/css" href="<?=url()?>/theme/base/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="<?=url()?>/theme/base/font-awesome-4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="<?=url()?>/theme/base/highlight.min.css">
-<link rel="stylesheet" type="text/css" href="<?=url()?>/theme/base/style.css">
-<link rel="shortcut icon" type="image/ico" href="<?=url()?>/theme/base/favicon.ico">
+<link rel="stylesheet" type="text/css" href="<?=url()?>/../assets/main.css">
 </head>
 
 <body class="no-js">
@@ -18,18 +14,18 @@
     <main>
         <div class="container">
             <a href="<?=url()?>">
-                <img src="<?=url()?>/theme/base/logo.png">
+                <img src="<?=url()?>/../img/logo.png">
             </a>
         </div>
     </main>
-    
+
     <nav>
         <div class="container nav-container">
             <div id="show-menu">
                 <div class="show-menu-button">
-                    Menu <span class="fa fa-caret-down"></span>
+                    Menu <span class="fas fa-caret-down"></span>
                 </div>
-                
+
                 <div class="user-info">
                     <?php if (User::GetUser()) : ?>
                         <?=User::GetUser()->username?>
@@ -38,45 +34,45 @@
                     <?php endif; ?>
                 </div>
             </div>
-            
+
             <ul class="top-menu">
                 <li>
                     <a href="<?=url()?>/">
                         Updates
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="<?=url()?>/content/">
                         Content
-                        <span class="fa fa-caret-down"></span>
+                        <span class="fas fa-caret-down"></span>
                     </a>
-                    
+
                     <ul>
                         <li>
                             <a href="<?=url()?>/sprites/">
                                 Sprites
                             </a>
                         </li>
-                        
+
                         <li>
                             <a href="<?=url()?>/games/">
                                 Games
                             </a>
                         </li>
-                        
+
                         <li>
                             <a href="<?=url()?>/how-tos/">
                                 How-Tos
                             </a>
                         </li>
-                        
+
                         <li>
                             <a href="<?=url()?>/sounds/">
                                 Sounds
                             </a>
                         </li>
-                        
+
                         <li>
                             <a href="<?=url()?>/misc/">
                                 Misc
@@ -84,36 +80,36 @@
                         </li>
                     </ul>
                 </li>
-                
+
                 <li>
                     <a href="<?=url()?>/forums/">
                         Forums
                     </a>
                 </li>
-                
+
                 <?php if (User::GetUser()) : ?>
                     <li>
                         <a href="<?=url()?>/user/">
                             <div class="show-when-small">
                                 User
                             </div>
-                            
+
                             <div class="show-when-big">
                                 <?=User::GetUser()->username?>
-                                <span class="fa fa-caret-down"></span>
+                                <span class="fas fa-caret-down"></span>
                             </div>
                         </a>
-                        
+
                         <ul>
                             <li>
                                 <a href="<?=url()?>/users/">
                                     Users
                                 </a>
                             </li>
-                            
+
                             <li>
                                 <a href="<?=url()?>/logout/">
-                                    <span class="fa fa-sign-out"></span>
+                                    <span class="fas fa-sign-out"></span>
                                     Log Out
                                 </a>
                             </li>
@@ -122,18 +118,18 @@
                 <?php else : ?>
                     <li>
                         <a href="<?=url()?>/login/">
-                            <span class="fa fa-sign-in"></span>
+                            <span class="fas fa-sign-in"></span>
                             Log In
                         </a>
-                        
+
                         <ul>
                             <li>
                                 <a href="<?=url()?>/register/">
-                                    <span class="fa fa-user"></span>
+                                    <span class="fas fa-user"></span>
                                     Register
                                 </a>
                             </li>
-                            
+
                             <li>
                                 <a href="<?=url()?>/users/">
                                     Users
@@ -161,9 +157,7 @@
     </div>
 </footer>
 
-<script type="text/javascript" src="<?=url()?>/theme/base/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="<?=url()?>/theme/base/highlight.min.js"></script>
-<script type="text/javascript" src="<?=url()?>/theme/base/script.js"></script>
+<script type="text/javascript" src="<?=url()?>/../assets/main.js"></script>
 <script type="text/javascript">
 function API(){
     return '<?=url()?>/api';

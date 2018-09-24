@@ -76,7 +76,7 @@
 ] as $bbcode_group) : ?>
 <div class="bbcode-bar btn-group"><?php foreach ($bbcode_group as $bbcode) : ?>
     <button type="button" class="btn btn-blue" data-bbcode="<?=$bbcode['tag']?>">
-        <span class="fa fa-<?=$bbcode['fa']?>"></span>
+        <span class="fas fa-<?=$bbcode['fa']?>"></span>
     </button>
                                   <?php endforeach; ?></div>
 

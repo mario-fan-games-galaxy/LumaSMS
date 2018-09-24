@@ -4,9 +4,9 @@
 	</div>
 
 	<div class="user-profile-small-avatar">
-		<img src="<?=$icon ? $icon : url() . '/theme/base/default-avatar.png'?>">
+		<img src="<?=$icon ? $icon : url() . '/../img/default-avatar.png'?>">
 	</div>
-	
+
 	<div>
 		<?=User::GetUserGroup()?>
 	</div>

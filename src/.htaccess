@@ -1,6 +1,0 @@
-# Allows us to use clean URLs
-RewriteEngine on
-# Lets links to certain file types go through without rewriting
-RewriteCond %{REQUEST_URI} !\.(css|js)$ [NC]
-# Route everything else through index.php
-RewriteRule ^(.*)? index.php?uri=$1 [L,QSA]

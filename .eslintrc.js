@@ -1,8 +1,13 @@
+'use strict';
+
 module.exports = {
-  extends: "airbnb-base",
+  extends: ['airbnb-base', 'plugin:prettier/recommended'],
+  plugins: ['prettier'],
 
   rules: {
-    "no-param-reassign": [2, { props: false }]
+    // Disables the rule preventing modifying properties on objects passed in
+    'no-param-reassign': [2, { props: false }],
+    'prettier/prettier': ['error', { singleQuote: true }]
   },
 
   env: {
