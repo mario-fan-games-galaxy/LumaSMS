@@ -2,20 +2,20 @@ database:
   hostname: localhost
   username: root
   dbname: mfgg
-  password: ""
+  password: ''
   prefix: tsms_
   driver: MySQLDatabaseDriver
 
 # Old settings, remove them as needed
 
 ## Content settings
-thumbnail_directory: "../tcsms/thumbnail"
-file_directory: "../tcsms/file"
+thumbnail_directory: '../tcsms/thumbnail'
+file_directory: '../tcsms/file'
 session_hotlink_protection: true
 
 ## Date settings
-date_format: "m/d/Y g:ia"
-date_setting: "since"
+date_format: 'm/d/Y g:ia'
+date_setting: 'since'
 
 ## Login settings
 login_attempts_max: 10
@@ -31,5 +31,5 @@ password_max_length: 72
 limit_per_page: 20
 
 ## Site settings
-site_name: "Mario Fan Games Galaxy"
-site_abbr: "MFGG"
+site_name: 'Mario Fan Games Galaxy'
+site_abbr: 'MFGG'
