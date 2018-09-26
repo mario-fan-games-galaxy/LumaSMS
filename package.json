@@ -2,6 +2,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
+    "autofix": "npm run prettier && npm run eslint-fix && npm run stylelint-fix && npm run phpcbf",
     "build": "npm run clean && parcel build assets/main.scss assets/main.js --out-dir public/assets --cache-dir var/cache --log-level 2 --no-source-maps",
     "clean": "rm -rf public/assets/*",
     "eslint": "eslint assets/**/*.js",
@@ -11,7 +12,7 @@
     "phpmd": "composer-runner -- run-script phpmd",
     "phpcs": "composer-runner -- run-script phpcs",
     "phpcbf": "composer-runner -- run-script phpcbf",
-    "pre-commit": "npm run prettier && npm run eslint-fix && npm run stylelint-fix && npm run eslint && npm run stylelint && npm run php-lint",
+    "pre-commit": "npm run eslint && npm run stylelint && npm run php-lint",
     "prettier": "prettier --write --single-quote **/*.{{t,j}s{,x,on},{c,sa,sc,le}ss,vue,md,y{,a}ml,graphql}",
     "stylelint": "stylelint \"./assets/**/*.{c,sa,sc,le}ss\"",
     "stylelint-fix": "stylelint --fix \"./assets/**/*.{c,sa,sc,le}ss\"",

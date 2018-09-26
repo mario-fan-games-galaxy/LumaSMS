@@ -1,10 +1,11 @@
 {
+  "config": {
+    "platform": {
+      "php": "5.4.16"
+    }
+  },
   "scripts": {
-    "lint": [
-      "@phpcbf",
-      "@phpcs",
-      "@phpmd"
-    ],
+    "lint": ["@phpcs", "@phpmd"],
     "phpcs": "phpcs",
     "phpcbf": "phpcbf",
     "phpmd": "phpmd . text phpmd.xml --exclude */vendor/*,*/node_modules/*,*/public/old/*,*/.git/*,*/var/*,*/config/* --suffixes php",
