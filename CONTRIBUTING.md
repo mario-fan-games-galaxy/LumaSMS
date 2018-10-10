@@ -15,6 +15,12 @@ to use a CentOS 7 virtual machine. CentOS 7's default Apache, PHP, and MySQL
 is pretty close to what the production environment will look like.
 [Digital Ocean has a decent guide for getting CentOS 7 LAMP set up.](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-centos-7)
 
+You'll want to install PHP 5.6 instead of CentOS 7's default PHP 5.4;
+you can do that by installing the [ius repo for CentOS 7](https://ius.io/)
+and replacing all the install instructions to PHP installing with `php56u`
+instead of merely `php` (for example, `sudo yum install php php-mysql`
+should instead be (sudo `yum install php56u php56u-mysql`)
+
 ## Developer Tools
 
 There are a handful of developer tools you'll want to make use of to get
@@ -337,12 +343,6 @@ to some great icons to display on our front-end.
 [hightlight.js](https://highlightjs.org/) is being used to use syntax
 highlighting for code blocks, which will come as MFGG is centered around
 game development.
-
-### password_compat
-
-[password_compat](https://github.com/ircmaxell/password_compat) is a PHP
-polyfill to allow PHP 5.4 to use
-[PHP 5.5+'s password functions](https://secure.php.net/password).
 
 ### Symfony YAML Component
 

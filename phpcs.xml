@@ -41,8 +41,8 @@
     <exclude name="Squiz.Commenting.FileComment.DuplicateAuthorTag" />
   </rule>
   <rule ref="Squiz.Commenting.VariableComment" />
-  <!-- Make sure this works with PHP 5.4 -->
-  <config name="testVersion" value="5.4-" />
+  <!-- Make sure this works with PHP 5.6 -->
+  <config name="testVersion" value="5.6-" />
   <!-- Ban some functions -->
   <rule ref="Generic.PHP.ForbiddenFunctions">
     <properties>

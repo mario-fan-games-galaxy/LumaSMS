@@ -156,7 +156,7 @@ class EnvironmentManager
     public function getPHPEnvironment()
     {
         // Figure out the PHP environment
-        $phpCompatible = version_compare('5.4.16', phpversion(), '<=');
+        $phpCompatible = version_compare('5.6.38', phpversion(), '<=');
         $phpExtensions = get_loaded_extensions();
         // Not sure if this list is complete, but it's a start
         $requiredExtensions = [

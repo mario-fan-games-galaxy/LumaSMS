@@ -2,8 +2,6 @@
 /**
  * Tests for the FileManager class.
  *
- * Uses phpunit 4.8 (old, but the latest still compatible with php 5.4)
- * Run with `phpunit installer_tests.php` in this directory.
  * Do not run these tests on a live environment, for development purposes only:
  * You will lose your database if you run these!
  *

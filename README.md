@@ -16,8 +16,8 @@ on how to deploy the project on a live system.
 What things you need to install the software and how to install them
 
 - An Apache 2.2 or higher server
-- PHP 5.4.16 or higher
-  (TCSMS does not work with PHP7 but it will not be necessary later on)
+- PHP 5.6.38 or higher
+  (TCSMS does not work with PHP 7 or higher but it will not be necessary later on)
 - MySQL 5.5 or higher
 
 You'll also want [pnpm](https://pnpm.js.org/) for dependencies.
@@ -68,8 +68,7 @@ Now, run all of the SQL files in `./src/install/sql/`, in this order:
 - [Bootstrap](https://getbootstrap.com/)
 - [Font Awesome](https://fontawesome.com/)
 - [hightlight.js](https://highlightjs.org/)
-- [password_compat](https://github.com/ircmaxell/password_compat)
-- [Symfony YAML Component](https://symfony.com/doc/2.8/components/yaml.html)
+- [Symfony YAML Component](https://symfony.com/doc/3.3/components/yaml.html)
 - [MarioFontv3Remakefull.ttf from the Mario Fonts Series](https://mfgg.net/index.php?act=resdb&param=02&c=6&id=30305) for our Mario font
 
 ## Contributing
