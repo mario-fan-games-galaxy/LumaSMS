@@ -1,0 +1,65 @@
+version: "3.6"
+services:
+  adminer:
+    container_name: adminer
+    image: adminer
+    restart: always
+    networks:
+      - backend
+    links:
+      - postgres:db
+    expose:
+      - 8080
+  php:
+    container_name: php
+    build:
+      context: './docker/php/'
+      args:
+       PHP_VERSION: ${PHP_VERSION}
+    networks:
+      - backend
+    volumes:
+      - ./public/:/var/www/html/
+      - ./config/:/var/www/config/
+      - ./src/:/var/www/src/
+      - ./templates/:/var/www/templates/
+      - ./var/:/var/www/var/
+      - ./vendor/:/var/www/vendor/
+    expose:
+      - 9000
+  apache:
+    container_name: apache
+    build:
+      context: './docker/apache/'
+      args:
+       APACHE_VERSION: ${APACHE_VERSION}
+    depends_on:
+      - adminer
+      - php
+      - postgres
+    networks:
+      - frontend
+      - backend
+    ports:
+      - "${HTTP_PORT}:80"
+      - "${HTTPS_PORT}:443"
+    volumes:
+      - ./public/:/var/www/html/
+      - ./config/:/var/www/config/
+      - ./src/:/var/www/src/
+      - ./templates/:/var/www/templates/
+      - ./var/:/var/www/var/
+      - ./vendor/:/var/www/vendor/
+  postgres:
+    container_name: postgres
+    image: postgres:${POSTGRES_VERSION:-latest}-alpine
+    networks:
+      - backend
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    expose:
+      - 5432
+networks:
+  frontend:
+  backend:

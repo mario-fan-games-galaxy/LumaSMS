@@ -10,16 +10,88 @@ Please note we have a code of conduct, please follow it in all your interactions
 
 ## Development Environment
 
-The easiest way to get something that matches our development environment is
-to use a CentOS 7 virtual machine. CentOS 7's default Apache, PHP, and MySQL
-is pretty close to what the production environment will look like.
-[Digital Ocean has a decent guide for getting CentOS 7 LAMP set up.](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-centos-7)
+We're using [Docker](https://www.docker.com/) to get a portable development
+environment that anyone can use. We also make use of
+[Docker Compose](https://docs.docker.com/compose/install/).
 
-You'll want to install PHP 5.6 instead of CentOS 7's default PHP 5.4;
-you can do that by installing the [ius repo for CentOS 7](https://ius.io/)
-and replacing all the install instructions to PHP installing with `php56u`
-instead of merely `php` (for example, `sudo yum install php php-mysql`
-should instead be (sudo `yum install php56u php56u-mysql`)
+Before we can get started with Docker, we'll need to do a few things to prepare
+the environment.
+
+### Hosts file
+
+Before we can set up the environment, we'll want to make sure the right
+hostsnames are set up. Edit your `hosts` file and add `lumasms.mfgg.test`
+to point to localhost (`127.0.0.1` for IPv4 and `::1` for IPv6). You may also
+want to install a tool like [hostess](https://github.com/cbednarski/hostess)
+to manage your hosts file for you- it's a bit easier than editing it manually.
+
+### HTTPS Certificates
+
+Before we get started with the environment itself, you'll want to make some
+certificates to make HTTPS work on your machine. We're making use of
+[mkcert](https://github.com/FiloSottile/mkcert), but feel free to use
+whatever tools you want.
+
+#### mkcert instructions
+
+After installing `mkcert` for your OS (see link above for instructions),
+first you'll want to install the mkcert root certificates in your trust store-
+this lets your browser know to trust the certificates you're generating. That
+way you avoid any certificate warnings or that kind of thing. Do so with
+the following command:
+
+```bash
+mkcert -install
+```
+
+Now it's time to create the certificates. We're using the domain `mfgg.test`
+for the development environment.
+
+```bash
+mkcert mfgg.test *.mfgg.test
+```
+
+This'll generated two files: a certificate file and a key file. Copy the
+certificate file (should be `mfgg.test+1.pem` in the directory you ran
+the command) to `./docker/apache/server.crt`. Copy the key file (should be
+`./mfgg.test+1-key.pem` in the directory you ran the command) to
+`./docker/apache/server.key`. It is very important you name these the correct
+paths as our configuration loads the files in those locations.
+
+### Docker
+
+Finally we can start with docker. Make sure you have
+[Docker](https://www.docker.com/) and
+[Docker Compose](https://docs.docker.com/compose/install/) installed on your
+system before continuing.
+
+First you may want to modify some configuration. Check out the `.env` file in
+your favorite editor and modify as needed. If this is the only webserver
+you're running on your machine, feel free to change `HTTP_PORT` to `80` and
+`HTTPS_PORT` to `443` so you don't need to type in the port in the URL to
+access the development environment from your browser, otherwise leave the
+defauts. Change the `POSTGRES_PASSWORD` to your liking as well.
+
+Once you've done that, head to the root directory of this project and launch
+with the following command:
+
+```bash
+docker-compose up -d
+```
+
+If you need to take the development environment down, do it with this command
+in the same location:
+
+```bash
+docker-compose down
+```
+
+Additionally, if you modify any of the configuration in the `./docker` folder,
+you'll want to run the build command so they're updated. Do that as follows:
+
+```bash
+docker-compose down && docker-compose build && docker-compose up -d
+```
 
 ## Developer Tools
 

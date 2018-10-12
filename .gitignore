@@ -16,3 +16,8 @@ vendor
 adminer.php
 phpunit.phar
 composer.phar
+
+# Sensitive Data
+docker/apache/server.crt
+docker/apache/server.key
+

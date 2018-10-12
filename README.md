@@ -15,18 +15,18 @@ on how to deploy the project on a live system.
 
 What things you need to install the software and how to install them
 
-- An Apache 2.2 or higher server
+- An Apache 2.4 or higher server
 - PHP 5.6.38 or higher
   (TCSMS does not work with PHP 7 or higher but it will not be necessary later on)
-- MySQL 5.5 or higher
+- PostgreSQL 10.5 or higher
 
 You'll also want [pnpm](https://pnpm.js.org/) for dependencies.
 For public releases, we'll include the `public/assets` and `vendor` directores
 for you this won't be necessary; right now this repo is primarily aimed at
 developers.
 
-To get going quick on Windows, XAMPP should get you a Apache/MySQL/PHP
-environment pretty quickly.
+See the [CONTRIBUTING.md](CONTRIBUTING.md) file for getting a development
+environment set up with Docker
 
 ### Installing
 
