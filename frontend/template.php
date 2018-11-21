@@ -12,7 +12,9 @@
 
 <header id="header">
 	<div class="container">
-		<img src="<?=url()?>/assets/images/header.png" alt="Mario Fan Games Galaxy">
+		<div>
+			<img src="<?=url()?>/assets/images/header.png" alt="Mario Fan Games Galaxy" id="logo">
+		</div>
 	</div>
 </header>
 
@@ -20,26 +22,26 @@
 	<div class="container">
 		<ul>
 			<li>
-				<a href="index">
+				<a href="<?=url()?>/index">
 					Updates
 				</a>
 			</li>
 			
 			<li>
-				<a href="index">
-					Updates
+				<a href="<?=url()?>/content">
+					Content
 				</a>
 			</li>
 			
 			<li>
-				<a href="index">
-					Updates
+				<a href="<?=url()?>/forums">
+					Forums
 				</a>
 			</li>
 			
 			<li>
-				<a href="index">
-					Updates
+				<a href="<?=url()?>/account">
+					Account
 				</a>
 			</li>
 		</ul>

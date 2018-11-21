@@ -1,19 +1,18 @@
 <?php
 
-function url(){
-	$scriptRoot = explode('/index.php',$_SERVER['SCRIPT_NAME']);
-	$scriptRoot = array_shift($scriptRoot);
-	
-	$url =
-		'http' . (!empty($_SERVER['HTTPS']) ? 's' : '') . 
-		'://' . $_SERVER['SERVER_NAME'] . $scriptRoot
-	;
-	
-	return $url;
+require_once 'functions.php';
+require_once 'routes.php';
+
+if(
+	empty($file = $routes[$_GET['uri']])
+	||
+	!file_exists($file = 'pages/' . $file . '.php')
+){
+	$file='pages/404.php';
 }
 
 ob_start();
-include 'pages/updates/archive.php';
+include $file;
 $yield=ob_get_clean();
 
 require_once 'template.php';

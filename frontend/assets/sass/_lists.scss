@@ -3,3 +3,9 @@ ul[class*="list-"] {
 	margin: 0;
 	padding: 0;
 }
+
+ul[class*="list-content-"] {
+	> li:not(:last-of-type) {
+		margin-bottom: 2em;
+	}
+}

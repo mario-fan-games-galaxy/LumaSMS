@@ -6,10 +6,22 @@
   .card .card-footer {
     background-image: url("../images/menutitlebg.png"); }
 
+.flex {
+  display: flex; }
+
+.flex-center {
+  align-items: center; }
+
+.flex-grow {
+  flex-grow: 1; }
+
 ul[class*="list-"] {
   list-style: none;
   margin: 0;
   padding: 0; }
+
+ul[class*="list-content-"] > li:not(:last-of-type) {
+  margin-bottom: 2em; }
 
 body {
   background-color: #000000;
@@ -17,7 +29,10 @@ body {
 
 #header {
   background-image: url("../images/header_br.png");
-  background-repeat: repeat-x; }
+  background-repeat: repeat-x;
+  background-size: auto 100%; }
+  #header #logo {
+    max-width: 100%; }
 
 #nav {
   background-image: url("../images/menutitlebg2.png"); }
@@ -52,6 +67,13 @@ h1#page-title {
   padding: 0.5em 0;
   text-align: center;
   text-transform: uppercase; }
+
+.content-update-small .card-header h2 {
+  font-size: 1.25em;
+  margin: 0; }
+
+.content-update-small .card-footer .list-update-meta-links li {
+  padding-right: 0.5em; }
 
 .profile-rank {
   border-bottom: 2px solid rgba(0, 0, 0, 0.25);
