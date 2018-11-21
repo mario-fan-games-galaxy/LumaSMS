@@ -1,3 +1,20 @@
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+.card {
+  background-color: #2236AC;
+  border-radius: 0; }
+  .card .card-header,
+  .card .card-footer {
+    background-image: url("../images/menutitlebg.png"); }
+
+ul[class*="list-"] {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+body {
+  background-color: #000000;
+  background-image: url("../images/background.gif"); }
+
 #header {
   background-image: url("../images/header_br.png");
   background-repeat: repeat-x; }
@@ -14,14 +31,48 @@
       display: block;
       padding: 0.5em;
       text-transform: uppercase; }
+    #nav ul li a:hover {
+      background-color: rgba(0, 0, 0, 0.25); }
+
+body {
+  color: #FFF;
+  font-size: 18px; }
 
 a {
   color: #FFF600;
   font-weight: bold;
-  transition: color 0.25s ease; }
+  transition: all 0.25s ease; }
 
 a:hover {
   color: #00FF00;
   text-decoration: none; }
+
+h1#page-title {
+  color: #FFF;
+  padding: 0.5em 0;
+  text-align: center;
+  text-transform: uppercase; }
+
+.profile-rank {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+  border-top: 2px solid rgba(255, 255, 255, 0.25);
+  color: #FFF;
+  display: inline-block;
+  font-family: 'Press Start 2P';
+  font-size: 0.75em;
+  padding: 0.25em 1em;
+  text-shadow: 0 0 8px #000000;
+  text-transform: uppercase; }
+
+.profile-rank.profile-rank-admin {
+  background-color: #E60001; }
+
+.profile-small {
+  text-align: center; }
+  .profile-small a {
+    display: block; }
+  .profile-small a,
+  .profile-small > div {
+    margin-bottom: 0.5em; }
 
 /*# sourceMappingURL=frontend.css.map */

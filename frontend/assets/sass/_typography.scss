@@ -1,10 +1,36 @@
+// ROOT
+
+body {
+	color: $color-white;
+	font-size: 18px;
+}
+
+
+
+
+
+// LINKS
+
 a {
 	color: $color-yellow;
 	font-weight: bold;
-	transition: color 0.25s ease;
+	transition: all 0.25s ease;
 }
 
 a:hover {
 	color: $color-green;
 	text-decoration: none;
+}
+
+
+
+
+
+// HEADERS
+
+h1#page-title {
+	color: $color-white;
+	padding: 0.5em 0;
+	text-align: center;
+	text-transform: uppercase;
 }

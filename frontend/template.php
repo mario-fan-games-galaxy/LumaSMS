@@ -2,8 +2,9 @@
 <html lang="en">
 
 <head>
-<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="assets/css/frontend.min.css">
+<link rel="stylesheet" href="<?=url()?>/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="<?=url()?>/assets/css/frontend.min.css">
+<link rel="shortcut icon" href="<?=url()?>/assets/favicon.ico">
 <title>MFGG</title>
 </head>
 
@@ -11,7 +12,7 @@
 
 <header id="header">
 	<div class="container">
-		<img src="assets/images/header.png" alt="Mario Fan Games Galaxy">
+		<img src="<?=url()?>/assets/images/header.png" alt="Mario Fan Games Galaxy">
 	</div>
 </header>
 
@@ -44,6 +45,8 @@
 		</ul>
 	</div>
 </nav>
+
+<?=$yield?>
 
 </body>
 
