@@ -1,0 +1,24 @@
+#header {
+	background-image: url('../images/header_br.png');
+	background-repeat: repeat-x;
+}
+
+#nav {
+	ul {
+		li {
+			a {
+				display: block;
+				padding: 0.5em;
+				text-transform: uppercase;
+			}
+		}
+		
+		align-items: center;
+		display: flex;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	
+	background-image: url('../images/menutitlebg2.png');
+}

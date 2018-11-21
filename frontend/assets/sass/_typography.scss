@@ -1,0 +1,10 @@
+a {
+	color: $color-yellow;
+	font-weight: bold;
+	transition: color 0.25s ease;
+}
+
+a:hover {
+	color: $color-green;
+	text-decoration: none;
+}

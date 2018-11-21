@@ -2,5 +2,6 @@ tcsms/
 hyliandev/settings.php
 
 # Tools and other files
+node_modules/
 *.php_cs.cache
 adminer.php

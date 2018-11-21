@@ -1,0 +1,27 @@
+#header {
+  background-image: url("../images/header_br.png");
+  background-repeat: repeat-x; }
+
+#nav {
+  background-image: url("../images/menutitlebg2.png"); }
+  #nav ul {
+    align-items: center;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+    #nav ul li a {
+      display: block;
+      padding: 0.5em;
+      text-transform: uppercase; }
+
+a {
+  color: #FFF600;
+  font-weight: bold;
+  transition: color 0.25s ease; }
+
+a:hover {
+  color: #00FF00;
+  text-decoration: none; }
+
+/*# sourceMappingURL=frontend.css.map */
