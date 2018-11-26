@@ -14,12 +14,24 @@
 		
 		<div class="card-body">
 			<div class="row">
-				<div class="col-12 col-lg-3">
+				<div class="col-12 col-lg-3 col-xxl-2">
 					<?=view('user/profile-small')?>
 				</div><!-- .col-lg-3 -->
 				
-				<div class="col-12 col-lg-9">
-					Content
+				<div class="col-12 col-lg-9 col-xxl-10">
+					<p>
+						Well gang, now that Halloween is out of the way, we have officially entered the Christmas season.
+					</p>
+					
+					<p>
+						This Christmas, Santa has brought all you nice boys and girls the present of an update. Yes, I'm Santa. You didn't know that?
+					</p>
+					
+					<?=view('content/update-submissions')?>
+					
+					<p>
+						...what? Thanksgiving?
+					</p>
 				</div><!-- .col-lg-9 -->
 			</div><!-- .row -->
 		</div><!-- .card-body -->

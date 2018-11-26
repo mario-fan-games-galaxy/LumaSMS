@@ -49,6 +49,29 @@ body {
     #nav ul li a:hover {
       background-color: rgba(0, 0, 0, 0.25); }
 
+.thumbnail {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 56.25%;
+  position: relative; }
+
+.thumbnail-blur {
+  position: relative;
+  overflow: hidden; }
+
+.thumbnail-blur::after {
+  background: inherit;
+  background-color: rgba(0, 0, 0, 0.25);
+  background-size: contain;
+  content: "";
+  filter: drop-shadow(0 0 0.25em rgba(0, 0, 0, 0.25));
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  position: absolute;
+  width: 100%; }
+
 body {
   color: #FFF;
   font-size: 18px; }
@@ -74,6 +97,44 @@ h1#page-title {
 
 .content-update-small .card-footer .list-update-meta-links li {
   padding-right: 0.5em; }
+
+.content-update-submissions h3 {
+  border-bottom: 2px solid #000090;
+  font-family: 'Press Start 2P';
+  text-shadow: 0.125em 0.125em 0 #000090; }
+
+.content-update-submissions .list-update-submissions {
+  margin-bottom: 1em; }
+  .content-update-submissions .list-update-submissions .content-update-submission {
+    background-color: rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 0.125em rgba(0, 0, 0, 0.25);
+    margin-bottom: 2em;
+    padding: 0.5em;
+    transition: all 0.25s ease; }
+    .content-update-submissions .list-update-submissions .content-update-submission .thumbnail {
+      margin-bottom: 0.5em; }
+      .content-update-submissions .list-update-submissions .content-update-submission .thumbnail .game-badge {
+        background-color: #000000;
+        font-family: 'Press Start 2P';
+        padding: 0.5em;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1; }
+    .content-update-submissions .list-update-submissions .content-update-submission h4 {
+      font-size: 1.1em;
+      margin-bottom: 0; }
+  .content-update-submissions .list-update-submissions .content-update-submission:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25); }
+    .content-update-submissions .list-update-submissions .content-update-submission:hover .thumbnail .game-badge {
+      opacity: 0; }
+
+.profile.profile-link {
+  display: inline-block; }
+
+.profile.group-admin a {
+  color: #E60001; }
 
 .profile-rank {
   border-bottom: 2px solid rgba(0, 0, 0, 0.25);

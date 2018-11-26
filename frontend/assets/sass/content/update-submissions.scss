@@ -1,0 +1,49 @@
+.content-update-submissions {
+	h3 {
+		border-bottom: 2px solid $color-blue-dark;
+		font-family: 'Press Start 2P';
+		text-shadow: 0.125em 0.125em 0 $color-blue-dark;
+	}
+	
+	.list-update-submissions {
+		.content-update-submission {
+			.thumbnail {
+				.game-badge {
+					background-color: $color-black;
+					font-family: 'Press Start 2P';
+					padding: 0.5em;
+					position: absolute;
+					right: 0;
+					top: 0;
+					z-index: 1;
+				}
+				
+				margin-bottom: 0.5em;
+			}
+			
+			h4 {
+				font-size: 1.1em;
+				margin-bottom: 0;
+			}
+			
+			background-color: $color-black-transparent;
+			box-shadow: 0 0 0.125em $color-black-transparent;
+			margin-bottom: 2em;
+			padding: 0.5em;
+			transition: all 0.25s ease;
+		}
+		
+		.content-update-submission:hover {
+			.thumbnail {
+				.game-badge {
+					opacity: 0;
+				}
+			}
+			
+			background-color: $color-white-transparent;
+			box-shadow: 0 0.25em 0.5em $color-black-transparent;
+		}
+		
+		margin-bottom: 1em;
+	}
+}

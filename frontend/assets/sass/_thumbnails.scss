@@ -1,0 +1,25 @@
+.thumbnail {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding-bottom: 56.25%;
+	position: relative;
+}
+
+.thumbnail-blur {
+	position: relative;
+	overflow: hidden;
+}
+
+.thumbnail-blur::after {
+	background: inherit;
+	background-color: $color-black-transparent;
+	background-size: contain;
+	content: "";
+	filter: drop-shadow(0 0 0.25em $color-black-transparent);
+	height: 100%;
+	image-rendering: pixelated;
+	image-rendering: -moz-crisp-edges;
+	position: absolute;
+	width: 100%;
+}

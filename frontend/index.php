@@ -3,8 +3,12 @@
 require_once 'functions.php';
 require_once 'routes.php';
 
+if(empty($uri = $_GET['uri'])){
+	$uri='index';
+}
+
 if(
-	empty($file = $routes[$_GET['uri']])
+	@empty($file = $routes[$uri])
 	||
 	!file_exists($file = 'pages/' . $file . '.php')
 ){
