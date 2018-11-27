@@ -111,6 +111,12 @@ h1#page-title {
     margin-bottom: 2em;
     padding: 0.5em;
     transition: all 0.25s ease; }
+    .content-update-submissions .list-update-submissions .content-update-submission .content-update-submission-big-icon {
+      display: block;
+      flex-shrink: 0;
+      font-size: 4em;
+      text-align: center;
+      width: 1.5em; }
     .content-update-submissions .list-update-submissions .content-update-submission .thumbnail {
       margin-bottom: 0.5em; }
       .content-update-submissions .list-update-submissions .content-update-submission .thumbnail .game-badge {

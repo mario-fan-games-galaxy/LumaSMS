@@ -4,7 +4,7 @@
 	</a>
 	
 	<h4>
-		<a href="<?=url()?>/content/single">
+		<a href="<?=url()?>/content/sprite">
 			SMB2 (All-Stars) Modern Peach
 		</a>
 	</h4>

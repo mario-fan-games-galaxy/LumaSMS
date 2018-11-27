@@ -2,11 +2,19 @@
 	h3 {
 		border-bottom: 2px solid $color-blue-dark;
 		font-family: 'Press Start 2P';
-		text-shadow: 0.125em 0.125em 0 $color-blue-dark;
+		text-shadow: $text-shadow-dark-blue;
 	}
 	
 	.list-update-submissions {
 		.content-update-submission {
+			.content-update-submission-big-icon {
+				display: block;
+				flex-shrink: 0;
+				font-size: 4em;
+				text-align: center;
+				width: 1.5em;
+			}
+			
 			.thumbnail {
 				.game-badge {
 					background-color: $color-black;
