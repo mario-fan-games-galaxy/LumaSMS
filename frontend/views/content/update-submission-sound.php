@@ -10,6 +10,18 @@
 			</h4>
 			
 			<?=view('user/profile-link')?>
+			
+			<ul class="list-tags"><?php foreach([
+				'Super Mario World',
+				'Ripped',
+				'SNES',
+			] as $tag): ?>
+				<li>
+					<a href="<?=url()?>" class="tag">
+						<?=$tag?>
+					</a>
+				</li>
+			<?php endforeach; ?></ul>
 		</div>
 	</div>
 </section>

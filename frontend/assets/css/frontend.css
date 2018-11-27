@@ -1,4 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+.tag {
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 0.25em;
+  color: #FFF;
+  display: inline-block;
+  font-size: 0.75em;
+  font-weight: bold;
+  margin: 0.125em 0;
+  padding: 0.25em; }
+  .tag [class*="fa-"] {
+    font-weight: normal; }
+
 .card {
   background-color: #2236AC;
   border-radius: 0; }
@@ -14,6 +26,9 @@
 
 .flex-grow {
   flex-grow: 1; }
+
+.list-tags li {
+  display: inline-block; }
 
 ul[class*="list-"] {
   list-style: none;

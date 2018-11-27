@@ -15,20 +15,27 @@
 		</a>
 	</h4>
 	
-	<ul class="list-update-submission-game-meta">
-		<li>
-			Score:
-			<span class="fas fa-star"></span>
-			<span class="fas fa-star"></span>
-			<span class="fas fa-star"></span>
-			<span class="far fa-star"></span>
-			<span class="far fa-star"></span>
-		</li>
-		
-		<li>
-			<span class="fab fa-windows"></span>
-		</li>
-	</li>
+	<div>
+		Score:
+		<span class="fas fa-star"></span>
+		<span class="fas fa-star"></span>
+		<span class="fas fa-star"></span>
+		<span class="far fa-star"></span>
+		<span class="far fa-star"></span>
+	</div>
 	
 	<?=view('user/profile-link')?>
+	
+	<ul class="list-tags"><?php foreach([
+		'<span class="fab fa-windows"></span>',
+		'Demo',
+		'Platformer',
+		'Game Maker 8',
+	] as $tag): ?>
+		<li>
+			<a href="<?=url()?>" class="tag">
+				<?=$tag?>
+			</a>
+		</li>
+	<?php endforeach; ?></ul>
 </section>
