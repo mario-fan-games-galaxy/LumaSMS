@@ -32,14 +32,34 @@ a:hover {
 h1#page-title {
 	color: $color-white;
 	font-family: 'Super Mario 256';
-	font-size: 64px;
+	font-size: 48px;
 	font-weight: normal;
 	letter-spacing: 0.1em;
-	padding: 0.5em 0;
+	padding: 1em 0;
 	text-align: center;
-	text-shadow:
-		4px 4px 0 $color-blue-dark,
-		-4px -4px 0 $color-red
-	;
+	text-shadow: $text-shadow-3D;
 	text-transform: uppercase;
+}
+
+h2 {
+	font-size: 36px;
+}
+
+h2.card-header {
+	font-family: 'Super Mario 256';
+	text-shadow: $text-shadow-3D;
+}
+
+h3 {
+	font-size: 24px;
+}
+
+
+
+
+
+// UTILITIES
+
+.text-shadow-3D {
+	text-shadow: $text-shadow-3D;
 }

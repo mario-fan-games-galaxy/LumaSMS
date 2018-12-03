@@ -1,4 +1,4 @@
-<section class="content-update-submission content-update-submission-game">
+<section class="content-update-submission content-update-submission-game content-game">
 	<a href="<?=url()?>/content/game">
 		<div class="thumbnail thumbnail-blur" style="background-image: url('<?=url()?>/assets/content/games/game<?=rand(0, 2)?>screen0.png');">
 			<?php if(rand(0, 1) == 1): ?>
@@ -15,7 +15,7 @@
 		</a>
 	</h4>
 	
-	<div>
+	<div class="content-game-score">
 		Score:
 		<span class="fas fa-star"></span>
 		<span class="fas fa-star"></span>

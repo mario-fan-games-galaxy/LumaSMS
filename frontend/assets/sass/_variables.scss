@@ -21,3 +21,8 @@ $color-white-transparent: rgba(255, 255, 255, 0.25);
 // TEXT SHADOW
 
 $text-shadow-dark-blue: 0.125em 0.125em 0 $color-blue-dark;
+
+$text-shadow-3D:
+	0.075em 0.075em 0 $color-blue-dark,
+	-0.075em -0.075em 0 $color-red
+;

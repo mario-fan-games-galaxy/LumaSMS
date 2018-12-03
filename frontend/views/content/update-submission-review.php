@@ -11,7 +11,7 @@
 			
 			<?=view('user/profile-link')?>
 			
-			<div>
+			<div class="content-game-score">
 				Score:
 				<span class="fas fa-star"></span>
 				<span class="fas fa-star"></span>

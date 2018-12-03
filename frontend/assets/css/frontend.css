@@ -17,7 +17,8 @@
 
 .card {
   background-color: #2236AC;
-  border-radius: 0; }
+  border-radius: 0;
+  border-width: 0; }
   .card .card-header,
   .card .card-footer {
     background-image: url("../images/menutitlebg.png"); }
@@ -31,12 +32,16 @@
 .flex-grow {
   flex-grow: 1; }
 
+label {
+  display: block;
+  width: 100%; }
+
 .list-tags li {
   display: inline-block; }
 
 ul[class*="list-"] {
   list-style: none;
-  margin: 0;
+  margin-bottom: 0;
   padding: 0; }
 
 ul[class*="list-content-"] > li:not(:last-of-type) {
@@ -86,7 +91,7 @@ nav {
   background-color: rgba(0, 0, 0, 0.25);
   background-size: contain;
   content: "";
-  filter: drop-shadow(0 0 0.25em rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0 0 0.25em #000000);
   height: 100%;
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
@@ -110,13 +115,77 @@ a:hover {
 h1#page-title {
   color: #FFF;
   font-family: 'Super Mario 256';
-  font-size: 64px;
+  font-size: 48px;
   font-weight: normal;
   letter-spacing: 0.1em;
-  padding: 0.5em 0;
+  padding: 1em 0;
   text-align: center;
-  text-shadow: 4px 4px 0 #000090, -4px -4px 0 #E60001;
+  text-shadow: 0.075em 0.075em 0 #000090, -0.075em -0.075em 0 #E60001;
   text-transform: uppercase; }
+
+h2 {
+  font-size: 36px; }
+
+h2.card-header {
+  font-family: 'Super Mario 256';
+  text-shadow: 0.075em 0.075em 0 #000090, -0.075em -0.075em 0 #E60001; }
+
+h3 {
+  font-size: 24px; }
+
+.text-shadow-3D {
+  text-shadow: 0.075em 0.075em 0 #000090, -0.075em -0.075em 0 #E60001; }
+
+.content-game-score [class^="fa"] {
+  color: #FFF600; }
+
+.content-game-single .list-screenshots label {
+  border: 2px solid transparent; }
+
+.content-game-single #screenshot-selected-0:not(:checked) ~ .list-screenshots-large label[for="screenshot-selected-0"] {
+  display: none; }
+
+.content-game-single #screenshot-selected-0:checked ~ .list-screenshots label[for="screenshot-selected-0"] {
+  border-color: #FFF600; }
+
+.content-game-single #screenshot-selected-1:not(:checked) ~ .list-screenshots-large label[for="screenshot-selected-1"] {
+  display: none; }
+
+.content-game-single #screenshot-selected-1:checked ~ .list-screenshots label[for="screenshot-selected-1"] {
+  border-color: #FFF600; }
+
+.content-game-single #screenshot-selected-2:not(:checked) ~ .list-screenshots-large label[for="screenshot-selected-2"] {
+  display: none; }
+
+.content-game-single #screenshot-selected-2:checked ~ .list-screenshots label[for="screenshot-selected-2"] {
+  border-color: #FFF600; }
+
+.content-game-single .content-game-score {
+  font-size: 3em; }
+
+.content-game-single .list-game-reviews blockquote {
+  margin: 0; }
+  .content-game-single .list-game-reviews blockquote cite {
+    font-style: normal; }
+  .content-game-single .list-game-reviews blockquote div {
+    font-size: 1.5em; }
+  .content-game-single .list-game-reviews blockquote div::before,
+  .content-game-single .list-game-reviews blockquote div::after {
+    font-family: 'Font Awesome 5 Free';
+    font-size: 0.5em;
+    font-weight: bold; }
+  .content-game-single .list-game-reviews blockquote div::before {
+    content: "\f10d"; }
+  .content-game-single .list-game-reviews blockquote div::after {
+    content: "\f10e";
+    position: relative;
+    bottom: 1em; }
+
+.content-game-single .list-game-reviews .content-game-score {
+  font-size: 1.25em; }
+
+.content-game-single .list-game-reviews li:nth-of-type(2n) {
+  text-align: right; }
 
 .content-update-small .card-header h2 {
   font-size: 1.25em;

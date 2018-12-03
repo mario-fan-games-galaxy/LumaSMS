@@ -1,0 +1,59 @@
+.content-game-single {
+	.list-screenshots label {
+		border: 2px solid transparent;
+	}
+	
+	@for $i from 0 through 2 {
+		#screenshot-selected-#{$i}:not(:checked) ~ .list-screenshots-large label[for="screenshot-selected-#{$i}"] {
+			display: none;
+		}
+		
+		#screenshot-selected-#{$i}:checked ~ .list-screenshots label[for="screenshot-selected-#{$i}"] {
+			border-color: $color-yellow;
+		}
+	}
+	
+	.content-game-score {
+		font-size: 3em;
+	}
+	
+	.list-game-reviews {
+		blockquote {
+			cite {
+				font-style: normal;
+			}
+			
+			div {
+				font-size: 1.5em;
+			}
+			
+			div::before,
+			div::after
+			{
+				font-family: 'Font Awesome 5 Free';
+				font-size: 0.5em;
+				font-weight: bold;
+			}
+			
+			div::before {
+				content: "\f10d";
+			}
+			
+			div::after {
+				content: "\f10e";
+				position: relative;
+				bottom: 1em;
+			}
+			
+			margin: 0;
+		}
+		
+		.content-game-score {
+			font-size: 1.25em;
+		}
+		
+		li:nth-of-type(2n) {
+			text-align: right;
+		}
+	}
+}

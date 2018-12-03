@@ -1,6 +1,6 @@
 <div class="container">
 	<h1 id="page-title">
-		Games
+		Toad and the Ancient Keys
 	</h1>
 	
 	<?=view('content/game-single')?>
