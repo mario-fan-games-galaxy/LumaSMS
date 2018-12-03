@@ -17,7 +17,9 @@ nav {
 	ul {
 		li {
 			a {
+				color: $color-white;
 				display: block;
+				font-family: 'Press Start 2P';
 				padding: 0.5em;
 				text-transform: uppercase;
 			}

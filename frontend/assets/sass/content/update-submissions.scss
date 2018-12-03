@@ -29,6 +29,10 @@
 				margin-bottom: 0.5em;
 			}
 			
+			.thumbnail::after {
+				transition: all 0.25s ease;
+			}
+			
 			h4 {
 				font-size: 1.1em;
 				margin-bottom: 0;
@@ -46,6 +50,10 @@
 				.game-badge {
 					opacity: 0;
 				}
+			}
+			
+			.thumbnail::after {
+				background-color: $color-black;
 			}
 			
 			background-color: $color-white-transparent;

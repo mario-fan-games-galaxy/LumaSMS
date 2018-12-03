@@ -1,4 +1,8 @@
-@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P|Montserrat");
+@font-face {
+  font-family: 'Super Mario 256';
+  src: url("../fonts/SuperMario256.ttf") format("truetype"); }
+
 .tag {
   background-color: rgba(0, 0, 0, 0.25);
   border-radius: 0.25em;
@@ -58,7 +62,9 @@ nav {
     margin: 0;
     padding: 0; }
     nav ul li a {
+      color: #FFF;
       display: block;
+      font-family: 'Press Start 2P';
       padding: 0.5em;
       text-transform: uppercase; }
     nav ul li a:hover {
@@ -89,6 +95,7 @@ nav {
 
 body {
   color: #FFF;
+  font-family: 'Montserrat';
   font-size: 18px; }
 
 a {
@@ -102,8 +109,13 @@ a:hover {
 
 h1#page-title {
   color: #FFF;
+  font-family: 'Super Mario 256';
+  font-size: 64px;
+  font-weight: normal;
+  letter-spacing: 0.1em;
   padding: 0.5em 0;
   text-align: center;
+  text-shadow: 4px 4px 0 #000090, -4px -4px 0 #E60001;
   text-transform: uppercase; }
 
 .content-update-small .card-header h2 {
@@ -142,6 +154,8 @@ h1#page-title {
         right: 0;
         top: 0;
         z-index: 1; }
+    .content-update-submissions .list-update-submissions .content-update-submission .thumbnail::after {
+      transition: all 0.25s ease; }
     .content-update-submissions .list-update-submissions .content-update-submission h4 {
       font-size: 1.1em;
       margin-bottom: 0; }
@@ -150,6 +164,8 @@ h1#page-title {
     box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25); }
     .content-update-submissions .list-update-submissions .content-update-submission:hover .thumbnail .game-badge {
       opacity: 0; }
+    .content-update-submissions .list-update-submissions .content-update-submission:hover .thumbnail::after {
+      background-color: #000000; }
 
 .profile.profile-link {
   display: inline-block; }

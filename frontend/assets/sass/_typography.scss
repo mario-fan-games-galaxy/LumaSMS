@@ -2,6 +2,7 @@
 
 body {
 	color: $color-white;
+	font-family: 'Montserrat';
 	font-size: 18px;
 }
 
@@ -30,7 +31,15 @@ a:hover {
 
 h1#page-title {
 	color: $color-white;
+	font-family: 'Super Mario 256';
+	font-size: 64px;
+	font-weight: normal;
+	letter-spacing: 0.1em;
 	padding: 0.5em 0;
 	text-align: center;
+	text-shadow:
+		4px 4px 0 $color-blue-dark,
+		-4px -4px 0 $color-red
+	;
 	text-transform: uppercase;
 }
