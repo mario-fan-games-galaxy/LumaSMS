@@ -45,13 +45,29 @@ h2 {
 	font-size: 36px;
 }
 
-h2.card-header {
+h2.card-header,
+h3.card-header
+{
 	font-family: 'Super Mario 256';
+	text-shadow: $text-shadow-3D;
+}
+
+h2.subheadline {
+	color: $color-white;
+	font-family: 'Super Mario 256';
+	padding: 1em 0;
+	text-align: center;
 	text-shadow: $text-shadow-3D;
 }
 
 h3 {
 	font-size: 24px;
+}
+
+h3.thirdheadline {
+	border-bottom: 2px solid $color-blue-dark;
+	font-family: 'Press Start 2P';
+	text-shadow: $text-shadow-dark-blue;
 }
 
 

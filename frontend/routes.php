@@ -8,6 +8,7 @@ $routes = [
 	'forums'=>'forums/index',
 	
 	'content/game'=>'content/game',
+	'content/review'=>'content/review',
 ];
 
 ?>

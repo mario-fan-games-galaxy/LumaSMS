@@ -77,3 +77,21 @@
 		</div><!-- .card-body -->
 	</div><!-- .card -->
 </article>
+
+<h2 class="subheadline">
+	Comments
+</h2>
+
+<ul class="list-comments">
+	<li>
+		<?=view('content/comment-small')?>
+	</li>
+	
+	<li>
+		<?=view('content/comment-small')?>
+	</li>
+	
+	<li>
+		<?=view('content/comment-small')?>
+	</li>
+</ul>

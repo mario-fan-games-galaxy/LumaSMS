@@ -36,6 +36,9 @@ label {
   display: block;
   width: 100%; }
 
+.list-comments li {
+  margin-bottom: 2em; }
+
 .list-tags li {
   display: inline-block; }
 
@@ -126,12 +129,25 @@ h1#page-title {
 h2 {
   font-size: 36px; }
 
-h2.card-header {
+h2.card-header,
+h3.card-header {
   font-family: 'Super Mario 256';
+  text-shadow: 0.075em 0.075em 0 #000090, -0.075em -0.075em 0 #E60001; }
+
+h2.subheadline {
+  color: #FFF;
+  font-family: 'Super Mario 256';
+  padding: 1em 0;
+  text-align: center;
   text-shadow: 0.075em 0.075em 0 #000090, -0.075em -0.075em 0 #E60001; }
 
 h3 {
   font-size: 24px; }
+
+h3.thirdheadline {
+  border-bottom: 2px solid #000090;
+  font-family: 'Press Start 2P';
+  text-shadow: 0.125em 0.125em 0 #000090; }
 
 .text-shadow-3D {
   text-shadow: 0.075em 0.075em 0 #000090, -0.075em -0.075em 0 #E60001; }
@@ -163,29 +179,33 @@ h3 {
 .content-game-single .content-game-score {
   font-size: 3em; }
 
-.content-game-single .list-game-reviews blockquote {
-  margin: 0; }
-  .content-game-single .list-game-reviews blockquote cite {
-    font-style: normal; }
-  .content-game-single .list-game-reviews blockquote div {
-    font-size: 1.5em; }
-  .content-game-single .list-game-reviews blockquote div::before,
-  .content-game-single .list-game-reviews blockquote div::after {
-    font-family: 'Font Awesome 5 Free';
-    font-size: 0.5em;
-    font-weight: bold; }
-  .content-game-single .list-game-reviews blockquote div::before {
-    content: "\f10d"; }
-  .content-game-single .list-game-reviews blockquote div::after {
-    content: "\f10e";
-    position: relative;
-    bottom: 1em; }
-
 .content-game-single .list-game-reviews .content-game-score {
   font-size: 1.25em; }
 
 .content-game-single .list-game-reviews li:nth-of-type(2n) {
   text-align: right; }
+
+.content-review blockquote {
+  margin: 0; }
+  .content-review blockquote cite {
+    font-style: normal; }
+  .content-review blockquote div {
+    font-size: 1.5em; }
+  .content-review blockquote div::before,
+  .content-review blockquote div::after {
+    font-family: 'Font Awesome 5 Free';
+    font-size: 0.5em;
+    font-weight: bold; }
+  .content-review blockquote div::before {
+    content: "\f10d"; }
+  .content-review blockquote div::after {
+    content: "\f10e";
+    position: relative;
+    bottom: 1em; }
+
+.content-review-single .content-review-conclusion {
+  font-size: 1.5em;
+  font-weight: bold; }
 
 .content-update-small .card-header h2 {
   font-size: 1.25em;
@@ -193,11 +213,6 @@ h3 {
 
 .content-update-small .card-footer .list-update-meta-links li {
   padding-right: 0.5em; }
-
-.content-update-submissions h3 {
-  border-bottom: 2px solid #000090;
-  font-family: 'Press Start 2P';
-  text-shadow: 0.125em 0.125em 0 #000090; }
 
 .content-update-submissions .list-update-submissions {
   margin-bottom: 1em; }

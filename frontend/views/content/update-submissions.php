@@ -1,5 +1,5 @@
 <section class="content-update-submissions">
-	<h3>
+	<h3 class="thirdheadline">
 		Games
 	</h3>
 	
@@ -9,7 +9,7 @@
 		</li>
 	<?php endfor; ?></ul>
 	
-	<h3>
+	<h3 class="thirdheadline">
 		Reviews
 	</h3>
 	
@@ -19,7 +19,7 @@
 		</li>
 	<?php endfor; ?></ul>
 	
-	<h3>
+	<h3 class="thirdheadline">
 		Sprites
 	</h3>
 	
@@ -29,7 +29,7 @@
 		</li>
 	<?php endfor; ?></ul>
 	
-	<h3>
+	<h3 class="thirdheadline">
 		Tutorials
 	</h3>
 	
@@ -39,7 +39,7 @@
 		</li>
 	<?php endfor; ?></ul>
 	
-	<h3>
+	<h3 class="thirdheadline">
 		Sounds
 	</h3>
 	
@@ -49,7 +49,7 @@
 		</li>
 	<?php endfor; ?></ul>
 	
-	<h3>
+	<h3 class="thirdheadline">
 		Miscellaneous
 	</h3>
 	
