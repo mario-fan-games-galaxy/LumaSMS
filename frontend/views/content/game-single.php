@@ -1,7 +1,7 @@
 <article class="content-game content-game-single">
 	<div class="card">
 		<h2 class="card-header">
-			Preview
+			Overview
 		</h2><!-- .card-header -->
 		
 		<div class="card-body">
@@ -24,9 +24,7 @@
 							</label>
 						</li>
 					<?php endfor; ?></ul>
-				</div><!-- .col-lg-3 -->
-				
-				<div class="col-12 col-lg-8 offset-lg-2">
+					
 					<div class="content-game-single-meta">
 						<div class="content-game-score text-shadow-3D">
 							<span class="fas fa-star"></span>
@@ -76,6 +74,114 @@
 				
 				<li>
 					<?=view('content/review-small')?>
+				</li>
+			</ul>
+		</div><!-- .card-body -->
+		
+		<h2 class="card-header">
+			Manual
+		</h2><!-- .card-header -->
+		
+		<div class="card-body">
+			<h3 class="thirdheadline">
+				System Requirements
+			</h3>
+			
+			<div>
+				sadf
+			</div>
+			
+			<h3 class="thirdheadline">
+				Controls
+			</h3>
+			
+			<table class="content-game-controls-table">
+				<thead>
+					<tr>
+						<th>
+							Action
+						</th>
+						
+						<th>
+							Keyboard
+						</th>
+						
+						<th>
+							Gamepad
+						</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr>
+						<td>
+							Jump
+						</td>
+						
+						<td>
+							Space / Shift
+						</td>
+						
+						<td>
+							A
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div><!-- .card-body -->
+		
+		<h2 class="card-header">
+			Credits
+		</h2><!-- .card-header -->
+		
+		<div class="card-body">
+			<ul class="list-content-game-credits row">
+				<li class="col-12 col-sm-6 col-lg-4">
+					<h3 class="thirdheadline">
+						Developer
+					</h3>
+					
+					<?=view('user/profile-small')?>
+				</li>
+				
+				<li class="col-12 col-sm-6 col-lg-4">
+					<h3 class="thirdheadline">
+						Level Designer
+					</h3>
+					
+					<?=view('user/profile-small')?>
+				</li>
+				
+				<li class="col-12 col-sm-6 col-lg-4">
+					<h3 class="thirdheadline">
+						Pixel Art
+					</h3>
+					
+					<?=view('user/profile-small')?>
+				</li>
+				
+				<li class="col-12 col-sm-6 col-lg-4">
+					<h3 class="thirdheadline">
+						Developer
+					</h3>
+					
+					<?=view('user/profile-small')?>
+				</li>
+				
+				<li class="col-12 col-sm-6 col-lg-4">
+					<h3 class="thirdheadline">
+						Level Designer
+					</h3>
+					
+					<?=view('user/profile-small')?>
+				</li>
+				
+				<li class="col-12 col-sm-6 col-lg-4">
+					<h3 class="thirdheadline">
+						Pixel Art
+					</h3>
+					
+					<?=view('user/profile-small')?>
 				</li>
 			</ul>
 		</div><!-- .card-body -->
