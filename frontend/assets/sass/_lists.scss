@@ -4,6 +4,13 @@
 	}
 }
 
+.list-pagination-links {
+	li {
+		display: inline-block;
+		margin-bottom: 1em;
+	}
+}
+
 .list-tags {
 	li {
 		display: inline-block;
@@ -17,7 +24,7 @@ ul[class*="list-"] {
 }
 
 ul[class*="list-content-"] {
-	> li:not(:last-of-type) {
+	> li {
 		margin-bottom: 2em;
 	}
 }

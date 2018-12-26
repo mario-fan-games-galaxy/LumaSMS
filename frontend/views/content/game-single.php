@@ -1,5 +1,9 @@
 <article class="content-game content-game-single">
 	<div class="card">
+		<h2 class="card-header">
+			Preview
+		</h2><!-- .card-header -->
+		
 		<div class="card-body">
 			<div class="row">
 				<div class="col-12 col-lg-8 offset-lg-2">

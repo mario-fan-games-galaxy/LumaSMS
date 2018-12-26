@@ -36,5 +36,12 @@ nav {
 		padding: 0;
 	}
 	
-	background-image: url('../images/menutitlebg2.png');
+	background-color: $color-red;
+	background-image: repeating-linear-gradient(
+		0deg,
+		transparent,
+		transparent 5px,
+		$color-white-transparent 5px,
+		$color-white-transparent 10px
+	);
 }

@@ -1,4 +1,4 @@
-<article class="content-update content-update-small">
+<article class="content-update content-update-single">
 	<div class="card">
 		<div class="card-header flex flex-center">
 			<h2 class="flex-grow">
@@ -53,3 +53,23 @@
 		</div><!-- .card-footer -->
 	</div><!-- .card -->
 </article>
+
+<h2 class="subheadline">
+	Comments
+</h2>
+
+<ul class="list-comments">
+	<li>
+		<?=view('content/comment-small')?>
+	</li>
+	
+	<li>
+		<?=view('content/comment-small')?>
+	</li>
+	
+	<li>
+		<?=view('content/comment-small')?>
+	</li>
+</ul>
+
+<?=view('content/pagination')?>

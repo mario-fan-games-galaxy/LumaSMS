@@ -16,4 +16,6 @@
 			<?=view('content/update-small')?>
 		</li>
 	</ul>
+	
+	<?=view('content/pagination')?>
 </div>

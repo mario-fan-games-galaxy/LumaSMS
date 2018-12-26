@@ -1,18 +1,145 @@
-.btn {
-	
+/**
+ * Written by Mors
+ * Touched up a little by HylianDev
+ */
+
+ .btn {
+	border-radius: .75rem;
+	border-width: 4px;
+	height: 2.25rem;
+	padding: 0 1.5rem;
+	margin-right: 1rem;
+	color: #fff;
+	font-family: 'Super Mario 256',sans-serif;
+	cursor: pointer;
+	-webkit-transition: all .25s ease-in-out;
+			transition: all .25s ease-in-out;
+	-webkit-box-shadow: 0 2px 8px rgba(0,0,0,.125);
+			box-shadow: 0 2px 8px rgba(0,0,0,.125);
+	-webkit-transform: perspective(1px) translateZ(0);
+			transform: perspective(1px) translateZ(0)
 }
 
-.tag {
-	[class*="fa-"] {
-		font-weight: normal;
-	}
-	
-	background-color: $color-black-transparent;
-	border-radius: 0.25em;
-	color: $color-white;
-	display: inline-block;
-	font-size: 0.75em;
-	font-weight: bold;
-	margin: 0.125em 0;
-	padding: 0.25em;
+.btn:hover {
+	-webkit-box-shadow: 0 4px 16px rgba(0,0,0,.25);
+			box-shadow: 0 4px 16px rgba(0,0,0,.25)
+}
+
+.btn:focus {
+	-webkit-box-shadow: 0 2px 8px rgba(0,0,0,.125);
+			box-shadow: 0 2px 8px rgba(0,0,0,.125)
+}
+
+.btn-group, .btn-group-vertical, .btn:before {
+	border-radius: .5rem;
+	-webkit-transition: all .25s ease-in-out;
+			transition: all .25s ease-in-out
+}
+
+.btn:before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0,0,0,.25);
+	-webkit-transform: scaleX(1);
+			transform: scaleX(1);
+	-webkit-transform-origin: 50%;
+			transform-origin: 50%;
+	-webkit-transition: all .25s ease-in-out;
+			transition: all .25s ease-in-out
+}
+
+.btn:hover:before {
+	background: 0 0;
+	-webkit-transform: scaleX(0);
+			transform: scaleX(0)
+}
+
+.btn:active:before,
+.btn:focus:before
+{
+	background: rgba(255,255,255,.25);
+	-webkit-transition: all .125s ease-in-out;
+			transition: all .125s ease-in-out;
+	-webkit-transform: scaleX(1);
+			transform: scaleX(1)
+}
+
+.btn-group, .btn-group-vertical {
+	-webkit-box-shadow: 0 2px 8px rgba(0,0,0,.125);
+			box-shadow: 0 2px 8px rgba(0,0,0,.125);
+	-webkit-transform: perspective(1px) translateZ(0);
+			transform: perspective(1px) translateZ(0)
+}
+
+.btn-group .btn, .btn-group-vertical .btn {
+	margin-right: 0
+}
+
+.btn-group .btn, .btn-group:hover .btn,
+.btn-group:focus .btn,
+.btn-group-vertical .btn, .btn-group-vertical:hover .btn,
+.btn-group-vertical:focus .btn {
+	-webkit-box-shadow: 0 0 0 transparent;
+			box-shadow: 0 0 0 transparent
+}
+
+.btn-group:hover, .btn-group-vertical:hover {
+	-webkit-box-shadow: 0 4px 16px rgba(0,0,0,.25);
+			box-shadow: 0 4px 16px rgba(0,0,0,.25)
+}
+
+
+/* Custom Button Colors */
+
+.btn-blue, .btn-outline-blue:hover {
+	background-color: #4850d5
+}
+
+.btn-red, .btn-outline-red:hover {
+	background-color: #c80002
+}
+
+.btn-yellow, .btn-outline-yellow:hover {
+	background-color: #f5d021
+}
+
+.btn-white, .btn-outline-white:hover {
+	background-color: #dcdcdc
+}
+
+.btn-outline-blue {
+	border-color: #4850d5
+}
+
+.btn-outline-red {
+	border-color: #c80002
+}
+
+.btn-outline-yellow {
+	border-color: #f5d021
+}
+
+.btn-outline-white {
+	border-color: #dcdcdc
+}
+
+.btn-red:active:before, .btn-outline-red:active:before {
+	background: rgba(255,255,255,.375)
+}
+
+.btn-yellow:active:before, .btn-outline-yellow:active:before {
+	background: rgba(255,255,255,.5)
+}
+
+.btn-outline-blue, .btn-outline-red, .btn-outline-white, .btn-outline-yellow {
+	background-color: transparent;
+}
+
+.btn-outline-blue:before, .btn-outline-red:before, .btn-outline-white:before, .btn-outline-yellow:before {
+	background: 0 0
 }
