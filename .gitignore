@@ -1,5 +1,9 @@
 # Config
-config/config.yaml
+.env
+/app/config/parameters.yml
+
+# Process
+/.web-server-pid
 
 # Logs
 *.log
@@ -10,6 +14,17 @@ node_modules
 vendor
 
 # Cache
+/var/*
+!/var/cache
+/var/cache/*
+!var/cache/.gitkeep
+!/var/logs
+/var/logs/*
+!var/logs/.gitkeep
+!/var/sessions
+/var/sessions/*
+!var/sessions/.gitkeep
+!var/SymfonyRequirements.php
 *.cache
 
 # Tools
@@ -21,3 +36,6 @@ composer.phar
 docker/apache/server.crt
 docker/apache/server.key
 
+# Compiled Assets
+/build/
+/web/bundles/

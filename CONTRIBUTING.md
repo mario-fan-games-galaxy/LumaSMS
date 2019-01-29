@@ -65,12 +65,33 @@ Finally we can start with docker. Make sure you have
 [Docker Compose](https://docs.docker.com/compose/install/) installed on your
 system before continuing.
 
-First you may want to modify some configuration. Check out the `.env` file in
-your favorite editor and modify as needed. If this is the only webserver
-you're running on your machine, feel free to change `HTTP_PORT` to `80` and
-`HTTPS_PORT` to `443` so you don't need to type in the port in the URL to
-access the development environment from your browser, otherwise leave the
-defauts. Change the `POSTGRES_PASSWORD` to your liking as well.
+First you'll want to set up some configuration. Copy the `.env.dist` file in
+the project directory to `.env` and open it up in your favorite editor and
+modify as needed. If this is the only webserver you're running on your machine,
+feel free to change `HTTP_PORT` to `80` and `HTTPS_PORT` to `443` so you don't
+need to type in the port in the URL to access the development environment from
+your browser, otherwise leave the defauts. Change the `POSTGRES_PASSWORD` to
+your liking as well.
+
+You'll also want to make sure the userid/groupid matches whatever the
+user/group of your files is so they can be read and written to correctly. By
+default the `FILES_USER_ID` and `FILES_GROUP_ID` are set to `1000` which is
+typically the user id and group id of the first user on a Linux system. Double
+check this is correct by checking the user/group assigned to your files and
+getting the ID # from them via:
+
+```bash
+ls -l
+id -u <user>
+id -g <group>
+```
+
+The first command gets the user and group names assigned to the files,
+which will be in the format `user:group`- using those, the next command grabs
+the user id and the last command grabs the group id (replacing
+`<user>` with the user name and `<group>` with the group name). Replace the
+`FILES_USER_ID` and `FILES_GROUP_ID` variables in the `.env` file with those
+values.
 
 Once you've done that, head to the root directory of this project and launch
 with the following command:

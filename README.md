@@ -30,10 +30,8 @@ environment set up with Docker
 
 ### Installing
 
-Copy the files into your web directory. If you're using XAMPP, you can copy the
-files into your `/../xampp/htdocs/` directory. At the moment you'll want to
-configure your webserver to point to the `public` directory- NOT the root
-of this project; we'll add an `.htaccess` to handle that in the near future.
+Configure your webserver to point to the `public` directory- NOT the root
+of this project; we only need to serve the public files.
 
 After installing, make sure to run `composer install` to install all the
 PHP dependencies.
@@ -88,7 +86,7 @@ in this project.
 ## License
 
 This project is licensed under the MIT License - see the
-[LICENSE.md](LICENSE.md) file for details
+[LICENSE](LICENSE) file for details
 
 ## Acknowledgments
 

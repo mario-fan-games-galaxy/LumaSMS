@@ -3,8 +3,8 @@
   "license": "MIT",
   "scripts": {
     "autofix": "npm run prettier && npm run eslint-fix && npm run stylelint-fix && npm run phpcbf",
-    "build": "npm run clean && parcel build assets/main.scss assets/main.js --out-dir public/assets --cache-dir var/cache --log-level 2 --no-source-maps",
-    "clean": "rm -rf public/assets/*",
+    "build": "npm run clean && parcel build assets/main.scss assets/main.js --out-dir web/assets --cache-dir var/cache --log-level 2 --no-source-maps",
+    "clean": "rm -rf web/assets/*",
     "eslint": "eslint assets/**/*.js",
     "eslint-fix": "eslint assets/**/*.js --fix",
     "postinstall": "composer-runner -- install",
@@ -17,7 +17,7 @@
     "stylelint": "stylelint \"./assets/**/*.{c,sa,sc,le}ss\"",
     "stylelint-fix": "stylelint --fix \"./assets/**/*.{c,sa,sc,le}ss\"",
     "test": "composer-runner -- run-script test",
-    "watch": "npm run clean && parcel watch assets/main.scss assets/main.js assets/images --out-dir public/assets --cache-dir var/cache --no-autoinstall"
+    "watch": "npm run clean && parcel watch assets/main.scss assets/main.js assets/images --out-dir web/assets --cache-dir var/cache --no-autoinstall"
   },
   "husky": {
     "hooks": {
@@ -57,5 +57,8 @@
     "highlight.js": "^9.12.0",
     "jquery": "^3.3.1",
     "popper.js": "^1.14.4"
+  },
+  "engines": {
+    "composer": "1.8.0"
   }
 }
