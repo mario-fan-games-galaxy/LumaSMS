@@ -43,7 +43,7 @@ class Model {
             $parts['order'] = ' ORDER BY ' . $parts['order'];
         }
         
-        $sql = DB::paginate("SELECT " . $parts['cols'] . " FROM " . static::$table . $parts['where'] . $parts['order']);
+        $sql = DB::paginate("SELECT " . $parts['cols'] . " FROM " . static::$table . $parts['where'] . $parts['order'], $limit, $page);
         
         $rows = DB::fetchAll($sql);
         
