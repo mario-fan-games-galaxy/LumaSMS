@@ -1,0 +1,5 @@
+db:
+  host: localhost
+  uname: root
+  upass: password
+  dbname: lumasms
