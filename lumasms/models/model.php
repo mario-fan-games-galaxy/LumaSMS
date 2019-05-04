@@ -1,23 +1,23 @@
 <?php
 
 class Model {
-    public static $table = '';
+    public static
+        $primaryKey = 'id',
+        $table = ''
+    ;
     
-    private $data;
+    private
+        $data,
+        $updatedFields = []
+    ;
     
     public static function id($id){
-        $primaryKey = 'id';
-        
-        if(!empty(static::$primaryKey)){
-            $primaryKey = static::$primaryKey;
-        }
-        
         $class = get_called_class();
         
-        $row = DB::fetch($sql = "SELECT * FROM " . static::$table . " WHERE $primaryKey = $id");
+        $row = DB::fetch($sql = "SELECT * FROM " . static::$table . " WHERE " . static::$primaryKey . " = $id");
         
         $m = new $class();
-        $m->sets($row);
+        $m->sets($row, false);
         
         return $m;
     }
@@ -49,7 +49,7 @@ class Model {
         
         foreach($rows as $row){
             $m = new $class();
-            $m->sets($row);
+            $m->sets($row, false);
             
             $ret[] = $m;
         }
@@ -61,18 +61,60 @@ class Model {
         $this->data = new stdClass();
     }
     
-    public function sets($values){
+    public function sets($values, $recordFields = true){
         foreach($values as $key => $value){
-            $this->set($key, $value);
+            $this->set($key, $value, $recordFields);
         }
         
         return $this;
     }
     
-    public function set($key, $value){
+    public function set($key, $value, $recordField = true){
+        if($recordField){
+            $this->updatedFields[] = $key;
+        }
+        
         $this->data->$key = $value;
         
         return $this;
+    }
+    
+    public function f($key){
+        if(empty($this->data->$key)){
+            return false;
+        }
+        
+        return $this->data->$key;
+    }
+    
+    public function save(){
+        if($this->f(static::$primaryKey)){
+            $sqlFields = [];
+            $params = [];
+            
+            foreach($this->updatedFields as $key){
+                $sqlFields[] = "$key = :$key";
+                $params[$key] = $this->f($key);
+            }
+            
+            $sql = "UPDATE " . static::$table .
+            " SET " . implode(', ', $sqlFields) .
+            " WHERE " . static::$primaryKey . " = " . $this->f(static::$primaryKey);
+            
+            DB::query($sql, $params);
+        }else{
+            $keys = array_keys($aData = (array)$this->data);
+            $pKeys = array_keys($aData);
+            
+            foreach($pKeys as $key => $value){
+                $pKeys[$key] = ':' . $value;
+            }
+            
+            $sql = "INSERT INTO " . static::$table . " ( " . implode(', ', $keys) . " ) " .
+            "VALUES ( " . implode(', ', $pKeys) . " )";
+            
+            DB::query($sql, $aData);
+        }
     }
 }
 

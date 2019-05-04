@@ -11,8 +11,8 @@ require_once 'includes/settings.php';
 require_once 'models/model.php';
 require_once 'models/news.php';
 
-//echo 'Hello, World!';
-
-echo debug(News::get());
+foreach(News::get(['order'=>'nid desc']) as $news){
+    echo '<h1>' . $news->f('title') . '</h1>';
+}
 
 ?>

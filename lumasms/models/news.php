@@ -1,7 +1,10 @@
 <?php
 
 class News extends Model {
-    public static $table = 'tsms_news';
+    public static
+        $primaryKey = 'nid',
+        $table = 'tsms_news'
+    ;
 }
 
 ?>

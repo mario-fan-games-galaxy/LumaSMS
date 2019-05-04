@@ -6,7 +6,6 @@ class DB {
     
     private static function obj(){
         if(self::$PDO){
-            die('recurring');
             return self::$PDO;
         }
         
