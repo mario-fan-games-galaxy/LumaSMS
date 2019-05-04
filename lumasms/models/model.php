@@ -22,6 +22,10 @@ class Model {
         return $m;
     }
     
+    public static function deleteID($id){
+        DB::query("DELETE FROM " . static::$table . " WHERE " . static::$primaryKey . " = $id");
+    }
+    
     public static function get($parts = [], $params = [], $limit = 20, $page = 1){
         if(empty($parts['cols'])){
             $parts['cols'] = '*';
@@ -85,6 +89,10 @@ class Model {
         }
         
         return $this->data->$key;
+    }
+    
+    public function delete(){
+        static::deleteID($this->f(static::$primaryKey));
     }
     
     public function save(){

@@ -1,4 +1,3 @@
 node_modules/
 vendor/
-settings.php
-settings.bak.php
+tcsms/settings.php
