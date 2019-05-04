@@ -3,3 +3,7 @@ db:
   uname: root
   upass: password
   dbname: lumasms
+site:
+  defaultSkin: 2
+users:
+  keepMD5: true

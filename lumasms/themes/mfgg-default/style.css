@@ -1,0 +1,29 @@
+/* main structure */
+
+body {
+    background-image: url('./background.gif');
+    color: #FFF;
+}
+
+#header .container {
+    background-image: url('./header_br.png');
+    max-width: unset;
+    padding: 0;
+}
+
+#main {
+    background-image: url('./sidebar.gif');
+    background-repeat: repeat-y;
+}
+
+.card {
+    background-color: #2236AC;
+}
+
+.card-header {
+    background-color: #000070;
+}
+
+.card-footer {
+    background-color: #000059;
+}

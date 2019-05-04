@@ -2,6 +2,9 @@
 
 class Model {
     public static
+        $count,
+        $page,
+        $pageCount,
         $primaryKey = 'id',
         $table = ''
     ;
@@ -16,17 +19,27 @@ class Model {
         
         $row = DB::fetch($sql = "SELECT * FROM " . static::$table . " WHERE " . static::$primaryKey . " = $id");
         
-        $m = new $class();
-        $m->sets($row, false);
+        if(!$row){
+            return false;
+        }
         
-        return $m;
+        return static::factory($row);
     }
     
     public static function deleteID($id){
         DB::query("DELETE FROM " . static::$table . " WHERE " . static::$primaryKey . " = $id");
     }
     
-    public static function get($parts = [], $params = [], $limit = 20, $page = 1){
+    private static function factory($row){
+        $class = get_called_class();
+        
+        $m = new $class();
+        $m->sets($row, false);
+        
+        return $m;
+    }
+    
+    private static function abstractGet($parts = [], $params = [], $limit = 20, $page = 1){
         if(empty($parts['cols'])){
             $parts['cols'] = '*';
         }
@@ -43,22 +56,34 @@ class Model {
             $parts['order'] = ' ORDER BY ' . $parts['order'];
         }
         
-        $sql = DB::paginate("SELECT " . $parts['cols'] . " FROM " . static::$table . $parts['where'] . $parts['order'], $limit, $page);
+        // Get page count
+        $sql = "SELECT " . $parts['cols'] . " FROM " . static::$table . $parts['where'] . $parts['order'];
+        static::$count = DB::count($sql, $params);
+        static::$pageCount = ceil(static::$count / $limit);
+        static::$page = $page;
         
-        $rows = DB::fetchAll($sql);
-        
-        $class = get_called_class();
+        return DB::query(
+            DB::paginate($sql, $limit, $page),
+            $params
+        );
+    }
+    
+    public static function get($parts = [], $params = [], $limit = 20, $page = 1){
+        $query = static::abstractGet($parts, $params, $limit, $page);
         
         $ret = [];
         
-        foreach($rows as $row){
-            $m = new $class();
-            $m->sets($row, false);
-            
-            $ret[] = $m;
+        foreach(DB::fetchAll($query) as $row){
+            $ret[] = static::factory($row);
         }
         
         return $ret;
+    }
+    
+    public static function first($parts = [], $params = []){
+        $query = static::abstractGet($parts, $params, 1, 1);
+        
+        return static::factory(DB::fetch($query));
     }
     
     public function __construct(){
@@ -78,7 +103,7 @@ class Model {
             $this->updatedFields[] = $key;
         }
         
-        $this->data->$key = $value;
+        @$this->data->$key = $value;
         
         return $this;
     }
