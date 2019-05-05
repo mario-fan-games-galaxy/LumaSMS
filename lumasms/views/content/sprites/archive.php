@@ -7,9 +7,9 @@
     
     <?=view('pagination', [
         'route' => 'content/sprites/page',
-        'pages' => News::$pageCount,
-        'results' => News::$count,
-        'page' => News::$page,
+        'pages' => SpriteMeta::$pageCount,
+        'results' => SpriteMeta::$count,
+        'page' => SpriteMeta::$page,
     ])?>
 <?php else: ?>
     <p>Nothing was found.</p>

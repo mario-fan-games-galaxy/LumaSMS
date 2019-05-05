@@ -14,7 +14,7 @@ class SpriteMeta extends Model {
             [ 'eid' => $this->f('eid'), ]
         );
         
-        if(empty($content->f('rid'))){
+        if(!$content->f('rid')){
             return;
         }
         
