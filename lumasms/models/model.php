@@ -35,6 +35,7 @@ class Model {
         
         $m = new $class();
         $m->sets($row, false);
+        $m->load();
         
         return $m;
     }
@@ -89,6 +90,9 @@ class Model {
     public function __construct(){
         $this->data = new stdClass();
     }
+    
+    // gets called when a model is loaded with data
+    public function load(){}
     
     public function sets($values, $recordFields = true){
         foreach($values as $key => $value){

@@ -12,3 +12,11 @@ body {
     flex-grow: 1;
     padding: 2em 0;
 }
+
+.card,
+.card .card-header,
+.card .card-footer
+{
+    border-width: 0;
+    border-radius: 0;
+}

@@ -16,6 +16,7 @@ require_once 'models/content.php';
 require_once 'models/contenttype.php';
 require_once 'models/news.php';
 require_once 'models/siteskin.php';
+require_once 'models/spritemeta.php';
 require_once 'models/user.php';
 require_once 'routes.php';
 

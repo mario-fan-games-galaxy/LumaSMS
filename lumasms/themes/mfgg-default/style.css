@@ -16,6 +16,44 @@ body {
     background-repeat: repeat-y;
 }
 
+/* nav */
+
+#nav-checkbox {
+    position: fixed;
+    right: -100%;
+    top: -100%;
+}
+
+#nav {
+    background-color: #2236AC;
+    box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.25);
+    height: 100%;
+    overflow-y: auto;
+    position: fixed;
+    right: calc(-100% / 3);
+    top: 0;
+    transition: right 0.25s ease;
+    width: calc(100% / 3);
+    z-index: 2;
+}
+
+#nav-checkbox:checked ~ #nav {
+    right: 0;
+}
+
+/* links */
+
+a {
+    color: #FF0;
+}
+
+a:hover {
+    color: #0F0;
+    text-decoration: none;
+}
+
+/* cards */
+
 .card {
     background-color: #2236AC;
 }

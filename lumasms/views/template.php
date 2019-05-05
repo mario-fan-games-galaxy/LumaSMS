@@ -13,6 +13,8 @@
 
 <body>
 
+<input type="checkbox" accesskey="m" id="nav-checkbox">
+
 <header id="header">
     <div class="container">
         <a href="./">
@@ -20,6 +22,15 @@
         </a>
     </div>
 </header>
+
+<nav id="nav">
+    <div class="container">
+        <ul class="list-inline">
+            <li><a href="./">Updates</a></li>
+            <li><a href="./content/sprites">Sprite Sheets</a></li>
+        </ul>
+    </div>
+</nav>
 
 <main id="main">
     <div class="container">

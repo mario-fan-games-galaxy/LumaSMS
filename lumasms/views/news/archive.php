@@ -1,11 +1,7 @@
 <?php if(count($news)): ?>
     <ul class="list-inline"><?php foreach($news as $post): ?>
         <li>
-            <h2>
-                <a href="news/view/<?=$post->f('nid')?>">
-                    <?=$post->f('title')?>
-                </a>
-            </h2>
+            <?=view('news/individual', [ 'post' => $post ])?>
         </li>
     <?php endforeach; ?></ul>
     

@@ -5,6 +5,12 @@ class User extends Model {
         $primaryKey = 'uid',
         $table = 'tsms_users'
     ;
+    
+    public function __toString(){
+        $view = view('users/profile-small', [ 'user' => $this ]);
+        
+        return $view ? $view : '';
+    }
 }
 
 ?>

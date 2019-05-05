@@ -1,7 +1,5 @@
 <?php if(!empty($post)): ?>
-    <h2>
-        <?=$post->f('title')?>
-    </h2>
+    <?=view('news/individual', [ 'post' => $post ])?>
 <?php else: ?>
     <p>Post not found.</p>
 <?php endif; ?>
