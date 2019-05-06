@@ -40,7 +40,7 @@ class Model {
         return $m;
     }
     
-    private static function abstractGet($parts = [], $params = [], $limit = 20, $page = 1){
+    private static function abstractGet($parts = [], $params = [], $limit = 20, $page = 1, $paginate = false){
         if(empty($parts['cols'])){
             $parts['cols'] = '*';
         }
@@ -57,11 +57,14 @@ class Model {
             $parts['order'] = ' ORDER BY ' . $parts['order'];
         }
         
-        // Get page count
         $sql = "SELECT " . $parts['cols'] . " FROM " . static::$table . $parts['where'] . $parts['order'];
-        static::$count = DB::count($sql, $params);
-        static::$pageCount = ceil(static::$count / $limit);
-        static::$page = $page;
+        
+        if($paginate){
+            // Get page count
+            static::$count = DB::count($sql, $params);
+            static::$pageCount = ceil(static::$count / $limit);
+            static::$page = $page;
+        }
         
         return DB::query(
             DB::paginate($sql, $limit, $page),
@@ -69,8 +72,8 @@ class Model {
         );
     }
     
-    public static function get($parts = [], $params = [], $limit = 20, $page = 1){
-        $query = static::abstractGet($parts, $params, $limit, $page);
+    public static function get($parts = [], $params = [], $limit = 20, $page = 1, $paginate = false){
+        $query = static::abstractGet($parts, $params, $limit, $page, $paginate);
         
         $ret = [];
         
@@ -81,8 +84,12 @@ class Model {
         return $ret;
     }
     
+    public static function paginate($parts = [], $params = [], $limit = 20, $page = 1){
+        return static::get($parts, $params, $limit, $page, true);
+    }
+    
     public static function first($parts = [], $params = []){
-        $query = static::abstractGet($parts, $params, 1, 1);
+        $query = static::abstractGet($parts, $params, 1, 1, false);
         
         return static::factory(DB::fetch($query));
     }

@@ -27,7 +27,7 @@ $routes = [
     },
     
     '/^news\/page\/([0-9]+)$/' => function($page){
-        $news = News::get(['order'=>'nid desc'], [], 20, $page);
+        $news = News::paginate(['order'=>'nid desc'], [], 20, $page);
         
         return view('news/archive', [
             'news' => $news,
@@ -45,7 +45,7 @@ $routes = [
     },
     
     '/^content\/sprites\/page\/([0-9]+)$/' => function($page){
-        $sprites = SpriteMeta::get(['order' => 'eid desc'], [], 20, $page);
+        $sprites = SpriteMeta::paginate(['order' => 'eid desc'], [], 20, $page);
         
         return view('content/sprites/archive', [
             'contents' => $sprites,
