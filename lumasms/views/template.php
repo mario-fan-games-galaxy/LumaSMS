@@ -28,6 +28,7 @@
         <ul class="list-inline">
             <li><a href="./">Updates</a></li>
             <li><a href="./content/sprites">Sprite Sheets</a></li>
+            <li><a href="./content/games">Games</a></li>
         </ul>
     </div>
 </nav>

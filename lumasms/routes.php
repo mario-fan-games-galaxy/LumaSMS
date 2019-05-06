@@ -22,6 +22,7 @@ function getRoute($route){
 }
 
 $routes = [
+    // News
     '/^$/' => function(){
         return getRoute('news/page/1');
     },
@@ -40,6 +41,7 @@ $routes = [
         return view('news/single', [ 'post' => $post ]);
     },
     
+    // Sprites
     '/^content\/sprites$/' => function(){
         return getRoute('content/sprites/page/1');
     },
@@ -58,6 +60,28 @@ $routes = [
         return view('content/single', [
             'content' => $sprite,
             'typeName' => 'sprites',
+        ]);
+    },
+    
+    // Games
+    '/^content\/games$/' => function(){
+        return getRoute('content/games/page/1');
+    },
+    
+    '/^content\/games\/page\/([0-9]+)$/' => function($page){
+        $games = GameMeta::paginate(['order' => 'eid desc'], [], 20, $page);
+        
+        return view('content/games/archive', [
+            'contents' => $games,
+        ]);
+    },
+    
+    '/^content\/games\/view\/([0-9]+)$/' => function($id){
+        $game = GameMeta::id($id);
+        
+        return view('content/single', [
+            'content' => $game,
+            'typeName' => 'games',
         ]);
     },
 ];
