@@ -9,7 +9,7 @@ class Model {
         $table = ''
     ;
     
-    private
+    protected
         $data,
         $updatedFields = []
     ;

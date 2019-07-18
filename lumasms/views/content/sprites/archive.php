@@ -1,7 +1,7 @@
 <?php if(count($contents)): ?>
     <ul class="list-inline"><?php foreach($contents as $content): if(empty($content->content)): continue; endif; ?>
         <li>
-            <?=view('content/sprites/individual', [ 'content' => $content ])?>
+            <?=view('content/sprites/small', [ 'content' => $content ])?>
         </li>
     <?php endforeach; ?></ul>
     

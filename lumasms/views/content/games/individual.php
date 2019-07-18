@@ -1,11 +1,7 @@
-<div class="card mb-3">
-    <h2 class="card-header">
-        <a href="content/games/view/<?=$content->f('eid')?>">
-            <?=$content->content->f('title')?>
-        </a>
-    </h2>
-    
-    <div class="card-body">
-        <?=$content->content->f('description')?>
-    </div>
-</div>
+<?=view('content/games/small', [ 'content' => $content ])?>
+
+<?=view('content/comments/list', [
+    'comments' => $content->comments($commentsPage),
+    'route' => 'content/games/view/' . $content->f('eid') . '/page',
+    'commentsPage' => $commentsPage,
+])?>

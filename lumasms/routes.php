@@ -35,10 +35,13 @@ $routes = [
         ]);
     },
     
-    '/^news\/view\/([0-9]+)[\/|\-]*(.*)$/' => function($id){
+    '/^news\/view\/([0-9]+)(\/page\/([0-9]+)){0,1}$/' => function($id, $hasCommentsPage = false, $commentsPage = 1){
         $post = News::id($id);
         
-        return view('news/single', [ 'post' => $post ]);
+        return view('news/single', [
+            'post' => $post,
+            'commentsPage' => $commentsPage,
+        ]);
     },
     
     // Sprites
@@ -54,12 +57,13 @@ $routes = [
         ]);
     },
     
-    '/^content\/sprites\/view\/([0-9]+)$/' => function($id){
+    '/^content\/sprites\/view\/([0-9]+)(\/page\/([0-9]+)){0,1}$/' => function($id, $hasCommentsPage = false, $commentsPage = 1){
         $sprite = SpriteMeta::id($id);
         
         return view('content/single', [
             'content' => $sprite,
             'typeName' => 'sprites',
+            'commentsPage' => $commentsPage,
         ]);
     },
     
@@ -76,12 +80,13 @@ $routes = [
         ]);
     },
     
-    '/^content\/games\/view\/([0-9]+)$/' => function($id){
+    '/^content\/games\/view\/([0-9]+)(\/page\/([0-9]+)){0,1}$/' => function($id, $hasCommentsPage = false, $commentsPage = 1){
         $game = GameMeta::id($id);
         
         return view('content/single', [
             'content' => $game,
             'typeName' => 'games',
+            'commentsPage' => $commentsPage,
         ]);
     },
 ];

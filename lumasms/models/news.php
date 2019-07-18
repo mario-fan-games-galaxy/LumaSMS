@@ -6,7 +6,7 @@ class News extends Model {
         $table = 'tsms_news'
     ;
     
-    private $_author = false;
+    protected $_author = false;
     
     public function author(){
         if(empty($this->_author)){
@@ -14,6 +14,21 @@ class News extends Model {
         }
         
         return $this->_author;
+    }
+    
+    public function comments($commentsPage){
+        $comments = Comment::paginate(
+            [
+                'where' => 'type = 2 AND rid = :rid',
+            ],
+            [
+                'rid' => $this->f('nid'),
+            ],
+            20,
+            $commentsPage
+        );
+        
+        return $comments;
     }
 }
 
