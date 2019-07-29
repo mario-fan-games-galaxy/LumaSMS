@@ -8,6 +8,10 @@ body {
     min-height: 100%;
 }
 
+img {
+    max-width: 100%;
+}
+
 #main {
     flex-grow: 1;
     padding: 2em 0;

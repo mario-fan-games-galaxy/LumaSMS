@@ -1,7 +1,7 @@
 <?php if(count($news)): ?>
     <ul class="list-inline"><?php foreach($news as $post): ?>
         <li>
-            <?=view('news/individual', [ 'post' => $post ])?>
+            <?=view('news/small', [ 'post' => $post ])?>
         </li>
     <?php endforeach; ?></ul>
     

@@ -7,8 +7,10 @@
 <title>MFGG</title>
 <base href="<?=$base?>">
 <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
 <link rel="stylesheet" type="text/css" href="themes/style.css">
 <link rel="stylesheet" type="text/css" href="themes/<?=$skin->f('slug')?>/style.css">
+<script type="text/javascript" src="themes/nav.js"></script>
 </head>
 
 <body>
@@ -17,20 +19,31 @@
 
 <header id="header">
     <div class="container">
-        <a href="./">
-            <img src="themes/<?=$skin->f('slug')?>/header.png" alt="Mario Fan Games Galaxy">
-        </a>
+        <div class="d-flex align-items-center">
+            <a href="./" class="flex-grow-1">
+                <img src="themes/<?=$skin->f('slug')?>/header.png" alt="Mario Fan Games Galaxy">
+            </a>
+            
+            <label for="nav-checkbox" class="px-5">
+                <span class="fas fa-bars fa-lg"></span>
+            </label>
+        </div>
     </div>
 </header>
 
 <nav id="nav">
-    <div class="container">
-        <ul class="list-inline">
-            <li><a href="./">Updates</a></li>
-            <li><a href="./content/sprites">Sprite Sheets</a></li>
-            <li><a href="./content/games">Games</a></li>
-        </ul>
-    </div>
+    <dl>
+        <dt class="d-flex align-items-center">
+            <span class="flex-grow-1">Menu</span>
+            
+            <label for="nav-checkbox" class="p-2">
+                <span class="fas fa-times fa-lg"></span>
+            </label>
+        </dt>
+        <dd><a href="./">Updates</a></dd>
+        <dd><a href="./content/sprites">Sprite Sheets</a></dd>
+        <dd><a href="./content/games">Games</a></dd>
+    </dl>
 </nav>
 
 <main id="main">

@@ -7,6 +7,7 @@ body {
 
 #header .container {
     background-image: url('./header_br.png');
+    background-size: auto 100%;
     max-width: unset;
     padding: 0;
 }
@@ -39,6 +40,28 @@ body {
 
 #nav-checkbox:checked ~ #nav {
     right: 0;
+}
+
+#nav dt {
+    background-color: #000070;
+}
+
+#nav dt,
+#nav dd
+{
+    margin: 0;
+    padding: 0.25em 1em;
+}
+
+label[for="nav-checkbox"] {
+    margin: 0;
+}
+
+@media (max-width: 991.98px) {
+    #nav {
+        right: -100%;
+        width: 100%;
+    }
 }
 
 /* links */
