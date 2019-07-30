@@ -18,6 +18,22 @@ class ContentMeta extends Model {
         $this->content = $content;
     }
     
+    public function thumbnail(){
+        if(empty($thumbnail = $this->f('thumbnail'))){
+            return '';
+        }
+        
+        $path = 'thumbnail/' . $this->type . '/' . $thumbnail;
+        
+        if(!file_exists($path)){
+            $thumbnailImg = file_get_contents('https://mfgg.net/' . $path);
+            
+            file_put_contents($path, $thumbnailImg);
+        }
+        
+        return $path;
+    }
+    
     public function comments($commentsPage){
         $comments = Comment::paginate(
             [

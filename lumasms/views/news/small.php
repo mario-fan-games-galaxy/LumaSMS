@@ -16,4 +16,10 @@
             </div><!-- .col -->
         </div><!-- .row -->
     </div><!-- .card-body -->
+    
+    <div class="card-footer">
+        <a href="news/view/<?=$post->f('nid')?>">
+            <?=$count = $post->commentsCount()?> comment<?=$count != 1 ? 's' : ''?>
+        </a>
+    </div><!-- .card-footer -->
 </div><!-- .card -->

@@ -6,6 +6,10 @@
     </h2>
     
     <div class="card-body">
+        <p>
+            <img src="<?=$content->thumbnail()?>" alt="">
+        </p>
+        
         <?=$content->content->f('description')?>
     </div>
 </div>

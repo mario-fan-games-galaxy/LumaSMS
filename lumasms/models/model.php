@@ -1,5 +1,9 @@
 <?php
 
+define('MODEL_GET', 1);
+define('MODEL_PAGINATE', 2);
+define('MODEL_COUNT', 3);
+
 class Model {
     public static
         $count,
@@ -40,7 +44,7 @@ class Model {
         return $m;
     }
     
-    private static function abstractGet($parts = [], $params = [], $limit = 20, $page = 1, $paginate = false){
+    private static function abstractGet($parts = [], $params = [], $limit = 20, $page = 1, $getType = MODEL_GET){
         if(empty($parts['cols'])){
             $parts['cols'] = '*';
         }
@@ -59,11 +63,18 @@ class Model {
         
         $sql = "SELECT " . $parts['cols'] . " FROM " . static::$table . $parts['where'] . $parts['order'];
         
-        if($paginate){
-            // Get page count
-            static::$count = DB::count($sql, $params);
-            static::$pageCount = ceil(static::$count / $limit);
-            static::$page = $page;
+        switch($getType){
+            case MODEL_PAGINATE: {
+                static::$count = DB::count($sql, $params);
+                static::$pageCount = ceil(static::$count / $limit);
+                static::$page = $page;
+                
+                break;
+            }
+            
+            case MODEL_COUNT: {
+                return DB::count($sql, $params);
+            }
         }
         
         return DB::query(
@@ -72,8 +83,8 @@ class Model {
         );
     }
     
-    public static function get($parts = [], $params = [], $limit = 20, $page = 1, $paginate = false){
-        $query = static::abstractGet($parts, $params, $limit, $page, $paginate);
+    public static function get($parts = [], $params = [], $limit = 20, $page = 1, $getType = MODEL_GET){
+        $query = static::abstractGet($parts, $params, $limit, $page, $getType);
         
         $ret = [];
         
@@ -85,7 +96,11 @@ class Model {
     }
     
     public static function paginate($parts = [], $params = [], $limit = 20, $page = 1){
-        return static::get($parts, $params, $limit, $page, true);
+        return static::get($parts, $params, $limit, $page, MODEL_PAGINATE);
+    }
+    
+    public static function count($parts = [], $params = []){
+        return static::abstractGet($parts, $params, false, false, MODEL_COUNT);
     }
     
     public static function first($parts = [], $params = []){

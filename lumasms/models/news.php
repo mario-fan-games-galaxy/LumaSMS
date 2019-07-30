@@ -16,7 +16,7 @@ class News extends Model {
         return $this->_author;
     }
     
-    public function comments($commentsPage){
+    public function comments($commentsPage = 1){
         $comments = Comment::paginate(
             [
                 'where' => 'type = 2 AND rid = :rid',
@@ -26,6 +26,20 @@ class News extends Model {
             ],
             20,
             $commentsPage
+        );
+        
+        return $comments;
+    }
+    
+    public function commentsCount(){
+        $comments = Comment::count(
+            [
+                'where' => 'type = 2 AND rid = :rid',
+            ],
+            [
+                'rid' => $this->f('nid'),
+            ],
+            20
         );
         
         return $comments;
