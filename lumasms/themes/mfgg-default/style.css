@@ -19,48 +19,79 @@ body {
 
 /* nav */
 
-#nav-checkbox {
-    position: fixed;
-    right: -100%;
-    top: -100%;
-}
-
-#nav {
-    background-color: #2236AC;
-    box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.25);
-    height: 100%;
-    overflow-y: auto;
-    position: fixed;
-    right: calc(-100% / 3);
-    top: 0;
-    transition: right 0.25s ease;
-    width: calc(100% / 3);
-    z-index: 2;
-}
-
-#nav-checkbox:checked ~ #nav {
-    right: 0;
-}
-
-#nav dt {
-    background-color: #000070;
-}
-
-#nav dt,
-#nav dd
-{
-    margin: 0;
-    padding: 0.25em 1em;
-}
-
-label[for="nav-checkbox"] {
-    margin: 0;
-}
-
 @media (max-width: 991.98px) {
-    #nav {
+    #nav-checkbox {
+        position: fixed;
         right: -100%;
+        top: -100%;
+    }
+    
+    #nav {
+        background-color: #2236AC;
+        box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.25);
+        height: 100%;
+        overflow-y: auto;
+        position: fixed;
+        right: -100%;
+        top: 0;
+        transition: right 0.25s ease;
         width: 100%;
+        z-index: 2;
+    }
+    
+    #nav-checkbox:checked ~ #main #nav {
+        right: 0;
+    }
+    
+    #nav dt {
+        align-items: center;
+        background-color: #000070;
+        display: flex;
+    }
+    
+    #nav dt,
+    #nav dd
+    {
+        margin: 0;
+        padding: 0.25em 1em;
+    }
+    
+    label[for="nav-checkbox"] {
+        margin: 0;
+    }
+}
+
+@media (min-width: 992px) {
+    #nav-checkbox,
+    label[for="nav-checkbox"]
+    {
+        display: none;
+    }
+    
+    #nav {
+        background-color: rgba(0, 0, 89, 0.9);
+        margin-bottom: 2em;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+    }
+    
+    #nav dl {
+        display: flex;
+        margin: 0;
+    }
+    
+    #nav dl dt {
+        display: none;
+    }
+    
+    #nav dl dd {
+        margin: 0;
+    }
+    
+    #nav dl dd a {
+        display: block;
+        padding: 0.5em;
     }
 }
 

@@ -60,11 +60,31 @@ $routes = [
     '/^content\/sprites\/view\/([0-9]+)(\/page\/([0-9]+)){0,1}$/' => function($id, $hasCommentsPage = false, $commentsPage = 1){
         $sprite = SpriteMeta::id($id);
         
+        $sprite->set('views', intval($sprite->f('views')) + 1)->save();
+        
         return view('content/single', [
             'content' => $sprite,
             'typeName' => 'sprites',
             'commentsPage' => $commentsPage,
         ]);
+    },
+    
+    '/^content\/sprites\/download\/([0-9]+)(.*)$/' => function($id){
+        $sprite = SpriteMeta::id($id);
+        
+        $file = $sprite->file();
+        
+        if(!file_exists($file)){
+            return '404';
+        }
+        
+        $sprite->set('downloads', intval($sprite->f('downloads')) + 1)->save();
+        
+        header('Content-type: ' . mime_content_type($file));
+        
+        echo file_get_contents($file);
+        
+        die();
     },
     
     // Games

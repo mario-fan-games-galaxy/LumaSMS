@@ -1,0 +1,27 @@
+users:
+- login
+- registration
+- edit profile
+- ban
+- change group (user, qc, mod, admin)
+- nicknames (I propose that we end name changes, and just let users change their nickname)
+content:
+- list
+- view singularly
+- download
+- search
+- submit
+- qc/accept
+bbs:
+- forums/categories
+- anti-spam
+- muting
+- bbcode
+comments:
+- use the comments table for forum posts
+- post
+- list
+- edit
+- delete
+updates:
+- pulling submissions

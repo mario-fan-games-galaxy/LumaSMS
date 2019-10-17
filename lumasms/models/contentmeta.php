@@ -18,6 +18,16 @@ class ContentMeta extends Model {
         $this->content = $content;
     }
     
+    public function file(){
+        if(empty($file = $this->f('file'))){
+            return '';
+        }
+        
+        $path = 'file/' . $this->type . '/' . $file;
+        
+        return $path;
+    }
+    
     public function thumbnail(){
         if(empty($thumbnail = $this->f('thumbnail'))){
             return '';
@@ -47,6 +57,17 @@ class ContentMeta extends Model {
         );
         
         return $comments;
+    }
+    
+    public function commentsCount(){
+        return Comment::count(
+            [
+                'where' => 'type = 1 AND rid = :rid',
+            ],
+            [
+                'rid' => $this->content->f('rid'),
+            ]
+        );
     }
 }
 

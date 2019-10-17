@@ -14,7 +14,7 @@ img {
 
 #main {
     flex-grow: 1;
-    padding: 2em 0;
+    padding: 0 0 2em 0;
 }
 
 .card,

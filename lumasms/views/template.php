@@ -31,22 +31,22 @@
     </div>
 </header>
 
-<nav id="nav">
-    <dl>
-        <dt class="d-flex align-items-center">
-            <span class="flex-grow-1">Menu</span>
-            
-            <label for="nav-checkbox" class="p-2">
-                <span class="fas fa-times fa-lg"></span>
-            </label>
-        </dt>
-        <dd><a href="./">Updates</a></dd>
-        <dd><a href="./content/sprites">Sprite Sheets</a></dd>
-        <dd><a href="./content/games">Games</a></dd>
-    </dl>
-</nav>
-
 <main id="main">
+    <nav id="nav">
+        <dl>
+            <dt>
+                <span class="flex-grow-1">Menu</span>
+                
+                <label for="nav-checkbox" class="p-2">
+                    <span class="fas fa-times fa-lg"></span>
+                </label>
+            </dt>
+            <dd><a href="./">Updates</a></dd>
+            <dd><a href="./content/sprites">Sprite Sheets</a></dd>
+            <dd><a href="./content/games">Games</a></dd>
+        </dl>
+    </nav>
+    
     <div class="container">
         <?=$content?>
     </div>
