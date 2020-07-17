@@ -1,6 +1,6 @@
-# MFGG powered by LumaSMS
+# MFGG powered by LumaSMS Extended
 
-LumaSMS is a new software being built for compatibility with Taloncrossing Site Managament System. It's being built specifically for Mario Fan Games Galaxy.
+LumaSMS is a new software being built for compatibility with Taloncrossing Site Managament System. It's being built specifically for Mario Fan Games Galaxy (Also Metroid Fan Mission which is a defunct site).
 
 ## Getting Started
 
@@ -95,9 +95,11 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 ## Authors
 
-* **HylianDev** - *Project leader*
+* **HylianDev** - *Project leader/Original author*
+* **Mors** - *Programmer*
+* **Hypernova** - *Programmer*
 
-See also the list of [contributors](https://github.com/hyliandev/mfgg3/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/MorsGames/mfgg3/contributors) who participated in this project.
 
 ## License
 
