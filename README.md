@@ -81,6 +81,8 @@ conduct, and the process for submitting pull requests to us.
 
 - [HylianDev](https://github.com/hyliandev) - Project lead
 - [wtl420](https://github.com/wtl420)
+- [Mors](https://github.com/MorsGames) - Programmer
+- [Hypernova](https://github.com/HypernovaTX) - _Programmer_
 
 See also the list of
 [contributors](https://github.com/mario-fan-games-galaxy/LumaSMS/contributors) who participated
@@ -89,7 +91,7 @@ in this project.
 ## License
 
 This project is licensed under the MIT License - see the
-[LICENSE.md](LICENSE.md) file for details
+[LICENSE](LICENSE) file for details
 
 ## Acknowledgments
 

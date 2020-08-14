@@ -346,8 +346,9 @@ class Installer
         if (is_callable('shell_exec') && false === stripos(ini_get('disable_functions'), 'shell_exec')) {
             $mysql_version_string = shell_exec('mysql -V');
             $mysql_version_match_results = array();
-            preg_match('/[0-9]+\.[0-9]+\.[0-9]+/', $mysql_version_string, $mysql_version_match_results);
-            $mysql_version = $mysql_version_match_results[0];
+            if (preg_match('/[0-9]+\.[0-9]+\.[0-9]+/', $mysql_version_string, $mysql_version_match_results)) {
+                $mysql_version = $mysql_version_match_results[0];
+            }
         };
         $environment['mysql'] = array(
             'version' => $mysql_version,
