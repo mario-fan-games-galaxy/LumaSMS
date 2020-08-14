@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a71cb73c0dc7c5c5d62b5ad9d6ead30",
+    "content-hash": "b66123a33c11c2a8450b9dc501176aa5",
     "packages": [
         {
             "name": "ircmaxell/password-compat",
@@ -1253,12 +1253,12 @@
             "version": "v2.9.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/phpDocumentor/phpDocumentor2.git",
+                "url": "https://github.com/phpDocumentor/phpDocumentor.git",
                 "reference": "be607da0eef9b9249c43c5b4820d25d631c73667"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/phpDocumentor2/zipball/be607da0eef9b9249c43c5b4820d25d631c73667",
+                "url": "https://api.github.com/repos/phpDocumentor/phpDocumentor/zipball/be607da0eef9b9249c43c5b4820d25d631c73667",
                 "reference": "be607da0eef9b9249c43c5b4820d25d631c73667",
                 "shasum": ""
             },
@@ -1865,6 +1865,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2017-12-04T08:55:13+00:00"
         },
         {
@@ -1993,6 +1994,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2015-10-02T06:51:40+00:00"
         },
         {
@@ -2923,16 +2925,16 @@
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "v2.8.45",
+            "version": "v2.8.52",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "ad2446d39d11c3daaa7f147d957941a187e47357"
+                "reference": "c306198fee8f872a8f5f031e6e4f6f83086992d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/ad2446d39d11c3daaa7f147d957941a187e47357",
-                "reference": "ad2446d39d11c3daaa7f147d957941a187e47357",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/c306198fee8f872a8f5f031e6e4f6f83086992d8",
+                "reference": "c306198fee8f872a8f5f031e6e4f6f83086992d8",
                 "shasum": ""
             },
             "require": {
@@ -2982,7 +2984,7 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
-            "time": "2018-07-26T11:13:39+00:00"
+            "time": "2019-04-16T11:33:46+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -3563,6 +3565,7 @@
                 "cache",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-cache",
             "time": "2015-09-15T16:23:56+00:00"
         },
         {
@@ -3620,6 +3623,7 @@
                 "config",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-config",
             "time": "2015-05-07T14:55:31+00:00"
         },
         {
@@ -3666,6 +3670,7 @@
                 "eventmanager",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-eventmanager",
             "time": "2015-05-07T14:55:31+00:00"
         },
         {
@@ -3722,6 +3727,7 @@
                 "filter",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-filter",
             "time": "2015-05-07T14:55:31+00:00"
         },
         {
@@ -3786,6 +3792,7 @@
                 "i18n",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-i18n",
             "time": "2015-05-07T14:55:31+00:00"
         },
         {
@@ -3840,6 +3847,7 @@
                 "json",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-json",
             "time": "2015-05-07T14:55:31+00:00"
         },
         {
@@ -3891,6 +3899,7 @@
                 "math",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-math",
             "time": "2015-05-07T14:55:31+00:00"
         },
         {
@@ -3944,6 +3953,7 @@
                 "serializer",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-serializer",
             "time": "2015-05-07T14:55:31+00:00"
         },
         {
@@ -3994,6 +4004,7 @@
                 "servicemanager",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-servicemanager",
             "time": "2015-05-07T14:55:31+00:00"
         },
         {
@@ -4049,6 +4060,7 @@
                 "stdlib",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-stdlib",
             "time": "2015-07-21T13:55:46+00:00"
         },
         {
@@ -4177,5 +4189,6 @@
     "platform": {
         "php": ">=5.4.16"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
