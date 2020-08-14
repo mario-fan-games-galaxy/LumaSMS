@@ -4,6 +4,7 @@ tcsms/
 # Config
 config/config.yaml
 hyliandev/settings.php
+lumasms/settings.online.yaml
 
 # Logs
 *.log
@@ -21,3 +22,6 @@ vendor
 adminer.php
 phpunit.phar
 composer.phar
+
+# Images
+lumasms/thumbnail/*

@@ -1,7 +1,7 @@
 {
   "config": {
     "platform": {
-      "php": "5.4.16"
+      "php": "7.0.0"
     }
   },
   "scripts": {
@@ -16,12 +16,13 @@
     "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
     "roave/security-advisories": "dev-master",
     "phpmd/phpmd": "^2.6",
-    "phpunit/phpunit": "4.8",
-    "phpdocumentor/phpdocumentor": "^2.9"
+    "phpunit/phpunit": "4.8"
   },
   "require": {
-    "php": ">=5.4.16",
     "ircmaxell/password-compat": "^1.0",
-    "symfony/yaml": "^2.8"
+    "mustangostang/spyc": "^0.6.2",
+    "php": "^7.0.0",
+    "symfony/yaml": "^2.8",
+    "twig/twig": "^2.6"
   }
 }
