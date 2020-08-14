@@ -1,5 +1,9 @@
+# tcsms
+tcsms/
+
 # Config
 config/config.yaml
+hyliandev/settings.php
 
 # Logs
 *.log
@@ -11,6 +15,7 @@ vendor
 
 # Cache
 *.cache
+*.php_cs.cache
 
 # Tools
 adminer.php
