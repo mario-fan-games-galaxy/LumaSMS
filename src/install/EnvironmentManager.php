@@ -35,7 +35,8 @@ class EnvironmentManager
     {
         global $_SERVER;
 
-        if (        isset($_SERVER)
+        if (
+            isset($_SERVER)
             && is_array($_SERVER)
             && isset($_SERVER['REQUEST_SCHEME'])
         ) {
@@ -55,7 +56,8 @@ class EnvironmentManager
      */
     protected function getPath()
     {
-        if (            isset($_SERVER)
+        if (
+            isset($_SERVER)
             && isset($_SERVER['REQUEST_URI'])
         ) {
             return $_SERVER['REQUEST_URI'];
@@ -90,7 +92,7 @@ class EnvironmentManager
         }
 
         if (
-        isset($_SERVER)
+            isset($_SERVER)
             && isset($_SERVER['SERVER_PORT'])
             && $defaultPort !== $_SERVER['SERVER_PORT']
         ) {
@@ -113,7 +115,7 @@ class EnvironmentManager
         global $_SERVER;
 
         if (
-        isset($_SERVER)
+            isset($_SERVER)
             && is_array($_SERVER)
             && isset($_SERVER['SERVER_NAME'])
         ) {

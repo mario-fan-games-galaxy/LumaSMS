@@ -5,8 +5,9 @@ if (User::GetUser()) {
     echo view('register/already-logged-in');
 } else {
     $errors = [];
-    
-    if (    (
+
+    if (
+        (
             !isset($_POST['username'])
             &&
             !isset($_POST['password'])
@@ -23,7 +24,7 @@ if (User::GetUser()) {
             'password' => $_POST['password'],
             'email' => $_POST['email']
         ]);
-        
+
         if ($success) {
             echo view('register/success');
         } else {

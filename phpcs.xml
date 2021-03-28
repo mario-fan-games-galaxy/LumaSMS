@@ -10,6 +10,8 @@
   <!-- ignore vendor files -->
   <exclude-pattern>*/vendor/*</exclude-pattern>
   <exclude-pattern>*/node_modules/*</exclude-pattern>
+  <!-- exclude old directory -->
+  <exclude-pattern>*/old/*</exclude-pattern>
   <!-- basepath is where this file is -->
   <arg name="basepath" value="." />
   <!-- show colors -->

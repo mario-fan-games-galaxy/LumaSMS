@@ -24,7 +24,8 @@ use LumaSMS\controllers\InformationController;
  *
  * It does NOT search directories recursively
  */
-foreach (    [
+foreach (
+    [
     'core',
     'dbdrivers',
     'controllers',
@@ -65,7 +66,8 @@ $GLOBALS['routes'] = [
     'users/staff' => 'UsersController@staff'
 ];
 
-foreach (    [
+foreach (
+    [
     'updates',
     'sprites',
     'games',
@@ -133,7 +135,8 @@ $method = array_pop($controller);
 $controller = 'LumaSMS\controllers\\' . ucfirst(array_shift($controller));
 $yield = '';
 
-if (    !class_exists($controller)
+if (
+    !class_exists($controller)
     ||
     !($controller = new $controller())
     ||

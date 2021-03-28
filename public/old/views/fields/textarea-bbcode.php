@@ -1,4 +1,5 @@
-<div><?php foreach (    [
+<div><?php foreach (
+    [
     [
         [
             'fa' => 'bold',

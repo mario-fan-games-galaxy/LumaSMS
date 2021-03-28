@@ -5,7 +5,7 @@ function respond($response = false)
     if ($response == false) {
         $response = $GLOBALS['response'];
     }
-    
+
     die(json_encode($response));
 }
 
@@ -25,24 +25,24 @@ switch ($data['purpose']) {
     case 'bbcode-preview':
         if (!empty($data['message'])) {
             $response['success'] = true;
-            
+
             $response['data'] = format(preFormat($data['message']));
         }
-        
+
         respond();
         break;
-    
+
     case 'verify-new-topic':
         $response['data'] = Topics::CreateError($data);
         $response['success'] = true;
-        
+
         respond();
         break;
-    
+
     case 'verify-registration':
         $response['data'] = Users::CreateError($data);
         $response['success'] = true;
-        
+
         respond();
         break;
 }

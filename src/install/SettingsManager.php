@@ -64,7 +64,8 @@ class SettingsManager
 
         $fileManager = new FileManager();
 
-        if (        !$fileManager->fileAccessible($settingsFile)
+        if (
+            !$fileManager->fileAccessible($settingsFile)
             && !$fileManager->canBeCreated($settingsFile)
         ) {
             throw new InvalidArgumentException(
@@ -90,7 +91,8 @@ class SettingsManager
      */
     protected function formatBooleanValue($value)
     {
-        if (            (trim(mb_strtolower($value)) === 'true'
+        if (
+            (trim(mb_strtolower($value)) === 'true'
             || trim(mb_strtolower($value)) === 'false')
         ) {
             $value = trim(mb_strtolower($value)) === 'true';
@@ -134,7 +136,7 @@ class SettingsManager
     protected function formatValue($value, $setting = null)
     {
         if (
-        !is_string($value)
+            !is_string($value)
             && !is_numeric($value)
             && !is_bool($value)
             && !is_array($value)
@@ -186,7 +188,7 @@ class SettingsManager
         }
 
         if (
-        is_array($settings)
+            is_array($settings)
             && isset($settings[$setting])
         ) {
             $this->settings[$setting] = $settings[$setting];

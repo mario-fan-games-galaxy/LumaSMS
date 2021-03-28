@@ -2,7 +2,11 @@
 
 /**
  * Load the password compatibility library from composer
- *
+ * @package lumasms
+ */
+
+/**
+ * Load library
  */
 
 require_once dirname(dirname(__DIR__)) .
