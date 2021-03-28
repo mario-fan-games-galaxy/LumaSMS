@@ -12,11 +12,12 @@ class Topics extends Model
             return false;
         }
         
-        if (in_array(User::GetUser()->gid, [
+        if (        in_array(User::GetUser()->gid, [
             1,
             2,
             16
-        ])) {
+            ])
+        ) {
             return true;
         }
         
@@ -33,11 +34,12 @@ class Topics extends Model
             return false;
         }
         
-        if (in_array(User::GetUser()->gid, [
+        if (            in_array(User::GetUser()->gid, [
             1,
             2,
             16
-        ])) {
+            ])
+        ) {
             return true;
         }
         

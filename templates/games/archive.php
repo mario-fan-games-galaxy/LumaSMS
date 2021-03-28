@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Games archive template.
  *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Sounds controller.
  *

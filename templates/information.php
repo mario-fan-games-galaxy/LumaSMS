@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The information template.
  *

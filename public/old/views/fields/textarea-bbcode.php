@@ -1,4 +1,4 @@
-<div><?php foreach ([
+<div><?php foreach (    [
     [
         [
             'fa' => 'bold',
@@ -73,7 +73,8 @@
             'tag' => '[ispoiler][/ispoiler]'
         ]
     ]
-] as $bbcode_group) : ?>
+    ] as $bbcode_group
+) : ?>
 <div class="bbcode-bar btn-group"><?php foreach ($bbcode_group as $bbcode) : ?>
     <button type="button" class="btn btn-blue" data-bbcode="<?=$bbcode['tag']?>">
         <span class="fas fa-<?=$bbcode['fa']?>"></span>

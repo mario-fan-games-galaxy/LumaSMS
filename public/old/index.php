@@ -29,7 +29,7 @@ foreach (scandir($models_dir = './models/') as $file) {
 
 // Require necessary files
 
-foreach ([
+foreach (    [
     'functions',
     'settings',
     'db',
@@ -37,7 +37,8 @@ foreach ([
     'user',
     'language',
     'bbcode'
-] as $file) {
+    ] as $file
+) {
     require_once $file . '.php';
 }
 

@@ -1,4 +1,5 @@
 <?php
+
 function respond($response = false)
 {
     if ($response == false) {

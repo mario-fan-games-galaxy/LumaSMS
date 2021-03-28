@@ -1,4 +1,5 @@
 <?php
+
 $view = 'form';
 $login = [];
 
@@ -6,7 +7,7 @@ $username = isset($_POST['username']) ? $_POST['username'] : null;
 $password = isset($_POST['password']) ? $_POST['password'] : null;
 if (User::GetUser()) {
     $view = 'already-logged-in';
-} elseif (!empty($username) && !empty($password)
+} elseif (    !empty($username) && !empty($password)
 ) {
     $login = User::Login($username, $password);
     

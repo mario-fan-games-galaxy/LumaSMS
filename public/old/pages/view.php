@@ -13,7 +13,7 @@ if (setting('session_hotlink_protection') && empty($_SESSION['can_view_content']
 
 // If the parameters are incompatible with what we're trying to do, exit
 
-if (empty($params[0])
+if (    empty($params[0])
     ||
     !in_array($params[0], ['thumbnail','file'])
     ||

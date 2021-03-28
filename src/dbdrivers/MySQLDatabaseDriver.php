@@ -1,4 +1,5 @@
 <?php
+
 /**
  * MySQL database driver.
  *
@@ -11,7 +12,7 @@
 namespace LumaSMS\dbdrivers;
 
 use LumaSMS\core\DatabaseDriver;
-use \PDO;
+use PDO;
 
 /**
  * MySQL database driver.

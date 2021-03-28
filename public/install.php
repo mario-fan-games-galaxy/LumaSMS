@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Installer.
  *
@@ -18,7 +19,7 @@ use LumaSMS\install\DatabaseManager;
 use LumaSMS\install\EnvironmentManager;
 use LumaSMS\install\SettingsManager;
 use LumaSMS\install\TemplateManager;
-use \Exception;
+use Exception;
 
 /*
  * Get the data managers

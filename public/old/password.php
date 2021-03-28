@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Load the password compatibility library from composer
  *

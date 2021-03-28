@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Tests for the EnviornmentManager class.
  *
@@ -16,7 +17,7 @@
 namespace LumaSMS\tests\install;
 
 use LumaSMS\install\EnvironmentManager;
-use \PHPUnit_Framework_TestCase;
+use PHPUnit_Framework_TestCase;
 
 /**
  * EnvironmentManager Tests

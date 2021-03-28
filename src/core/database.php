@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Database related functions and classes.
  *

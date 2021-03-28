@@ -6,7 +6,7 @@ if (User::GetUser()) {
 } else {
     $errors = [];
     
-    if ((
+    if (    (
             !isset($_POST['username'])
             &&
             !isset($_POST['password'])

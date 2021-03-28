@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Route related functions
  *
@@ -19,11 +20,12 @@
  */
 function CRUDRoute($type)
 {
-    foreach ([
+    foreach (    [
         false,
         'archive',
         'single'
-    ] as $method) {
+        ] as $method
+    ) {
         $controllerMethod = $method;
         if (!$method) {
             $controllerMethod = 'archive';

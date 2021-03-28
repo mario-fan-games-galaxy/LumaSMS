@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Tests for the FileManager class.
  *
@@ -16,9 +17,9 @@
 namespace LumaSMS\tests\install;
 
 use LumaSMS\install\FileManager;
-use \PHPUnit_Framework_TestCase;
-use \InvalidArgumentException;
-use \Exception;
+use PHPUnit_Framework_TestCase;
+use InvalidArgumentException;
+use Exception;
 
 /**
  * FileManager Tests

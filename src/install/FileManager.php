@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Handler of files for the installer.
  *
@@ -10,8 +11,8 @@
 
 namespace LumaSMS\install;
 
-use \Exception;
-use \InvalidArgumentException;
+use Exception;
+use InvalidArgumentException;
 
 /**
  * This handles the file management functionality for the installer.

@@ -11,7 +11,7 @@ if ($wasLoggedIn = $_SESSION['uid']) {
         <?php if ($wasLoggedIn) : ?>
             <?=lang('logged-out')?>
         <?php else : ?>
-        <?=lang('already-logged-out')?>
+            <?=lang('already-logged-out')?>
         <?php endif; ?>
         
         <?=view('redirect')?>
