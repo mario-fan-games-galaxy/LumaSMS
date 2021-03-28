@@ -14,7 +14,7 @@ switch ($view) {
     case 'archive':
         $view = 'sprites/archive';
         break;
-    
+
     default:
         $view = 'sprites/single';
         break;

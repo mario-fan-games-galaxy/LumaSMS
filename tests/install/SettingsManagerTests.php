@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Tests for the SettingsManager class.
  *
@@ -16,9 +17,9 @@
 namespace LumaSMS\tests\install;
 
 use LumaSMS\install\SettingsManager;
-use \Exception;
-use \InvalidArgumentException;
-use \PHPUnit_Framework_TestCase;
+use Exception;
+use InvalidArgumentException;
+use PHPUnit_Framework_TestCase;
 
 /**
  * SettingsManager Tests

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Sprites resource model.
  *

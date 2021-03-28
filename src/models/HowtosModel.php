@@ -1,4 +1,5 @@
 <?php
+
 /**
  * How-Tos resource model.
  *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The games single template.
  *

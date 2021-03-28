@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Handler of files for the installer.
  *

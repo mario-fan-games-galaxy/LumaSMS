@@ -14,7 +14,7 @@ switch ($view) {
     case 'archive':
         $view = 'updates/archive';
         break;
-    
+
     default:
         $view = 'updates/single';
         break;

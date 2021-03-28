@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Tests for the DatabaseManager class.
  *
@@ -20,10 +21,10 @@ namespace LumaSMS\tests\install;
 
 use LumaSMS\install\DatabaseManager;
 use LumaSMS\install\SettingsManager;
-use \PHPUnit_Framework_TestCase;
-use \InvalidArgumentException;
-use \Exception;
-use \PDO;
+use PHPUnit_Framework_TestCase;
+use InvalidArgumentException;
+use Exception;
+use PDO;
 
 /**
  * DatabaseManager Tests

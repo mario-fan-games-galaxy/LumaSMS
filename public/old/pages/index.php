@@ -1,1 +1,3 @@
-<?php include 'updates.php';
+<?php
+
+include 'updates.php';

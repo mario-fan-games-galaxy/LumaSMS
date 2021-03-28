@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The miscellaneus single template.
  *

@@ -7,7 +7,7 @@ class Users extends Model
         if (in_array(true, $errors = Users::CreateError($data))) {
             return $errors;
         }
-        
+
         $q = DB()->prepare("
 			INSERT INTO " . setting('db_prefix') . "users
 			
@@ -33,7 +33,7 @@ class Users extends Model
 				?
 			);
 		");
-        
+
         $ret = $q->execute([
             preFormat($data['username']),
             User::Password($data['password']),
@@ -42,10 +42,10 @@ class Users extends Model
             User::Cookie(),
             time()
         ]);
-        
+
         return $ret;
     }
-    
+
     public static function CreateError($data = [])
     {
         $error = [
@@ -53,7 +53,7 @@ class Users extends Model
             'password' => false,
             'email' => false
         ];
-        
+
         // Username
         if (empty($data['username'])) {
             $error['username'] = 'Username was empty';
@@ -64,7 +64,7 @@ class Users extends Model
         } elseif (Users::Read(['username' => $data['username']])) {
             $error['username'] = 'That username already exists';
         }
-        
+
         // Password
         if (empty($data['password'])) {
             $error['password'] = 'Password was empty';
@@ -73,7 +73,7 @@ class Users extends Model
         } elseif (strlen($data['password']) > setting('password_max_length')) {
             $error['password'] = 'Password was too long; must be ' . setting('password_max_length') . ' or less characters';
         }
-        
+
         // Email
         if (empty($data['email'])) {
             $error['email'] = 'Email was empty';
@@ -82,10 +82,10 @@ class Users extends Model
         } elseif (Users::Read(['email' => $data['email']])) {
             $error['email'] = 'An account with that email already exists';
         }
-        
+
         return $error;
     }
-    
+
     public static function Read($data = [])
     {
         $_sql = [];
@@ -94,7 +94,7 @@ class Users extends Model
             $values[] = $value;
             $_sql[] = $key . ' = ?';
         }
-        
+
         $q = DB()->prepare(
             $sql = "SELECT
 			*
@@ -106,9 +106,9 @@ class Users extends Model
 			LIMIT 1
 			;"
         );
-        
+
         $q->execute($values);
-        
+
         return $q->fetch(PDO::FETCH_OBJ);
     }
 }

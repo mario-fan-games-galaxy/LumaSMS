@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Sounds archive template.
  *

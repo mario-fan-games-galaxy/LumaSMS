@@ -1,3 +1,11 @@
+<?php
+
+/**
+ * The basic template
+ * @package lumasms
+ */
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 

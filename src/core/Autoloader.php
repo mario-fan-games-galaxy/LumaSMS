@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The autoloader for classes in the LumaSMS namespace.
  *

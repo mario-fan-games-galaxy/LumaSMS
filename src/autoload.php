@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Autoloader - include this file to setup the constants and autoload
  *              functionality.

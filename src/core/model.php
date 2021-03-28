@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Base model for all other models.
  *
@@ -10,7 +11,7 @@
 
 namespace LumaSMS\core;
 
-use \PDO;
+use PDO;
 
 /**
  * Base model for all other models.

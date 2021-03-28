@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Tests for the TemplateManager class.
  *
@@ -16,8 +17,8 @@
 namespace LumaSMS\tests\install;
 
 use LumaSMS\install\TemplateManager;
-use \PHPUnit_Framework_TestCase;
-use \Exception;
+use PHPUnit_Framework_TestCase;
+use Exception;
 
 /**
  * TemplateManager Tests
