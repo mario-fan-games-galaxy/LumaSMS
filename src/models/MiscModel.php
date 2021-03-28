@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Miscellaneous resource model.
  *

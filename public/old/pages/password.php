@@ -1,4 +1,5 @@
 <?php
+
 $password = User::Password($_POST['password']);
 ?>
 

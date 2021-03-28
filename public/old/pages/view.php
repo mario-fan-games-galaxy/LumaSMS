@@ -13,7 +13,8 @@ if (setting('session_hotlink_protection') && empty($_SESSION['can_view_content']
 
 // If the parameters are incompatible with what we're trying to do, exit
 
-if (empty($params[0])
+if (
+    empty($params[0])
     ||
     !in_array($params[0], ['thumbnail','file'])
     ||
@@ -52,23 +53,23 @@ switch ($type) {
     case 1:
         $table .= 'gfx';
         break;
-    
+
     case 2:
         $table .= 'games';
         break;
-    
+
     case 4:
         $table .= 'howtos';
         break;
-    
+
     case 5:
         $table .= 'sounds';
         break;
-    
+
     case 6:
         $table .= 'misc';
         break;
-    
+
     default:
         die(lang('invalid-resource'));
     break;

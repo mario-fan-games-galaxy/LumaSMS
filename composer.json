@@ -2,19 +2,20 @@
   "type": "project",
   "config": {
     "platform": {
-      "php": "7.0.0"
+      "php": "7.2.5"
     }
   },
   "scripts": {
     "lint": [
-      "@phpcs",
-      "@phpmd"
+      "@phpcs"
     ],
     "phpcs": "phpcs",
     "phpcbf": "phpcbf",
     "phpmd": "phpmd . text phpmd.xml --exclude */vendor/*,*/node_modules/*,*/public/old/*,*/.git/*,*/var/*,*/config/* --suffixes php",
     "test": "phpunit"
   },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
   "require-dev": {
     "roave/security-advisories": "dev-master@dev",
     "phpunit/phpunit": "^6.5",
@@ -22,12 +23,8 @@
     "phpmd/phpmd": "^2.8"
   },
   "require": {
+    "php": ">=7.2.5",
     "ircmaxell/password-compat": "^1.0",
-    "mustangostang/spyc": "^0.6.2",
-    "php": "^7.0.0",
-    "symfony/yaml": "^2.8",
-    "twig/twig": "^2.6"
-  },
-  "prefer-stable": true,
-  "minimum-stability": "stable"
+    "symfony/yaml": "^4.4"
+  }
 }

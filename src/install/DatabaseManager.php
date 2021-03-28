@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Database class for handling installer database functions.
  *
@@ -10,9 +11,9 @@
 
 namespace LumaSMS\install;
 
-use \InvalidArgumentException;
-use \Exception;
-use \PDO;
+use InvalidArgumentException;
+use Exception;
+use PDO;
 
 /**
  * This handles the database functionality for the installer.

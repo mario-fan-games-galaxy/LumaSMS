@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Database class for handling installer database functions.
  *
@@ -11,8 +12,8 @@
 namespace LumaSMS\install;
 
 use Symfony\Component\Yaml\Yaml;
-use \InvalidArgumentException;
-use \Exception;
+use InvalidArgumentException;
+use Exception;
 
 /**
  * This handles the settings file functionality for the installer.
@@ -63,8 +64,10 @@ class SettingsManager
 
         $fileManager = new FileManager();
 
-        if (!$fileManager->fileAccessible($settingsFile)
-            && !$fileManager->canBeCreated($settingsFile)) {
+        if (
+            !$fileManager->fileAccessible($settingsFile)
+            && !$fileManager->canBeCreated($settingsFile)
+        ) {
             throw new InvalidArgumentException(
                 '`' . $settingsFile . '` is is not accessible and can\'t be created!'
             );
@@ -88,7 +91,8 @@ class SettingsManager
      */
     protected function formatBooleanValue($value)
     {
-        if ((trim(mb_strtolower($value)) === 'true'
+        if (
+            (trim(mb_strtolower($value)) === 'true'
             || trim(mb_strtolower($value)) === 'false')
         ) {
             $value = trim(mb_strtolower($value)) === 'true';
@@ -131,10 +135,12 @@ class SettingsManager
      */
     protected function formatValue($value, $setting = null)
     {
-        if (!is_string($value)
+        if (
+            !is_string($value)
             && !is_numeric($value)
             && !is_bool($value)
-            && !is_array($value)) {
+            && !is_array($value)
+        ) {
             throw new InvalidArgumentException(
                 'Invalid value for setting: `' . $value . '`'
             );
@@ -181,7 +187,8 @@ class SettingsManager
             $settings = false;
         }
 
-        if (is_array($settings)
+        if (
+            is_array($settings)
             && isset($settings[$setting])
         ) {
             $this->settings[$setting] = $settings[$setting];

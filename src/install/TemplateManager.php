@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Gather information about the environment.
  *
@@ -10,7 +11,7 @@
 
 namespace LumaSMS\install;
 
-use \Exception;
+use Exception;
 
 /**
  * Manage templates.

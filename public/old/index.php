@@ -1,6 +1,9 @@
 <?php
 
-// Basic beginning stuff
+/**
+ * Basic beginning stuff
+ * @package lumasms
+ */
 
 // Only show errors if it's an actual error; no notices
 error_reporting(E_ERROR | E_CORE_ERROR | E_COMPILE_ERROR | E_PARSE);
@@ -29,7 +32,8 @@ foreach (scandir($models_dir = './models/') as $file) {
 
 // Require necessary files
 
-foreach ([
+foreach (
+    [
     'functions',
     'settings',
     'db',
@@ -37,7 +41,8 @@ foreach ([
     'user',
     'language',
     'bbcode'
-] as $file) {
+    ] as $file
+) {
     require_once $file . '.php';
 }
 

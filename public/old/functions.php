@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Arbitrary functions
+ * @package lumasms
+ */
+
+/**
+ * Return a captcha HTML code
+ *
+ * @return string captcha HTML
+ */
 function captcha()
 {
     return field([
@@ -11,7 +21,11 @@ function captcha()
     ]);
 }
 
-// Get a debug string of the variables
+/**
+ * Get a debug string of the passed in arguments
+ *
+ * @return string    Debug string of the given arguments
+ */
 function debug()
 {
     ob_start();
@@ -25,7 +39,15 @@ function debug()
 
 
 
-// Display the date
+/**
+ * Display the date
+ *
+ * @param mixed       $date            A date to display.
+ * @param null|string $display_setting How to display the date, defaults to
+ *                                     configured option.
+ *
+ * @return  string  The formatted date string
+ */
 function displayDate($date, $display_setting = null)
 {
     if (empty($date) || !is_numeric($date)) {
@@ -91,7 +113,13 @@ function displayDate($date, $display_setting = null)
 
 
 
-// Display a field
+/**
+ * Display a field
+ *
+ * @param   mixed $data The field to display.
+ *
+ * @return string   The displayed field.
+ */
 function field($data)
 {
     return view('fields/base', $data);
@@ -99,7 +127,13 @@ function field($data)
 
 
 
-// Format text bodies
+/**
+ * Format text bodies
+ *
+ * @param   mixed $text The text to format.
+ *
+ * @return  string  The formatted text.
+ */
 function format($text)
 {
     $text = unconvert($text);
@@ -113,7 +147,13 @@ function format($text)
 
 
 
-// Use this before you put text in the database
+/**
+ * Use this before you put text in the database
+ *
+ * @param   mixed $text The text to format.
+ *
+ * @return  string  The formatted text.
+ */
 function preFormat($text)
 {
     $text = htmlentities($text);
@@ -123,22 +163,34 @@ function preFormat($text)
 
 
 
-// Title to slug
+/**
+ * Title to slug
+ *
+ * @param   mixed $title The text to slugify.
+ *
+ * @return  string  The slugified text
+ */
 function titleToSlug($title)
 {
     $title = preg_replace('/&(.)+;/U', '', $title);
     $title = preg_replace('/[^a-zA-Z0-9 ]/', '', $title);
     $title = str_replace(' ', '-', $title);
-    $title = strtolower($title);
-    $title = substr($title, 0, 50);
+    $title = mb_strtolower($title);
+    $title = mb_substr($title, 0, 50);
 
     return $title;
 }
 
 
 
-// Unconvert from HTML
-// Stolen directly from TCSMS lol
+/**
+ * Unconvert from HTML
+ * Stolen directly from TCSMS lol
+ *
+ * @param   mixed $data The data to unconvert.
+ *
+ * @return  string  The converted data.
+ */
 function unconvert($data)
 {
     global $STD;
@@ -163,10 +215,16 @@ function unconvert($data)
         $data
     );
 
-    //$data = preg_replace_callback("/<!--QuoteStart--><div class=\"quotetitle\">Quote <span style='font-weight:normal'>\((.+?)\)<\/span><\/div><div class=\"quote\">/is", array(&$this, 'unconvert_quote'), $data);
+    // $data = preg_replace_callback(
+    //     "/<!--QuoteStart--><div class=\"quotetitle\">"
+    //     . "Quote <span style='font-weight:normal'>\((.+?)\)<\/span><\/div>"
+    //     . "<div class=\"quote\">/is", array(&$this, 'unconvert_quote'), $data);
 
     $data = preg_replace(
-        "/<!--QuoteStart--><div class=\"quotetitle\">Quote <span style='font-weight:normal'>\((.+?)\)<\/span><\/div><div class=\"quote\">/is",
+        "/<!--QuoteStart-->"
+        . "<div class=\"quotetitle\">"
+        . "Quote <span style='font-weight:normal'>\((.+?)\)<\/span>"
+        . "<\/div><div class=\"quote\">/is",
         // Idk why this isn't working but it's just not being recognized
         // "[quote=$1]",
         "[quote]",
@@ -190,17 +248,27 @@ function unconvert($data)
 
 
 
-// Get the base URL to the site
+/**
+ * Get the base URL to the site
+ *
+ * @return  string  The base URL to the site.
+ */
 function url()
 {
     return 'http' . (!empty($_SERVER['HTTPS']) ? 's' : '') .
     '://' . $_SERVER['SERVER_NAME'] . array_shift(explode('/index.php', $_SERVER['SCRIPT_NAME']));
-
 }
 
 
 
-// Get a view
+/**
+ * Get a view
+ *
+ * @param   string $___file The file to get.
+ * @param   mixed  $vars    The variables to insert into the view.
+ *
+ * @return  string  The parsed view
+ */
 function view($___file, $vars = [])
 {
     if (!file_exists($____file = './views/' . $___file . '.php')) {

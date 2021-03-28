@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The how-tos single template.
  *
