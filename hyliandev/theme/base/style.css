@@ -1,0 +1,667 @@
+/* == LINKS == */
+
+@font-face {
+	font-family:'Super Mario';
+	src:url('MarioFontv3Remakefull.ttf');
+}
+
+body {
+	background-image:url('bgimage.png');
+}
+
+.card-header {
+	background-image:url('topbarbg.png');
+}
+
+header main {
+	background-image:url('headerbg.png');
+	position:relative;
+}
+
+header .nav-container {
+	background-image:url('redbg.png');
+	font-family:'Super Mario';
+}
+
+header nav:not(.stick)::after {
+	background-image:url('chevron1encoded.png');
+	content:"";
+	height:36px;
+	left:0;
+	position:absolute;
+	top:-20px;
+	width:100%;
+}
+
+@media (min-width:991px){
+	header nav ul ul {
+		background-image:url('pinkbg.png');
+	}
+}
+
+
+
+
+
+
+
+
+
+
+/* == MAIN THEME ELEMENTS == */
+
+body > .container {
+	padding-top:2em;
+}
+
+header nav {
+	position:relative;
+	z-index:1000;
+}
+
+header nav #show-menu {
+	display:flex;
+}
+
+header nav #show-menu .show-menu-button {
+	flex-grow:1;
+}
+
+header nav.stick {
+	position:fixed;
+	top:0;
+	width:100%;
+}
+
+header nav ul {
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+
+header nav ul li a {
+	color:#FFF;
+	display:block;
+	padding:0.25em 0;
+}
+
+header nav ul li a:active,
+header nav ul li a:focus,
+header nav ul li a:hover
+{
+	color:#333;
+	text-decoration:none;
+}
+
+@media (max-width:991px){
+	header nav {
+		font-size:1.25em;
+	}
+	
+	header nav #show-menu {
+		padding:0.25em 0;
+	}
+	
+	.no-js header nav:not(:hover) ul.top-menu,
+	body:not(.no-js) header nav ul.top-menu
+	{
+		display:none;
+	}
+	
+	.show-when-big {
+		display:none;
+	}
+}
+
+@media (min-width:992px){
+	header nav #show-menu {
+		display:none;
+	}
+	
+	header nav ul {
+		display:flex;
+	}
+
+	header nav ul li {
+		flex-grow:1;
+		text-align:center;
+	}
+	
+	header nav ul li a {
+		font-size:1.75em;
+	}
+
+	header nav ul ul {
+		position:absolute;
+		left:0;
+		width:100%;
+	}
+
+	header nav ul li:not(:hover) ul {
+		display:none;
+	}
+	
+	.show-when-small {
+		display:none;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+/* == ELEMENTS == */
+
+a,
+a:hover,
+a:active,
+a:focus,
+a:visited
+{
+	color:#FFF;
+	font-weight:bold;
+}
+
+body {
+	color:#FFF;
+}
+
+h1 {
+	font-family:'Super Mario',sans-serif;
+	margin-bottom:1em;
+	text-align:center;
+}
+
+img {
+	max-width:100%;
+}
+
+pre {
+	color:#FFF;
+}
+
+
+
+
+
+
+
+
+
+
+/* == FORMS == */
+
+label {
+	display:block;
+	width:100%;
+}
+
+textarea {
+	height:24em;
+	font-family:'Lucida Console',monospace;
+}
+
+
+
+
+
+
+
+
+
+
+/* == FORUMS == */
+
+.topic {
+	border-top:1px solid #FFF;
+	border-top-color:rgba(0,0,0,0.25);
+}
+
+.topic .flex-row .flex-column {
+	padding:0 0.5em;
+}
+
+.topic .flex-row .flex-column:first-of-type {
+	padding-left:0;
+}
+
+.topic .flex-row .flex-column:last-of-type {
+	padding-right:0;
+}
+
+
+
+
+
+
+
+
+
+
+/* == USEFUL CLASSES == */
+
+.button-bar {
+	margin-bottom:1em;
+}
+
+.card {
+	background-color:#213298;
+	border-radius:0;
+	margin-bottom:2em;
+}
+
+.card-header {
+	color:#FFF600;
+	font-family:'Super Mario',sans-serif;
+	font-size:1.5em;
+	font-weight:bold;
+}
+
+.card-header a {
+	color:inherit;
+}
+
+.card-footer {
+	background-color:#1E247E;
+}
+
+.flex-center {
+	align-items:center;
+	display:flex;
+}
+
+.flex-grow {
+	flex-grow:1;
+}
+
+.flex-row {
+	
+}
+
+.flex-row .flex-column.flex-column-grow {
+	flex-grow:1;
+}
+
+.resource-layout {
+	border-bottom:1px solid #CCC;
+	display:flex;
+}
+
+.resource-layout .resource-thumbnail {
+	flex-shrink:0;
+	margin:0 0.5em 0.5em 0;
+}
+
+.resource-layout .resource-description {
+	flex-grow:1;
+}
+
+.title-link {
+	display:block;
+}
+
+@media (min-width:768px){
+	.flex-row {
+		display:flex;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+/* == USERS == */
+
+.user-profile-small {
+	
+}
+
+[class*="user-profile-small"] {
+	padding-bottom:1em;
+}
+
+
+
+
+
+
+
+
+
+
+/* == BBCODE == */
+
+blockquote {
+	background-color:rgba(0,0,0,0.25);
+	display:block;
+	padding:0.25em;
+}
+
+blockquote cite {
+	background-color:inherit;
+	display:block;
+	padding:0.5em;
+	font-style:normal;
+}
+
+.bbcode-bar {
+	margin-bottom:0.5em;
+}
+
+.no-js .bbcode-bar {
+	display:none;
+}
+
+.bbcode-bold {
+	font-weight:bold;
+}
+
+.bbcode-center {
+	display:block;
+	text-align:center;
+}
+
+.bbcode-code {
+	display:block;
+	font-family:'Lucida Console',monospace;
+	white-space:nowrap;
+}
+
+.bbcode-image {
+	/**/
+}
+
+.bbcode-ispoiler {
+	background-color:#000;
+	color:transparent;
+	display:inline-block;
+	transition:color 0.5s ease;
+}
+
+.bbcode-ispoiler:hover {
+	color:#FFF;
+}
+
+.bbcode-italic {
+	font-style:italic;
+}
+
+.bbcode-list {
+	margin:0;
+}
+
+.bbcode-preview-container {
+	display:none;
+}
+
+.bbcode-spoiler {
+	background-color:rgba(0,0,0,0.25);
+	display:none;
+	padding:0.5em;
+}
+
+.no-js .bbcode-spoiler-container:hover > .bbcode-spoiler {
+	display:block;
+}
+
+.bbcode-strikethrough {
+	text-decoration:line-through;
+}
+
+.bbcode-underline {
+	text-decoration:underline;
+}
+
+.bbcode-youtube {
+	display:block;
+	border-width:0;
+	margin:auto;
+	max-width:100%;
+	width:640px;
+}
+
+.bbcode-youtube:not(.bbcode-youtube-audio) {
+	height:360px;
+}
+
+.bbcode-youtube-audio {
+	height:48px;
+}
+
+
+
+
+
+
+
+
+
+
+/* == MORS == */
+
+/* Buttons */
+
+.btn {
+    border-radius: .75rem;
+    border-width: 4px;
+    height: 2.25rem;
+    padding: 0 1.5rem;
+    margin-right: 1rem;
+    color: #fff;
+    font-family: 'Super Mario',sans-serif;
+    cursor: pointer;
+	-webkit-transition: all .25s ease-in-out;
+	        transition: all .25s ease-in-out;
+    -webkit-box-shadow: 0 2px 8px rgba(0,0,0,.125);
+            box-shadow: 0 2px 8px rgba(0,0,0,.125);
+    -webkit-transform: perspective(1px) translateZ(0);
+            transform: perspective(1px) translateZ(0)
+}
+
+.btn:hover {
+    -webkit-box-shadow: 0 4px 16px rgba(0,0,0,.25);
+            box-shadow: 0 4px 16px rgba(0,0,0,.25)
+}
+
+.btn:focus {
+    -webkit-box-shadow: 0 2px 8px rgba(0,0,0,.125);
+            box-shadow: 0 2px 8px rgba(0,0,0,.125)
+}
+
+.btn-group, .btn-group-vertical, .btn:before {
+    border-radius: .5rem;
+	-webkit-transition: all .25s ease-in-out;
+            transition: all .25s ease-in-out
+}
+
+.btn:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,.25);
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    -webkit-transform-origin: 50%;
+            transform-origin: 50%;
+    -webkit-transition: all .25s ease-in-out;
+	        transition: all .25s ease-in-out
+}
+
+.btn:hover:before {
+    background: 0 0;
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0)
+}
+
+.btn:active:before,
+.btn:focus:before
+{
+    background: rgba(255,255,255,.25);
+    -webkit-transition: all .125s ease-in-out;
+            transition: all .125s ease-in-out;
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1)
+}
+
+.btn-group, .btn-group-vertical {
+    -webkit-box-shadow: 0 2px 8px rgba(0,0,0,.125);
+            box-shadow: 0 2px 8px rgba(0,0,0,.125);
+    -webkit-transform: perspective(1px) translateZ(0);
+            transform: perspective(1px) translateZ(0)
+}
+
+.btn-group .btn, .btn-group-vertical .btn {
+    margin-right: 0
+}
+
+.btn-group .btn, .btn-group:hover .btn,
+.btn-group:focus .btn,
+.btn-group-vertical .btn, .btn-group-vertical:hover .btn,
+.btn-group-vertical:focus .btn {
+    -webkit-box-shadow: 0 0 0 transparent;
+            box-shadow: 0 0 0 transparent
+}
+
+.btn-group:hover, .btn-group-vertical:hover {
+    -webkit-box-shadow: 0 4px 16px rgba(0,0,0,.25);
+            box-shadow: 0 4px 16px rgba(0,0,0,.25)
+}
+
+
+/* Custom Button Colors */
+
+.btn-blue, .btn-outline-blue:hover {
+    background-color: #4850d5
+}
+
+.btn-red, .btn-outline-red:hover {
+    background-color: #c80002
+}
+
+.btn-yellow, .btn-outline-yellow:hover {
+    background-color: #f5d021
+}
+
+.btn-white, .btn-outline-white:hover {
+    background-color: #dcdcdc
+}
+
+.btn-outline-blue {
+    border-color: #4850d5
+}
+
+.btn-outline-red {
+    border-color: #c80002
+}
+
+.btn-outline-yellow {
+    border-color: #f5d021
+}
+
+.btn-outline-white {
+    border-color: #dcdcdc
+}
+
+.btn-red:active:before, .btn-outline-red:active:before {
+    background: rgba(255,255,255,.375)
+}
+
+.btn-yellow:active:before, .btn-outline-yellow:active:before {
+    background: rgba(255,255,255,.5)
+}
+
+.btn-outline-blue, .btn-outline-red, .btn-outline-white, .btn-outline-yellow {
+    background-color: transparent;
+}
+
+.btn-outline-blue:before, .btn-outline-red:before, .btn-outline-white:before, .btn-outline-yellow:before {
+    background: 0 0
+}
+
+
+/* Input Boxes and Progress Bars */
+
+.form-control {
+    color: #000;
+    background-color: #fff;
+    border: 2px solid silver;
+    border-radius: .75rem;
+    -webkit-transform: perspective(1px) translateZ(0);
+            transform: perspective(1px) translateZ(0);
+    -webkit-transition: all .25s ease-in-out;
+            transition: all .25s ease-in-out;
+    -webkit-box-shadow: 0 2px 8px rgba(0,0,0,.125);
+            box-shadow: 0 2px 8px rgba(0,0,0,.125)
+}
+
+.form-control:hover {
+    -webkit-box-shadow: 0 4px 16px rgba(0,0,0,.25);
+    box-shadow: 0 4px 16px rgba(0,0,0,.25)
+}
+
+.form-control:focus {
+    color: #000;
+    background-color: #fff;
+    border: 2px solid #e60001
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #4850d5
+}
+
+.form-control:-ms-input-placeholder {
+    color: #4850d5
+}
+
+.form-control::placeholder {
+    color: #4850d5
+}
+
+.input-group-addon, .progress {
+    -webkit-transition: all .25s ease-in-out;
+	        transition: all .25s ease-in-out;
+    -webkit-box-shadow: 0 2px 8px rgba(0,0,0,.125);
+            box-shadow: 0 2px 8px rgba(0,0,0,.125)
+}
+
+.input-group-addon {
+    color: #fff;
+    background-color: #c80002;
+    border: 2px solid #e60001;
+    border-radius: .75rem
+}
+
+.input-group-addon:hover, .progress:hover {
+    -webkit-box-shadow: 0 4px 16px rgba(0,0,0,.25);
+            box-shadow: 0 4px 16px rgba(0,0,0,.25)
+}
+
+.progress {
+    border-radius: .625rem;
+    width: 16rem
+}
+
+.progress-bar {
+    height: 1.5rem;
+    border-radius: .5rem;
+    color: #fff;
+    background-color: #4850d5;
+	-webkit-transition: width .5s ease;
+            transition: width .5s ease;
+    background-image: linear-gradient(135deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    background-size: 1rem 1rem
+}

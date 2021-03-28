@@ -1,13 +1,13 @@
 {
+  "type": "project",
   "config": {
     "platform": {
-      "php": "5.4.16"
+      "php": "7.2.5"
     }
   },
   "scripts": {
     "lint": [
-      "@phpcs",
-      "@phpmd"
+      "@phpcs"
     ],
     "phpcs": "phpcs",
     "phpcbf": "phpcbf",
@@ -17,16 +17,14 @@
   "minimum-stability": "stable",
   "prefer-stable": true,
   "require-dev": {
-    "squizlabs/php_codesniffer": "^3.3",
     "roave/security-advisories": "dev-master@dev",
-    "phpmd/phpmd": "^2.6",
-    "phpunit/phpunit": "4.8",
-    "phpdocumentor/phpdocumentor": "^2.9"
+    "phpunit/phpunit": "^6.5",
+    "squizlabs/php_codesniffer": "^3.5",
+    "phpmd/phpmd": "^2.8"
   },
   "require": {
-    "php": ">=5.4.16",
+    "php": ">=7.2.5",
     "ircmaxell/password-compat": "^1.0",
-    "symfony/yaml": "^2.8",
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1"
+    "symfony/yaml": "^4.4"
   }
 }

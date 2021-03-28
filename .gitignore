@@ -1,5 +1,10 @@
+# tcsms
+tcsms/
+
 # Config
 config/config.yaml
+hyliandev/settings.php
+lumasms/settings.online.yaml
 
 # Logs
 *.log
@@ -11,8 +16,12 @@ vendor
 
 # Cache
 *.cache
+*.php_cs.cache
 
 # Tools
 adminer.php
 phpunit.phar
 composer.phar
+
+# Images
+lumasms/thumbnail/*

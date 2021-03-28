@@ -59,7 +59,7 @@
     "popper.js": "^1.16.1"
   },
   "engines": {
-    "composer": "1.10.20",
+    "composer": "2.0.11",
     "node": "15.12.0",
     "npm": "7.6.3"
   }
